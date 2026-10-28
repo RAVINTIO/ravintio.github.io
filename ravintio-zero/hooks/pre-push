@@ -1,0 +1,59 @@
+#!/bin/bash
+# RAVINTIO Pre-Push Hook: Enforce Branch Completeness
+# Tier 2: Developer gate — evaluates the cumulative diff of the entire branch.
+
+TARGET_BRANCH="origin/main"
+
+# Fetch latest to ensure accurate comparison
+git fetch origin main > /dev/null 2>&1
+
+# Get the cumulative list of files changed on this branch compared to main
+CHANGED_FILES=$(git diff --name-only $TARGET_BRANCH...HEAD)
+
+# Get all commit messages on this branch
+COMMIT_MESSAGES=$(git log $TARGET_BRANCH...HEAD --format="%s")
+
+# Check if this branch is entirely Fast Path commits
+# Fast Path commits use the convention: fix(fast-path): description
+if echo "$COMMIT_MESSAGES" | grep -qE "^fix\(fast-path\):"; then
+    if ! echo "$COMMIT_MESSAGES" | grep -vqE "^fix\(fast-path\):"; then
+        # All commits are fast-path — require only component.yml or changelog
+        if echo "$CHANGED_FILES" | grep -q "^src/"; then
+            if ! echo "$CHANGED_FILES" | grep -qE "(component\.yml|plan/changelog/)"; then
+                echo "❌ RAVINTIO FAST PATH ENFORCEMENT FAILED: Push Rejected."
+                echo "----------------------------------------------------------------"
+                echo "Fast Path commits must update component.yml or plan/changelog/."
+                echo "----------------------------------------------------------------"
+                exit 1
+            fi
+        fi
+        exit 0
+    fi
+fi
+
+# Standard check: any src/ change requires plan/, docs/, or component.yml
+# also touched in the same diff. This is a presence check, not a
+# correspondence guarantee — it does not verify that the plan/docs/manifest
+# content actually corresponds to the src/ change.
+if echo "$CHANGED_FILES" | grep -q "^src/"; then
+
+    # Check if plan/, docs/, or ANY component.yml was updated
+    if ! echo "$CHANGED_FILES" | grep -qE "^(plan/|docs/|.*component\.yml)"; then
+        echo "❌ RAVINTIO ENFORCEMENT FAILED: Push Rejected."
+        echo "----------------------------------------------------------------"
+        echo "Your branch contains code under src/, but no file under plan/,"
+        echo "docs/, or a component.yml was also touched in this diff."
+        echo "This is a presence check, not a correspondence guarantee — it"
+        echo "does not verify the content actually matches your change."
+        echo "You cannot push this branch until you commit updates to:"
+        echo "  - plan/ (current or archived feature docs)"
+        echo "  - docs/ (living documentation)"
+        echo "  - OR the relevant component.yml in the component folder"
+        echo "----------------------------------------------------------------"
+        echo "AGENT INSTRUCTION: The push failed. You must generate the missing"
+        echo "architectural or component documentation, commit it, and try pushing again."
+        exit 1 # Blocks the push
+    fi
+fi
+
+exit 0

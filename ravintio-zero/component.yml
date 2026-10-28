@@ -1,0 +1,171 @@
+# RAVINTIO Component Manifest
+id: "ravintio-zero"
+name: "RAVINTIO Zero"
+feature: "0000248-ship-merge-and-wall-clocks"
+version: "0.37.0"
+status: "active"
+type: "component-pack"
+domain: "developer-tooling"
+summary: "Core standards, skills, hooks, and setup scripts that enforce the RAVINTIO confirmed-design pipeline."
+systemContext: "Installed into a Claude Code project via setup.sh or setup.ps1. Provides enforcement hooks, structured standards, and the agent skills that drive the five-phase pipeline."
+
+responsibilities:
+  - "Enforce the confirmed-design gate: block in-project writes outside declared component scope, and pass targets whose real path lies outside the project"
+  - "Inject active scope context on every agent turn via the check-design hook"
+  - "Declare preferred and avoided libraries per language via library-standards docs"
+  - "Provide formatting standards: date format (DD MMM YYYY), locale (British English), verbosity"
+  - "Supply migration files for propagating standards changes across existing repos"
+  - "Register and sync capability skills from ravintio-overrides/"
+  - "Maintain the build log throughout a pipeline run for the ship-phase build assessment"
+  - "Direct model tier selection for all spawned subagents"
+  - "Enforce parallelism directives across all phase skills"
+  - "Offer a fast run speed in plan/.run-speed, in which each phase dispatches its listed fast batch in one message"
+  - "Record the end time and wall-clock time of each phase in the build log"
+  - "Track installed skill directories via .ravintio-manifest for safe re-runs"
+  - "Copy skill and hook files in setup.ps1 with System.IO calls, and check each installed skill against its source folder"
+  - "Record the active setup flags in plan/state/{tool}.md, tracked, and retract any legacy setup-config record on the next run"
+  - "Fail setup on a retired flag during argument parsing, naming the flag and leaving the repo unchanged, and check the tool before any other processing"
+  - "Write settings.json through a same-folder temporary file and a rename, so a failed write never truncates it"
+  - "Wire the same six enforcement hooks from setup.sh and setup.ps1, and check the match with a parity suite"
+  - "Run every test suite, Bash and PowerShell, and fail the run on any test file it would otherwise skip without a word"
+  - "Fail a Bash suite that calls an undefined assert function, and skip the installed-copies check while an initiative is active and the install lags the pack"
+  - "Repair the hook entries setup owns: remove RAVINTIO PreToolUse entries on any matcher, and replace a non-array hook event value with a warning"
+  - "Detect and recommend adoption mode at discovery, and state standard-iterative mode without asking when it is the only signal"
+  - "Stream step session activity: the driver starts each step with stream-json output and the watcher prints one activity line per tool call, subagent start, and assistant text"
+  - "Suggest and confirm the version number at discovery"
+  - "Reject AI attribution lines in PR descriptions at ship and in CI, and turn off host attribution in setup when unset"
+  - "Tag the merge commit on main from CI with the product version, never a feature-branch commit"
+  - "Map user stories in P1 and write acceptance criteria as Gherkin steps, checked by the consistency check and guarded by the ratchet"
+  - "Run the Scope Lock Challenge before design confirmation, drafted inline"
+  - "Enforce one question at a time across all phase skills"
+  - "Run an approved initiative as a chain of feature steps, with the merge-guard hook limiting agent merges to squash merges into initiative branches"
+  - "Write each hook block reason to stderr and stdout, so the agent sees why a write stopped"
+  - "Run an improvement loop of up to 2 cycles per requirement after GREEN, with a fresh-context reviewer and one Improve marker per cycle in the build log"
+  - "Warn through a Stop hook when a reply in an active run lacks a valid phase prefix, and log each miss without blocking the turn"
+  - "Cut every plan line that the ratchet block message and the consistency check echo to 200 characters, and mark the cut"
+  - "Derive four workflow metrics at ship from build-log marker lines, and report each threshold breach in the build report and PR description without blocking"
+  - "Refuse a symlinked entry path in park, and prune installed hooks named on the retired list, and the settings.json entries that run them, in setup"
+  - "Plan concurrent work in every execution plan with a Concurrency plan table of units, dependencies, write targets, and batches, check it in the consistency check, and dispatch by its batches"
+  - "Coordinate an initiative from the human's session with the ravintio-initiative skill, and report progress from the read-only initiative-watch.mjs script"
+  - "Keep one ack file per session kind, plan/.initiative-ack and plan/.orchestrator-ack, and accept either in the strict-mode hook"
+  - "Stop the initiative driver on a Blocked: line in the newest archived build log, advance only after the merge, and keep step subagents running"
+  - "Run each initiative step with a model, an optional turn cap, a step log, and telemetry labels"
+  - "Stop every run, gated or autonomous, when work adds a library or service that is not on the approved list"
+  - "Keep the orchestrator skill small by moving rarely used sections into references/ files"
+  - "Hide passing test lines when RAVINTIO_TEST_QUIET=1 is set, and keep every failure line"
+  - "Reserve every backlog, feature, and initiative id from the counter file plan/backlog/.next-id with scripts/reserve-id.mjs, under an exclusive lock"
+  - "Report the Resume Detection signals as fixed lines from scripts/resume-detect.mjs, injected by the session start hook"
+  - "Give the ship skill a plain squash-merge line with a literal PR number, and fail the build log at ship Step 3 when a phase has a blank or wrong wall clock, with scripts/build-log-check.mjs"
+
+exceptions:
+  - "Does not generate application code. That is the implement phase's job in consumer projects."
+  - "Does not configure CI for consumer projects."
+  - "Supports Claude Code only. No other agentic tool target exists."
+
+stack:
+  language: "bash | powershell | javascript"
+  runtime: "node"
+  framework: "none"
+  frontend: "none"
+  styling: "none"
+  componentLibrary: "none"
+  database: "none"
+  orm: "none"
+  testing: "bash"
+  iac: "none"
+  cloud: "none"
+  compute: "none"
+  ci: "github-actions"
+
+contract:
+  inputs:
+    - name: "stdin (hook payload)"
+      type: "event"
+      description: "JSON hook payload from Claude Code lifecycle events"
+  outputs:
+    - name: "stdout (additionalContext or block message)"
+      type: "event"
+      description: "gate-write block message or check-design scope injection"
+  consumedBy: ["claude-code-hooks"]
+  consumes: []
+  breakingChangePolicy: "requires-adr"
+
+data:
+  ownsData: false
+  tables: []
+  schemaVersion: "0.0.0"
+  migrationPath: "ravintio-zero/migrations/"
+
+scope:
+  inScope:
+    - "Library standards docs for TypeScript, Python, Go, Java, databases"
+    - "Formatting standards: date format, locale, verbosity"
+    - "Enforcement hooks: gate-write, check-design, ratchet-check, em-dash-guard, merge-guard, auto-trigger-orchestrator, check-orchestrator-presence, check-reply-prefix"
+    - "Git hook: commit-msg"
+    - "Roadmap standard and initiative template: standards/roadmap-standards.md, templates/initiative.template.md"
+    - "Workflow governance standard and thresholds: standards/workflow-governance-standards.md"
+    - "Shared hook module: read-stdin.mjs"
+    - "Orchestrator sentinel enforcement"
+    - "Capability skill intake via ravintio-overrides/capability-skills/"
+    - "Migration infrastructure for standards propagation"
+    - "setup.sh and setup.ps1 for Claude Code registration"
+    - "The 16 skills: 12 pipeline skills across the five phases, ravintio-initiative for coordinating an initiative from the human's session, ravintio-file-backlog for filing an uncommitted backlog entry in another repo, ravintio-postmortem for blameless postmortems, and ravintio-retrospective for blameless run and initiative retrospectives"
+    - "Skills read templates, schemas, and standards from ravintio-zero/ by full path, with no per-skill copies"
+    - "Orchestrator references: skills/ravintio-orchestrator/references/orchestrator-*.md"
+    - "scripts/: check-attribution.mjs, consistency-check.mjs, product-version.mjs, release-tag.mjs, reserve-id.mjs, resume-detect.mjs, initiative-labels.mjs, initiative-run.mjs, self-description-check.mjs, workflow-metrics.mjs, promote-to-regression.sh, refresh-delete-boot-files"
+    - "tests/ and tests/regression/ for the pack's own behaviour"
+  outOfScope:
+    - "Application-level code generation (handled by the implement phase in consumer projects)"
+    - "CI pipeline configuration for consumer projects"
+    - "Any agentic tool other than Claude Code"
+  deferred: []
+
+risk:
+  level: "low"
+  items:
+    - "Path translation on Windows and Git Bash requires cygpath guards in tests"
+    - "Aggressive skill trimming can leave technically complete but ambiguous wording that increases agent retries. The regression-pack baseline comparison is the mitigation."
+    - "The em dash guard's bypass sentinel matches anywhere in the payload, so any document explaining the rule exempts itself from it."
+    - "Setup prunes a retired hook only if its name is on the retired list, so a retirement without a list entry leaves a stale copy in .claude/hooks/."
+    - "The PowerShell suites changed in 0000151 were not run locally because pwsh was absent. CI runs them on Windows PowerShell 5.1 and PowerShell 7."
+    - "Moving orchestrator text to references/ means a test that greps SKILL.md for a moved rule fails until it reads the reference file."
+    - "The 0000169 PowerShell setup suite was not run locally because pwsh was absent. CI runs it."
+    - "A consumer with an existing .github/workflows/ravintio.yml gets no release-tag job until the human copies it from the template."
+
+quality:
+  testCoverage:
+    unit: 0
+    integration: 0
+    e2e: 0
+  techDebt:
+    - "The test suite mixes per-feature suites with regression copies. Consolidation is future work."
+  quirks:
+    - "REQ-011 wrote its split test after the move, so it has no RED run. A line-preservation check proves no rule was lost."
+    - "gate-write, em-dash-guard, and ratchet-check write the block reason to stderr and stdout. The text is identical on both."
+    - "With RAVINTIO_INITIATIVE_MAX_TURNS unset, an initiative step has no turn cap. The driver never raises the cap or retries a capped step."
+    - "initiative-run.mjs stops before it spawns a step if RAVINTIO_ROADMAP_MODEL, RAVINTIO_ROADMAP_MAX_TURNS, PLANIFEST_ROADMAP_MODEL, or PLANIFEST_ROADMAP_MAX_TURNS is set and non-empty. The stop line names the RAVINTIO_INITIATIVE_ replacement."
+    - "gate-write component path matching is prefix-based, so very short prefixes may over-permit"
+    - "ratchet-check treats a reworded criterion as remove plus add and blocks it. The .ratchet-approve marker is the intended path for legitimate rewording."
+    - "ratchet-check cannot verify who wrote .ratchet-approve. Marker forgery is audit-detected via ratchet-log.md and the ship-phase build assessment, not prevented."
+    - "product-version.mjs parses only the constrained product.template.yml shape, not arbitrary YAML"
+    - "release-tag.mjs reads only top-level version and feature scalars, the same constrained shape."
+    - "The consistency check and ratchet-check read Gherkin steps with regular expressions, not a Gherkin parser. Only the bullet form in the requirement template counts."
+    - "The commit-msg hook and check-attribution.mjs hold separate pattern lists. A test checks that both hold the host lines."
+    - "ratchet-check.mjs and consistency-check.mjs each hold their own cap function for echoed lines, because the hook installs as one file beside read-stdin.mjs. A parity test checks that both cut a line the same way."
+    - "reserve-id.mjs never clears a stale lock. If a stopped process leaves plan/backlog/.next-id.lock behind, the next reservation exits 1 after 5 seconds and names the lock, and the human removes it."
+    - "read-stdin.mjs lives in hooks/enforcement/, which installs unconditionally, so every enforcement hook can import it."
+    - "The em dash guard only matches the Write and Edit tools and only inspects paths resolving under 5 relative prefixes. A write made through Bash is not inspected. This is a style rule, not an authorisation control."
+
+pipeline:
+  templateVersion: "1.0.0"
+  featureMode: "standard-iterative"
+  domainKnowledgePath: "plan/current"
+
+metadata:
+  createdAt: "2026-05-02"
+  updatedAt: "2026-10-27"
+  createdBy: "agent"
+  lastModifiedBy: "agent"
+  skill: "ravintio-implement"
+  tool: "claude-code"
+  model: "claude-opus-5"

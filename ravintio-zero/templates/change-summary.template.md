@@ -1,0 +1,49 @@
+﻿---
+title: "Change Summary - {{change-title}}"
+summary: "High-level summary of what was accomplished in this iteration."
+status: "active"
+version: "0.1.0"
+---
+# Change Summary - {{change-title}}
+
+**Skill:** [implement](../skills/ravintio-implement/SKILL.md)
+**Feature:** {{feature-id}}
+**Component:** {{component-id}}
+**Date:** {{ISO-8601}}
+
+## Change Request
+
+**Requested by:** {{human / agent}}
+**Description:** {{what was requested}}
+**Reason:** {{why the change is needed}}
+**Classification:** bug-fix | enhancement | refactor | dependency-update | security-patch
+
+## Blast Radius
+
+| Affected Component | Impact | Files Changed | Risk |
+|-------------------|--------|--------------|------|
+| {{component-id}} | direct / indirect | {{count}} | low / medium / high |
+
+## Changes Made
+
+| File | Change Type | Description |
+|------|------------|-------------|
+| {{file path}} | added / modified / deleted | {{what changed and why}} |
+
+## Artifacts Updated
+
+- [ ] component.yml version bumped
+- [ ] design requirements updated (if deviation from spec)
+- [ ] ADR created (if architectural decision)
+- [ ] Data contract updated (if schema change)
+- [ ] Risk register updated (if new risk identified)
+
+## Validation
+
+| Check | Result | Notes |
+|-------|--------|-------|
+| Tests pass | pass / fail | |
+| Lint clean | pass / fail | |
+| Type check | pass / fail | |
+| Security scan | pass / fail | |
+

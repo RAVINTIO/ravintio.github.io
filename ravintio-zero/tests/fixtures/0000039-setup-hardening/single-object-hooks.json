@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": { "type": "command", "command": "node \".claude/hooks/enforcement/gate-write.mjs\"" }
+      },
+      {
+        "matcher": "Write",
+        "hooks": { "type": "command", "command": "node tools/my-lint.mjs" }
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": ".*",
+        "hooks": { "type": "command", "command": "node .claude/hooks/enforcement/check-design.mjs" }
+      },
+      {
+        "matcher": ".*",
+        "hooks": { "type": "command", "command": "node ./tools/notify.sh" }
+      }
+    ]
+  }
+}

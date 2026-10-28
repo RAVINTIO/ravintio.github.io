@@ -1,0 +1,40 @@
+# product.yml: product-level version manifest.
+#
+# WHEN THIS FILE APPLIES: projects with 2 or more components. It aggregates one
+# release version across all component.yml files so the ship phase can tag a
+# single product version at ship (P4).
+#
+# WHEN IT DOES NOT: projects with exactly one component need no product.yml;
+# the ship phase falls back to the single component.yml version unchanged.
+#
+# The ship phase creates this file automatically on the first multi-component
+# ship (with versionPolicy: max-component-version) if it is absent. The
+# orchestrator reads it at discovery to suggest the next version.
+
+id: "{{product-id}}"                # kebab-case, stable across releases
+name: "{{Product Display Name}}"
+version: "0.1.0"                    # last version tagged; authoritative only under versionPolicy: explicit
+feature: "{{feature-id of the release that last set this version}}"
+
+# How the release version is derived at ship (P4):
+#   max-component-version : read live from each components[].path's component.yml,
+#                           take the highest (default). Nothing to keep in sync here;
+#                           components[] only changes when a component is added/removed.
+#   explicit              : the human sets `version` above directly; the ship phase
+#                           validates only
+#   external              : an external anchor dictates the version; see
+#                           ravintio-overrides/instructions/external-versioning.md
+versionPolicy: "max-component-version"
+
+# Optional. The release budget that discovery fills (0000039 ADR-004):
+#   small  : 4 points
+#   medium : 8 points (default when absent or unknown)
+#   large  : 14 points
+# Discovery sizes each candidate S (1 point), M (2), or L (4) by files touched.
+# releaseSize: "medium"
+
+components:
+  - id: "{{component-id}}"
+    path: "{{relative/path/to/component.yml, e.g. src/my-component/component.yml}}"
+  - id: "{{component-id}}"
+    path: "{{relative/path/to/component.yml}}"

@@ -1,0 +1,17 @@
+# Claude Code - tool configuration
+# https://docs.anthropic.com/en/docs/claude-code
+#
+# Skills:    .claude/skills/{name}/SKILL.md      (auto-discovered)
+# Workflows: .claude/commands/{name}.md           (becomes /name slash command)
+# Boot file: CLAUDE.md                            (project root)
+
+@{
+    SkillsDir    = '.claude\skills'
+    WorkflowsDir = '.claude\commands'
+    BootFile     = 'CLAUDE.md'
+    BootTemplate   = "ravintio-zero/templates/standard-boot.md"
+    SettingsFile   = '.claude/settings.json'
+    # ravintio enforcement hooks — always installed (gate-write, check-design)
+    EnforcementHooksSrc = 'hooks/enforcement'
+    EnforcementHooksDir = '.claude/hooks/enforcement'
+}

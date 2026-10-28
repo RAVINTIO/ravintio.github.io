@@ -1,0 +1,18 @@
+# loop-toggles.yml: per-loop enablement
+#
+# COPY THIS FILE to ravintio-overrides/loop-toggles.yml to enable loops.
+# ravintio-overrides/ is user-owned: the pipeline and its agents never write
+# there, so enabling a loop is always a deliberate human act.
+#
+# Absent file = all loops off. Absent key = that loop off. Invalid value = off
+# (with a one-line warning). Zero-config pipeline behaviour is identical to a
+# pipeline without loop support.
+#
+# Levels:
+#   off         : loop machinery does not activate at all
+#   report-only : loop runs and files findings/verdicts, but blocks nothing and
+#                 mutates nothing (mandatory first rollout level for every loop)
+#   on          : loop verdicts gate progression per their skill's rules
+
+discovery_completeness: off  # discovery exits only when the gap checklist passes (cap: 2 rounds/gap)
+verify_by_execution: off     # validate-and-accept verifies acceptance criteria by running the software

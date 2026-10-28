@@ -1,0 +1,146 @@
+{
+  "$schema": "./regression-manifest.schema.json",
+  "description": "Long-term regression pack manifest. Tracks tests promoted from feature pipelines. Managed by promote-to-regression.sh — do not edit manually.",
+  "fields": {
+    "name": "Unique filename of the test (basename)",
+    "sourceFeature": "Feature ID from which the test was promoted (e.g. 0000004-tdd-regression-test-quality)",
+    "promotionDate": "ISO 8601 date of promotion (YYYY-MM-DD)",
+    "promotedBy": "agent | human",
+    "filePath": "Relative path to the test file within tests/regression/"
+  },
+  "tests": [
+    {
+      "name": "test-0000016-pipeline-governance.sh",
+      "sourceFeature": "0000016-pipeline-governance-and-loop-engineering",
+      "promotionDate": "2026-07-26",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000016-pipeline-governance.sh"
+    },
+    {
+      "name": "test-0000005-pack-governance.sh",
+      "sourceFeature": "0000005-framework-governance",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000005-pack-governance.sh"
+    },
+    {
+      "name": "test-0000006-build-assessment.sh",
+      "sourceFeature": "0000006-build-assessment-phase",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000006-build-assessment.sh"
+    },
+    {
+      "name": "test-0000009-rail-tightening.sh",
+      "sourceFeature": "0000009-framework-rail-tightening",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000009-rail-tightening.sh"
+    },
+    {
+      "name": "test-0000017-req-001-regression-promotion.sh",
+      "sourceFeature": "0000017-ratchet-forgery-detection-and-telemetry-schema-spec",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000017-req-001-regression-promotion.sh"
+    },
+    {
+      "name": "test-0000017-req-002-ratchet-approve.sh",
+      "sourceFeature": "0000017-ratchet-forgery-detection-and-telemetry-schema-spec",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000017-req-002-ratchet-approve.sh"
+    },
+    {
+      "name": "test-0000017-req-006-structured-discovery-pass.sh",
+      "sourceFeature": "0000017-ratchet-forgery-detection-and-telemetry-schema-spec",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000017-req-006-structured-discovery-pass.sh"
+    },
+    {
+      "name": "test-0000018-req-007-discovery-md-hard-limit.sh",
+      "sourceFeature": "0000018-telemetry-emission-consistency",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000018-req-007-discovery-md-hard-limit.sh"
+    },
+    {
+      "name": "test-0000019-req-002-component-yml-matcher.sh",
+      "sourceFeature": "0000019-self-description-and-session-hygiene-fixes",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000019-req-002-component-yml-matcher.sh"
+    },
+    {
+      "name": "test-commit-msg-hook.sh",
+      "sourceFeature": "0000005-framework-governance",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-commit-msg-hook.sh"
+    },
+    {
+      "name": "test-gate-write-windows.sh",
+      "sourceFeature": "0000003-hook-based-enforcement",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-gate-write-windows.sh"
+    },
+    {
+      "name": "test-regression-pack.sh",
+      "sourceFeature": "0000017-ratchet-forgery-detection-and-telemetry-schema-spec",
+      "promotionDate": "2026-08-01",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-regression-pack.sh"
+    },
+    {
+      "name": "test-0000034-req-001-retired-flags.sh",
+      "sourceFeature": "0000034-setup-hardening",
+      "promotionDate": "2026-10-16",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000034-req-001-retired-flags.sh"
+    },
+    {
+      "name": "test-0000034-req-003-atomic-settings-writes.sh",
+      "sourceFeature": "0000034-setup-hardening",
+      "promotionDate": "2026-10-16",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000034-req-003-atomic-settings-writes.sh"
+    },
+    {
+      "name": "test-0000035-req-001-hook-parity.sh",
+      "sourceFeature": "0000035-powershell-setup-parity",
+      "promotionDate": "2026-10-17",
+      "promotedBy": "human",
+      "filePath": "tests/regression/test-0000035-req-001-hook-parity.sh"
+    },
+    {
+      "name": "test-0000036-req-001-003-runner.sh",
+      "sourceFeature": "0000036-test-runner-coverage",
+      "promotionDate": "2026-10-17",
+      "promotedBy": "human",
+      "filePath": "tests/regression/test-0000036-req-001-003-runner.sh"
+    },
+    {
+      "name": "test-0000037-req-007-sh-filter-any-matcher.sh",
+      "sourceFeature": "0000037-self-host-on-planifest-zero",
+      "promotionDate": "2026-10-17",
+      "promotedBy": "human",
+      "filePath": "tests/regression/test-0000037-req-007-sh-filter-any-matcher.sh"
+    },
+    {
+      "name": "test-0000037-req-008-non-array-hook-events.sh",
+      "sourceFeature": "0000037-self-host-on-planifest-zero",
+      "promotionDate": "2026-10-17",
+      "promotedBy": "human",
+      "filePath": "tests/regression/test-0000037-req-008-non-array-hook-events.sh"
+    },
+    {
+      "name": "test-0000042-req-010-pack-wording-allowlist.sh",
+      "sourceFeature": "0000042-autonomous-mode-and-prefixes",
+      "promotionDate": "2026-10-23",
+      "promotedBy": "agent",
+      "filePath": "tests/regression/test-0000042-req-010-pack-wording-allowlist.sh"
+    }
+  ]
+}
