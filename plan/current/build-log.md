@@ -49,3 +49,4 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 P0 exchange (version): Q: Release version, 1.0.0 (breaking) or 0.4.0? / A: Minor bump. Confirmed version 0.4.0, against a recommendation of 1.0.0.
 P0 exchange (content source): Q: none (human-initiated) / A: The human supplied a private RAVINTIO technical strategy as the starting guidance. The strategy stays private and is not committed. The site must explain RAVINTIO.
+P0 exchange (site scope): Q: Overview for all six tools plus full Zero docs, or also full Framework docs? / A: Overview for all six plus full Zero docs first. Framework docs deferred to backlog 0000006.
