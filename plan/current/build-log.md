@@ -47,5 +47,5 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 #### Coaching log
 
-P0 exchange (version): Q: Release version, 1.0.0 (breaking) or 0.4.0? / A: Not answered yet. The human supplied content guidance instead. Question stays open.
+P0 exchange (version): Q: Release version, 1.0.0 (breaking) or 0.4.0? / A: Minor bump. Confirmed version 0.4.0, against a recommendation of 1.0.0.
 P0 exchange (content source): Q: none (human-initiated) / A: The human supplied a private RAVINTIO technical strategy as the starting guidance. The strategy stays private and is not committed. The site must explain RAVINTIO.
