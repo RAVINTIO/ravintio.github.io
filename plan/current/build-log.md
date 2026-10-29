@@ -61,3 +61,8 @@ P0 exchange (unbuilt tools): Q: Status label per tool (Zero and Framework Availa
 P0 exchange (scope and logo): Q: Scope as shown with a text wordmark, or a supplied logo? / A: Human supplied a RAVINTIO logo, a teal R on white. Saved as graphics/ravintio-logo.png. Scope otherwise as shown.
 P0 exchange (non-functional): Q: WCAG 2.2 AA, page weight under 300 KB excluding mermaid, no horizontal scroll at 360 px, build under 60 s in CI? / A: Confirmed, all four.
 P0 exchange (operations): no question asked. Deployment stays on the existing deploy.yml push-to-main workflow. A static site has no SLO, alerting, or runtime cost beyond GitHub Pages.
+Scope Lock (happy path): A developer reads What is RAVINTIO, picks Zero, follows Install Zero and Your first run, and raises a first PR using only the site. [source: draft-accepted]
+Scope Lock (first-run path): A reader new to RAVINTIO meets the name and the six tools before any command. The first deploy after the repo rename serves the new address with no Planifest page. [source: draft-accepted]
+Scope Lock (error path): Pack drift fails the build through the reference-match test, so stale pages never deploy. Old Planifest links reach a 404, accepted with no redirects. [source: draft-accepted]
+Scope Lock (cross-session continuity): Not applicable. The site is static and keeps no reader state. [source: draft-accepted]
+Scope Lock complete. All four scenario paths captured. The human answered "Accept all", taken as an explicit accept of each item.
