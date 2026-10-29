@@ -26,7 +26,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-28T23:59:41Z` |
-| End | |
+| End | `2026-10-29T20:30:26Z` |
 | Wall clock | |
 | Model tier | primary |
 | Skills loaded | ravintio-orchestrator, ravintio-migrator |
@@ -68,3 +68,4 @@ Scope Lock (cross-session continuity): Not applicable. The site is static and ke
 Scope Lock complete. All four scenario paths captured. The human answered "Accept all", taken as an explicit accept of each item.
 Run mode: autonomous (2026-10-29T20:25:29Z)
 Run speed: standard (2026-10-29T20:28:36Z)
+Design confirmed by the human (2026-10-29T20:30:26Z).
