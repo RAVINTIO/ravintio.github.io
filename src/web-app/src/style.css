@@ -5,13 +5,13 @@
   --font-display: 'Outfit', var(--font-primary);
   
   /* Core Colors */
-  --color-brand-500: #6366f1; /* Indigo */
-  --color-brand-600: #4f46e5;
-  --color-brand-400: #818cf8;
-  --color-brand-300: #a5b4fc;
+  --color-brand-500: #04a29f; /* RAVINTIO logo teal */
+  --color-brand-600: #036b68; /* Darker teal for text and buttons on light backgrounds (AA) */
+  --color-brand-400: #2dd4bf; /* Lighter teal for text on dark backgrounds (AA) */
+  --color-brand-300: #99f6e4;
   
-  --color-secondary-500: #14b8a6; /* Teal */
-  --color-secondary-400: #2dd4bf;
+  --color-secondary-500: #036b68;
+  --color-secondary-400: #5eead4;
   
   --color-gradient-start: var(--color-brand-500);
   --color-gradient-end: var(--color-secondary-400);
@@ -25,8 +25,8 @@
   --glass-border: rgba(255, 255, 255, 0.5);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 
-  --btn-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -4px rgba(99, 102, 241, 0.1);
-  --btn-hover-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4), 0 8px 10px -6px rgba(99, 102, 241, 0.1);
+  --btn-shadow: 0 10px 15px -3px rgba(3, 107, 104, 0.3), 0 4px 6px -4px rgba(3, 107, 104, 0.1);
+  --btn-hover-shadow: 0 20px 25px -5px rgba(3, 107, 104, 0.4), 0 8px 10px -6px rgba(3, 107, 104, 0.1);
 }
 
 [data-theme="dark"] {
@@ -40,8 +40,8 @@
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   
-  --btn-shadow: 0 10px 15px -3px rgba(129, 140, 248, 0.2), 0 4px 6px -4px rgba(129, 140, 248, 0.1);
-  --btn-hover-shadow: 0 20px 25px -5px rgba(129, 140, 248, 0.3), 0 8px 10px -6px rgba(129, 140, 248, 0.1);
+  --btn-shadow: 0 10px 15px -3px rgba(45, 212, 191, 0.2), 0 4px 6px -4px rgba(45, 212, 191, 0.1);
+  --btn-hover-shadow: 0 20px 25px -5px rgba(45, 212, 191, 0.3), 0 8px 10px -6px rgba(45, 212, 191, 0.1);
 }
 
 /* ---------- Reset & Base ---------- */
@@ -119,8 +119,25 @@ code {
 }
 
 .logo img {
-  height: 48px;
+  height: 32px;
   width: auto;
+}
+
+.logo, .brand {
+  gap: 0.6rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: var(--text-main);
 }
 
 .nav-links {
@@ -193,12 +210,12 @@ code {
   display: inline-block;
   padding: 0.4rem 1rem;
   border-radius: 9999px;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(4, 162, 159, 0.1);
   color: var(--color-brand-600);
   font-weight: 600;
   font-size: 0.85rem;
   margin-bottom: 2rem;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(4, 162, 159, 0.2);
 }
 [data-theme="dark"] .badge {
   color: var(--color-brand-400);
@@ -252,7 +269,7 @@ code {
   left: 30%;
   width: 40vw;
   height: 40vw;
-  background: radial-gradient(circle, rgba(236,72,153, 0.3), transparent 60%);
+  background: radial-gradient(circle, rgba(4, 162, 159, 0.25), transparent 60%);
 }
 
 /* ---------- Buttons ---------- */
@@ -334,7 +351,7 @@ code {
 
 .folder-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -596,7 +613,7 @@ code {
 .doc-pagination__prev:hover,
 .doc-pagination__next:hover {
   background: var(--glass-border);
-  border-color: var(--accent-color, #6366f1);
+  border-color: var(--accent-color, #04a29f);
 }
 
 .doc-pagination__title {
@@ -624,3 +641,85 @@ code {
     text-align: left;
   }
 }
+
+/* Light-theme code text uses the darker teal for AA contrast */
+[data-theme="dark"] code { color: var(--color-brand-400); }
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  padding: 0.5rem 1rem;
+  background: var(--bg-color);
+  color: var(--text-main);
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* ---------- Doc layout with section nav (ADR-003) ---------- */
+.doc-layout {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  width: 94%;
+  margin: 7rem auto 4rem;
+  align-items: start;
+}
+.doc-layout .doc-container {
+  width: 100%;
+  margin: 0;
+  min-width: 0;
+}
+.doc-sections {
+  position: sticky;
+  top: 6rem;
+  font-size: 0.95rem;
+}
+.doc-sections__group + .doc-sections__group { margin-top: 1.5rem; }
+.doc-sections__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.doc-sections ul { list-style: none; }
+.doc-sections li a {
+  display: block;
+  padding: 0.3rem 0.75rem;
+  border-left: 2px solid var(--glass-border);
+  color: var(--text-main);
+}
+.doc-sections li a:hover { color: var(--color-brand-600); }
+.doc-sections li a[aria-current="page"] {
+  border-left-color: var(--color-brand-600);
+  color: var(--color-brand-600);
+  font-weight: 600;
+}
+[data-theme="dark"] .doc-sections li a:hover,
+[data-theme="dark"] .doc-sections li a[aria-current="page"] {
+  color: var(--color-brand-400);
+  border-left-color: var(--color-brand-400);
+}
+
+/* Wide tables and code scroll inside the panel, not the page (NFR-003) */
+.doc-container table { display: block; overflow-x: auto; }
+.doc-container pre { overflow-x: auto; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .doc-layout { grid-template-columns: minmax(0, 1fr); margin-top: 6rem; }
+  .doc-sections { position: static; }
+  .nav-content { padding: 1rem; }
+}
+
+/* Long file names in code font wrap rather than widen the page (NFR-003) */
+.doc-container :not(pre) > code { overflow-wrap: anywhere; }

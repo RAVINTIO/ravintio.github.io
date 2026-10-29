@@ -1,0 +1,75 @@
+---
+title: "Language Quirks - en-GB"
+locale: "en-GB"
+version: "1.0.0"
+---
+# Language Quirks: en-GB
+
+This file documents deliberate exceptions: cases where a different convention is used, and why. Agents and humans consult this file before writing or correcting RAVINTIO Zero content.
+
+---
+
+## Category 1: Code is never corrected
+
+Code and identifiers (fenced blocks, inline spans, file paths, URLs, variable/function/class names, endpoint strings, config keys, CLI flags) are never spelling-corrected. This precedence applies throughout the categories below: where a term appears in code rather than prose, Category 1 wins.
+
+---
+
+## Category 2: American spelling exceptions (always, even in prose)
+
+These terms use American spelling in all contexts because they are the established industry standard in technical documentation.
+
+| Use | Not | Reason |
+|-----|-----|--------|
+| `artifact` / `artifacts` | `artefact` / `artefacts` | Industry-standard technical term |
+| `initialize` / `initialization` | `initialise` / `initialisation` | Dominant in tooling, function names, docs |
+| `serialize` / `deserialize` | `serialise` / `deserialise` | Codec and data format convention |
+| `disk` | `disc` | Storage convention (SSD, disk I/O) |
+| `program` | `programme` | Software context only; `programme` reserved for schedules/events |
+
+---
+
+## Category 3: American spelling in code and named technical concepts only
+
+In prose, use British spelling. In code (Category 1) or when referring to a named technical concept, the American form may appear.
+
+| American form | British form (use in prose) | Named concept example |
+|---|---|---|
+| `color` | `colour` | CSS `color` property, Tailwind `text-{color}` |
+| `center` | `centre` | CSS `text-center`, `align-center` |
+| `fiber` | `fibre` | Node.js `Fiber`, React Fiber |
+
+---
+
+## Category 4: British noun/verb distinction preserved
+
+| Form | Usage | Example |
+|------|-------|---------|
+| `licence` | Noun | "distributed under an MIT licence" |
+| `license` | Verb | "licensed under MIT" |
+
+---
+
+## Category 5: Capitalisation in prose
+
+Always uppercase in running prose, regardless of surrounding text:
+
+`ID`, `URL`, `API`, `CLI`, `SDK`, `MCP`, `PR`, `CI`, `CD`, `IaC`, `ORM`
+
+---
+
+## Category 6: Countability
+
+`data` and `metadata` are uncountable in RAVINTIO Zero.
+
+- ✓ "the data is stored"
+- ✗ "the data are stored"
+
+---
+
+## Category 7: Prohibited punctuation
+
+**Em dashes (U+2014) must not be used** in any RAVINTIO Zero prose, headings, or documentation unless the syntax of the output format strictly requires one. They carry no meaning that a colon, comma, or full stop cannot convey more cleanly, and are strongly associated with AI-generated text. Enforced at write time by `em-dash-guard.mjs`; see `formatting-standards.md` Section 4.
+
+- ✓ "Build Assessment: results and findings"
+- ✗ "Build Assessment" joined to "results and findings" by U+2014

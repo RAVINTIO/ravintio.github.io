@@ -1,15 +1,29 @@
 {
-  "pages": [
-    { "file": "01-overview.html", "title": "What is Planifest" },
-    { "file": "02-getting-started.html", "title": "Getting Started" },
-    { "file": "03-pipeline.html", "title": "The Pipeline" },
-    { "file": "04-routing.html", "title": "Routing & Tracks" },
-    { "file": "05-change-pipeline.html", "title": "Change Pipeline" },
-    { "file": "06-fast-path.html", "title": "Fast Path" },
-    { "file": "07-retrofit.html", "title": "Retrofit" },
-    { "file": "11-project-operations.html", "title": "Project Operations" },
-    { "file": "08-agent-skills-reference.html", "title": "Agent Skills Reference" },
-    { "file": "09-standards.html", "title": "Standards Reference" },
-    { "file": "10-templates.html", "title": "Templates Reference" }
+  "sections": [
+    {
+      "title": "RAVINTIO",
+      "pages": [
+        { "file": "what-is-ravintio.html", "title": "What is RAVINTIO" },
+        { "file": "six-tools.html", "title": "The six tools" }
+      ]
+    },
+    {
+      "title": "Zero",
+      "pages": [
+        { "file": "zero-overview.html", "title": "Zero overview" },
+        { "file": "install-zero.html", "title": "Install Zero" },
+        { "file": "first-run.html", "title": "Your first run" },
+        { "file": "pipeline.html", "title": "The pipeline" },
+        { "file": "project-operations.html", "title": "Project operations" }
+      ]
+    },
+    {
+      "title": "Reference",
+      "pages": [
+        { "file": "skills.html", "title": "Skills" },
+        { "file": "standards.html", "title": "Standards" },
+        { "file": "templates.html", "title": "Templates" }
+      ]
+    }
   ]
 }

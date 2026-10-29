@@ -1,0 +1,103 @@
+{
+  "keep": 1,
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node tools/on-stop.mjs"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/enforcement/gate-write.mjs\""
+          },
+          {
+            "type": "command",
+            "command": "node tools/my-lint.mjs"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/enforcement/ratchet-check.mjs"
+          },
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/enforcement/em-dash-guard.mjs\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": []
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node tools/Gate-Write.mjs"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/enforcement/check-design.mjs"
+          },
+          {
+            "type": "command",
+            "command": "node ./tools/notify.sh"
+          }
+        ]
+      },
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/enforcement/auto-trigger-orchestrator.mjs\""
+          },
+          {
+            "type": "command",
+            "command": "node .claude/hooks/enforcement/check-orchestrator-presence.mjs"
+          }
+        ]
+      },
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./tools/my-check-design-helper.sh"
+          }
+        ]
+      },
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./tools/Check-Design.mjs"
+          }
+        ]
+      }
+    ]
+  }
+}

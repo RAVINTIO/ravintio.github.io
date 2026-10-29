@@ -1,0 +1,99 @@
+# RAVINTIO Component Manifest
+id: "site-content"
+name: "RAVINTIO Docs Site Content"
+feature: "0000005-ravintio-docs-rewrite"
+version: "0.4.0"
+status: "active"
+type: "component-pack"
+domain: "documentation"
+summary: "Owns the Markdown pages that explain RAVINTIO and teach readers to adopt RAVINTIO Zero."
+systemContext: "Read at build time by web-app's scripts/build-docs.js, which renders each page to HTML. No runtime behaviour."
+
+purpose:
+  responsibleFor:
+    - "Explain what RAVINTIO is and the eight principles behind the name"
+    - "Describe the six RAVINTIO tools, their boundaries, and their status labels"
+    - "Teach readers to install RAVINTIO Zero and run a first feature"
+    - "Document the Zero pipeline and project operations"
+    - "List every skill, standard, and template in the installed ravintio-zero pack"
+  notResponsibleFor:
+    - "Building, styling, or navigating the site (web-app)"
+    - "Full RAVINTIO Framework docs (backlog 0000006)"
+    - "The ravintio-zero pack itself"
+
+responsibilities:
+  - "Own src/site-content/pages/*.md"
+
+exceptions:
+  - "Must not name the earlier product brand"
+  - "Must not hold content from the private RAVINTIO strategy's implementation sequence, open design questions, threat model, or proposed repo names"
+  - "Must not give release dates, sequences, or coming-soon wording for any tool"
+
+stack:
+  language: "markdown"
+  runtime: "none"
+  framework: "none"
+  frontend: "none"
+  styling: "none"
+  componentLibrary: "none"
+  database: "none"
+  orm: "none"
+  testing: "node-test"
+  iac: "none"
+  cloud: "none"
+  compute: "none"
+  ci: "github-actions"
+
+contract:
+  apiSpec: "none"
+  inputs: []
+  outputs:
+    - name: "src/site-content/pages/*.md"
+      type: "filesystem"
+      description: "Markdown pages, one per manifest entry, read by web-app at build time"
+  consumedBy: []
+  consumes: []
+  breakingChangePolicy: "requires-adr"
+
+data:
+  ownsData: true
+  dataContract: "src/site-content/docs/data-contract.md"
+  tables: []
+  schemaVersion: "0.1.0"
+  migrationPath: "src/site-content/docs/migrations/"
+
+scope:
+  inScope:
+    - "Ten pages in three sections: RAVINTIO, Zero, and Reference"
+  outOfScope:
+    - "Site search"
+    - "Framework user docs"
+  deferred: []
+
+risk:
+  level: "medium"
+  items:
+    - "R-001: private strategy content reaching a page"
+    - "R-002: reference pages drifting from the pack"
+
+quality:
+  testCoverage:
+    unit: 0
+    integration: 0
+    e2e: 0
+  techDebt: []
+  quirks: []
+
+pipeline:
+  templateVersion: "1.0.0"
+  featureMode: "greenfield"
+  domainKnowledgePath: "plan/_archive/0000005-ravintio-docs-rewrite-2026-10-29"
+
+metadata:
+  createdAt: "2026-10-29"
+  updatedAt: "2026-10-29"
+  createdBy: "agent"
+  lastModifiedBy: "agent"
+  skill: "ravintio-plan"
+  tool: "claude-code"
+  model: "claude-opus-5-5"

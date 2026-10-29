@@ -1,0 +1,140 @@
+﻿---
+title: "Feature Brief - {{feature-name}}"
+summary: "The business case, scope, and product requirements for the feature."
+status: "draft | approved"
+version: "0.1.0"
+---
+# Feature Brief - {{feature-name}}
+
+**Feature ID:** {{0000000}}-{{kebab-case-name}}
+
+> Written by a human. The orchestrator reads this and coaches you through any gaps before handing it to the plan phase.
+>
+> **Feature ID format:** A 7-digit zero-padded number followed by a kebab-case name (e.g., `0000001-user-auth`, `0000002-payment-gateway`). Choose the next available number.
+
+## Business Goal
+
+> Write 2-3 sentences. Be specific. "Improve performance" is not a goal - "Reduce checkout latency from 3s to under 500ms because 40% of users abandon at payment" is.
+
+{{business-goal}}
+
+## Features
+
+Break the feature into discrete features. Each feature should be small enough that an agent can implement it within a single session.
+
+> **Release size:** The orchestrator sizes each release against the `releaseSize` budget in `product.yml`. See Decomposition in `references/orchestrator-discovery-coaching.md` of the orchestrator skill.
+>
+> **User story format:** Write each story as "As a [role], I [action], so that [outcome]." Each story becomes one requirement doc. If a story implies more than 3 acceptance criteria, split it into two stories.
+
+| Feature | User Stories | Priority | Wave |
+|---------|-------------|----------|------|
+| {{feature-name}} | As a [role], I [action], so that [outcome] | should-have | 1 |
+| {{feature-name}} | As a [role], I [action], so that [outcome] | could-have | 2 |
+
+## Waves
+
+If the feature has more than 5-6 features, split it into waves. Each wave becomes a separate pipeline run with its own plan and implement phases. Earlier waves ship before later waves begin.
+
+| Wave | Features Included | Ships When |
+|------|-------------------|------------|
+| 1 | {{feature-list}} | {{criteria}} |
+| 2 | {{feature-list}} | {{criteria}} |
+
+## Target Architecture
+
+The agent implements within these constraints - it does not choose the architecture.
+
+### Components
+
+| Component | Type | New or Existing | Responsibility |
+|-----------|------|-----------------|---------------|
+| {{component-name}} | microservice / microfrontend / component-pack | new / existing | {{what it does}} |
+
+### Data Ownership
+
+| Data Store | Owner Component | Shared With |
+|------------|----------------|-------------|
+| {{store}} | {{component}} | {{consumers - read only}} |
+
+### Integration Points
+
+| From | To | Method | Contract |
+|------|-----|--------|----------|
+| {{component}} | {{component}} | REST / gRPC / event / queue | {{brief description}} |
+
+## Stack
+
+> If you haven't decided yet, leave this section empty. The orchestrator will ask you to fill it before the pipeline proceeds.
+
+| Concern | Decision |
+|---------|----------|
+| Language | {{e.g. TypeScript, Go, Python}} |
+| Runtime | {{e.g. Node, Deno, Bun}} |
+| Framework | {{e.g. Fastify, Hono, Gin}} |
+| Frontend | {{e.g. React 19, Vue, none}} |
+| Database | {{e.g. PostgreSQL, none}} |
+| ORM | {{e.g. Drizzle, Prisma, none}} |
+| Testing | {{e.g. Vitest, Jest}} |
+| IaC | {{e.g. Pulumi, Terraform, none}} |
+| Cloud | {{e.g. GCP, AWS, none}} |
+| Compute | {{e.g. Cloud Run, Lambda, k8s}} |
+| CI | {{e.g. GitHub Actions, GitLab CI}} |
+| Build target | local \| docker \| ci-only |
+
+## Scope Boundaries
+
+### In Scope
+- {{what this feature will deliver}}
+
+### Out of Scope
+- {{what this feature will NOT deliver - be explicit}}
+
+### Deferred
+- {{what might be delivered later but not now}}
+- {{note what is blocked until deferred items are resolved}}
+
+## Non-Functional Requirements
+
+Specific, measurable targets. If you don't have a target, leave it blank - the orchestrator will ask.
+
+| NFR | Target | Measurement |
+|-----|--------|-------------|
+| Latency | {{e.g. p95 < 200ms}} | {{how measured}} |
+| Availability | {{e.g. 99.9%}} | {{SLO definition}} |
+| Throughput | {{e.g. 1000 req/s}} | {{peak or sustained}} |
+| Security | {{e.g. SOC2 compliance}} | {{certification or audit}} |
+
+## Constraints and Assumptions
+
+### Constraints
+- {{hard constraints - regulatory, contractual, technical}}
+
+### Assumptions
+- {{assumptions you've made - agents will flag if these conflict with the spec}}
+
+## Scenario Paths
+
+Before writing acceptance criteria, consider the paths your feature must handle. The orchestrator will read these answers and use them to reduce coaching questions and run a more targeted Scope Lock Challenge. Empty entries will be treated as gaps to fill during discovery.
+
+**Happy path:** What does success look like end-to-end? Describe the flow from first action to final outcome when everything works.
+
+> {{happy-path}}
+
+**First-run path:** What happens the very first time this feature is used, before any data, state, or prior runs exist? Are there initialisation steps, seed data requirements, or bootstrap sequences?
+
+> {{first-run-path}}
+
+**Error / sad path:** What are the most likely failure modes? What should happen when they occur: fail silently, surface an error, retry, or degrade gracefully?
+
+> {{error-sad-path}}
+
+**Cross-session continuity:** If the pipeline or user session is interrupted mid-run, what state is at risk? How is it recovered? Are there partial-write scenarios that leave inconsistent state?
+
+> {{cross-session-continuity}}
+
+## Acceptance Criteria
+
+- [ ] {{criterion 1}}
+- [ ] {{criterion 2}}
+- [ ] {{criterion 3}}
+

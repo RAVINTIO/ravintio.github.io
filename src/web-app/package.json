@@ -1,14 +1,15 @@
 {
-  "name": "temp-app",
+  "name": "ravintio-docs-web-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.4.0",
   "type": "module",
   "scripts": {
     "predev": "node scripts/build-docs.js",
     "dev": "vite",
     "prebuild": "node scripts/build-docs.js",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
     "marked": "^17.0.4",

@@ -1,20 +1,15 @@
-# Test Coverage — web-app
+# Test coverage - web-app
 
-**Status as of 0000001-doc-nav (2026-05-16)**
+The tests run with `npm test` from `src/web-app`, after `npm run build`. They use the Node test runner.
 
-| Tier | Coverage | Notes |
-|------|----------|-------|
-| Unit | 0% | No test framework configured |
-| Integration | 0% | No test framework configured |
-| E2E | 0% | No test framework configured |
+| Test | Requirement | Checks |
+|------|-------------|--------|
+| `nav.test.mjs` | REQ-001 to REQ-004 | Manifest sections and order, and the section nav on every built page |
+| `brand-guard.test.mjs` | REQ-004 | No earlier-brand text in tracked files or `dist/` |
+| `capitals.test.mjs` | REQ-004 | RAVINTIO in block capitals in pages and built HTML |
+| `links.test.mjs` | REQ-002 | Every internal link and anchor in `dist/` resolves |
+| `style.test.mjs` | REQ-002 | Sentence length and banned words on every page |
+| `status-labels.test.mjs` | REQ-001 | Tool status labels, principles, and no dated promises |
+| `reference-match.test.mjs` | REQ-003 | Reference pages match the pack |
 
-**Manual validation performed:**
-- `npm run build` passes cleanly (tsc + vite build)
-- `node scripts/build-docs.js` output verified for 3 representative pages:
-  - `01-overview.html`: next-only pagination ✓, all 10 nav links present ✓
-  - `05-change-pipeline.html`: prev + next pagination ✓
-  - `10-templates.html`: prev-only pagination ✓
-- CTA link in `index.html` updated to `01-overview.html` ✓
-- Manifest validation (missing file, invalid JSON) not tested — process.exit(1) paths
-
-**Recommended:** Add Vitest and write unit tests for `buildPrevNextNav()`, `stripMetadata()`, and manifest validation logic (see `tech-debt.md` TD-001).
+The tests read files and built HTML. No browser test runs. Keyboard use and colour contrast get a manual check at P3.

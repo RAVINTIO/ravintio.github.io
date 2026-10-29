@@ -1,49 +1,62 @@
-﻿# Planifest Website
+# RAVINTIO docs
 
-This repository contains the landing page, documentation viewer, and informational website for the **Planifest** framework. It uses the confirmed design organizational framework internally to manage its own development.
+This repo holds the RAVINTIO documentation site. GitHub Pages serves it at `https://ravintio.github.io`. The repo is `RAVINTIO/ravintio.github.io`, which GitHub serves at the org root.
 
-## Repository Structure
+The site explains what RAVINTIO is and describes its six tools. It also teaches you to adopt RAVINTIO Zero. This repo uses RAVINTIO Zero to manage its own changes.
 
-Following the confirmed design standard, this repository is organized into four main directories:
+## Repository structure
 
-- `plan/` - Contains the active feature specs (in `current/`), historical change logs, and decision trees detailing *what* we're building and *why*.
-- `src/` - The actual system implementation. Contains the `web-app` UI component.
-- `docs/` - Cross-cutting repository state including component registries and dependencies.
-- `planifest-framework/` - The core Planifest templates, tools, and agent skills defining the governance model.
+| Folder | Holds |
+|--------|-------|
+| `src/site-content/` | The Markdown pages, in `pages/`, and the component docs |
+| `src/web-app/` | The Vite site that builds the pages, with its nav manifest and tests |
+| `plan/` | The current feature run, the archive of past runs, the changelog, and the backlog |
+| `docs/` | Living docs about the system: components, dependencies, and decisions |
+| `ravintio-zero/` | The installed RAVINTIO Zero pack |
+| `ravintio-overrides/` | Repo-specific instructions and standards for the pack |
+| `graphics/` | The RAVINTIO logo and the favicon set |
 
-## Development
+## Edit a page
 
-The website is a static site built with Vite and vanilla CSS. It dynamically renders Markdown files during the build process to produce HTML content.
+1. Edit the Markdown file in `src/site-content/pages/`.
+2. If you add a page, also add it to a section in `src/web-app/docs.manifest.json`.
+3. Link other pages as `{slug}.md`. The build turns the link into `{slug}.html`.
 
-To run the web app locally:
+## Run the site locally
 
 ```bash
 cd src/web-app
-npm install
+npm ci
 npm run dev
 ```
 
-This will run `predev` scripts that build documentation into static outputs, and then start the local Vite development server.
+The `predev` script builds the pages into `src/web-app/docs/`, then Vite starts the dev server.
 
-## Deployment
+## Test
 
-Continuous deployment is handled automatically via GitHub Actions. Merging to the `main` branch will trigger a build and publish the static contents directly to GitHub Pages.
+```bash
+cd src/web-app
+npm run build
+npm test
+```
 
-## License
+The tests check these things:
 
-[Apache License Version 2.0](LICENSE.txt)
+- The nav sections and page order.
+- That the earlier product brand appears nowhere outside the archive.
+- That RAVINTIO is always in block capitals.
+- That every internal link resolves.
+- That the reference pages match the installed pack.
+- That every sentence meets the style rules.
 
-### Why we chose the Apache 2.0 License
+## Deploy
 
-We want the confirmed design community to build with total confidence. While we considered the MIT license for its simplicity, we chose Apache 2.0 because it offers superior long-term protection for our users and contributors:
+When a change merges to `main`, `.github/workflows/deploy.yml` builds the site and publishes it to GitHub Pages.
 
-- **Explicit Patent Rights:** Unlike other permissive licenses, Apache 2.0 grants you an explicit license to any patents covered by the software. This means you can use, modify, and distribute Planifest without worrying about "hidden" patent claims.
+## Refresh the pack
 
-- **Contributor Protection:** It ensures that every contribution made to the framework comes with the same patent grants. This prevents "patent trolling" within the ecosystem and keeps the code free for everyone, forever.
+If you work on Windows, run `refresh-ravintio-zero-dir.ps1`. It copies the pack from the sibling `zero` repo and reruns setup. On macOS or Linux, `update-ravintio-zero.local-only.sh` refreshes the pack from a local release folder.
 
-- **Community Safety (The "Retaliation" Clause):** The license includes a defense mechanism: if anyone sues a Planifest user over patent infringement related to this software, they automatically lose their own license to use it. This keeps the community collaborative and legally "polite."
+## Licence
 
-- **Commercial Friendly:** It remains a permissive, open-source license. You are free to use Planifest for commercial projects, ship it in proprietary products, and build your business on it with zero royalties.
-
-**TL;DR:** We chose Apache 2.0 so you can focus on building great things, knowing the legal foundation of your framework is rock-solid and community-first.
-
+This repo uses the [Apache License 2.0](LICENSE.txt). It grants an explicit patent licence, and it lets you use the work in commercial products.

@@ -1,0 +1,66 @@
+name: RAVINTIO Strict Pipeline
+
+on:
+  pull_request:
+    branches: [ main, master, 'initiative/**' ]
+  push:
+    branches: [ main, master ]
+
+# Every job reads the repo and nothing more, except release-tag.
+permissions:
+  contents: read
+
+jobs:
+  validate-branch:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate Code/Doc Parity
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          # Standard check. This is a presence check, not a correspondence
+          # guarantee: it confirms a file under plan/, docs/, or a
+          # component.yml also changed in this diff — it does not verify
+          # that file's content actually corresponds to the src/ change.
+          if echo "$CHANGED_FILES" | grep -q "^src/"; then
+            if ! echo "$CHANGED_FILES" | grep -qE "^(plan/|docs/|.*component\.yml)"; then
+              echo "::error title=RAVINTIO Strict Violation::Code under src/ changed with no plan/, docs/, or component.yml file also touched in this diff. This checks presence only — it does not verify that content corresponds to your change."
+              exit 1
+            fi
+          fi
+          echo "✅ RAVINTIO pipeline passed."
+
+      - name: Check PR description for attribution
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/pr-body.txt"
+          node ravintio-zero/scripts/check-attribution.mjs "$RUNNER_TEMP/pr-body.txt"
+
+  # Tags the merge commit on the default branch after the human merges
+  # (0000169 ADR-002). Only this job holds write access, and it never runs
+  # PR code.
+  release-tag:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # Pinned to the v4 commit, because this job holds a write token
+      # (0000169 S-001). Credentials persist on purpose, so git push works
+      # (0000169 S-003).
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Set git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Tag the merge commit
+        run: node ravintio-zero/scripts/release-tag.mjs

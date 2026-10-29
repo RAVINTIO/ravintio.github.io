@@ -1,22 +1,23 @@
-# Purpose — web-app
+# Purpose - web-app
 
-Static Vite site that renders the Planifest homepage and documentation pages, with manifest-driven navigation generation at build time.
+`web-app` is the static Vite site that publishes the RAVINTIO docs to GitHub Pages. It owns the build, the layout, and the navigation. It doesn't own the page text.
 
 ## Why this component exists
 
-The Planifest project needs a public documentation site deployable to GitHub Pages with no server-side runtime. `web-app` owns the build pipeline that converts markdown sources (in `planifest-docs/`) into browsable HTML, applies consistent layout and navigation, and produces a static site artifact for deployment.
+The docs need a public site with no server runtime. `web-app` turns the Markdown pages from `site-content` into HTML and gives every page the same layout and nav.
 
 ## What it does
 
-- Renders the Planifest homepage (hero, structure section, CTA)
-- Converts `planifest-docs/*.md` to HTML at build time via `scripts/build-docs.js`
-- Reads `docs.manifest.json` to determine page order; injects manifest-driven top nav links and prev/next pagination into every doc page
-- Applies a shared HTML template with theme toggle, Mermaid diagram support, and hamburger nav
-- Generates `public/sitemap-data.json` for runtime hamburger menu population
-- Deploys via GitHub Actions to GitHub Pages as a fully static site
+- Renders the homepage at `index.html`.
+- Converts `src/site-content/pages/*.md` to HTML at build time with `scripts/build-docs.js`.
+- Reads `docs.manifest.json` for the three nav sections, the page order, and the page titles.
+- Adds the section nav, top nav, and previous and next links to every page.
+- Shows the RAVINTIO logo and wordmark, the theme toggle, and the mobile menu.
+- Loads `mermaid` only on pages that hold a diagram.
+- Writes `public/sitemap-data.json` and `docs/sitemap.html`.
 
-## What it does NOT do
+## What it does not do
 
-- Process or accept user-supplied content at runtime (static site only)
-- Own or modify planifest-docs markdown content (owned by planifest-docs component)
-- Expose any server-side API or dynamic endpoint
+- Write or edit page Markdown. `site-content` owns it.
+- Accept user content at runtime.
+- Expose an API.

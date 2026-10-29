@@ -1,8 +1,0 @@
-﻿
-# Planifest - Token Reduction (keeps agent semantic search from bloating context)
-plan/_archive/
-node_modules/
-dist/
-build/
-out/
-.next/
