@@ -1,3 +1,44 @@
+# Changelog (0000005-ravintio-docs-rewrite, 29 Oct 2026)
+
+**Feature:** RAVINTIO docs rewrite
+**Version:** 0.4.0
+**PR:** pending. The human pushes the branch and raises the PR (local git only).
+
+## What changed
+
+- Replaced every page with ten new pages in three sections: RAVINTIO, Zero, and Reference.
+- Added the `site-content` component at `src/site-content/`. It owns the pages. Deleted both old content folders.
+- Changed the nav manifest to labelled sections, with slug file names. Vite reads its inputs from the manifest.
+- Added the supplied RAVINTIO logo, a wordmark, a new favicon set, and teal brand colours with AA contrast.
+- Rewrote the homepage, the repo README, the living docs, and both components' docs.
+- Added seven site tests run by `npm test`, with no new dependency.
+- Loaded `mermaid` only on pages with a diagram.
+- Stopped committing generated HTML and `sitemap-data.json`.
+- Replaced the PowerShell refresh helper with `refresh-ravintio-zero-dir.ps1`.
+
+## Why
+
+The site carried an earlier brand and described tracks the pack no longer has. Developers who use coding agents need one site that explains RAVINTIO and teaches them to adopt RAVINTIO Zero.
+
+## Deviations
+
+- The brand guard allowlist gained `plan/current/`, recorded in ADR-004.
+- Page 2 gained a "How the tools relate" section to meet REQ-001 in full.
+- P2 ran U1 inline, merged batches 2 and 3, and used the primary tier for page writers. The build log records why.
+
+## Validation results
+
+- 21 of 21 tests pass. Build passes in 2.5 s.
+- A browser check passed at 1280 px and 360 px in both themes, after one fix for a long code name on narrow screens.
+- No critical or high security finding is open. Backlog `0000007` tracks the dev-dependency advisories.
+- Waiting on a human: the private-content checklist for pages 1 and 2, and confirmation that RAVINTIO Framework's repo is public.
+
+## Skipped phases
+
+None
+
+---
+
 ---
 title: "Iteration Log - 0000005-ravintio-docs-rewrite"
 summary: "Execution log for the agent session."
