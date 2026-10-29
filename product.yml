@@ -1,2 +1,12 @@
 id: "ravintio-docs"
+name: "RAVINTIO Docs"
+version: "0.4.0"
+feature: "0000005-ravintio-docs-rewrite"
+versionPolicy: "max-component-version"
 releaseSize: "large"
+
+components:
+  - id: "site-content"
+    path: "src/site-content/component.yml"
+  - id: "web-app"
+    path: "src/web-app/component.yml"
