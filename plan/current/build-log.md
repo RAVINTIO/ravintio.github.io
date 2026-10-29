@@ -51,3 +51,4 @@ P0 exchange (version): Q: Release version, 1.0.0 (breaking) or 0.4.0? / A: Minor
 P0 exchange (content source): Q: none (human-initiated) / A: The human supplied a private RAVINTIO technical strategy as the starting guidance. The strategy stays private and is not committed. The site must explain RAVINTIO.
 P0 exchange (site scope): Q: Overview for all six tools plus full Zero docs, or also full Framework docs? / A: Overview for all six plus full Zero docs first. Framework docs deferred to backlog 0000006.
 P0 exchange (audience): Q: Primary reader a developer with a coding agent deciding whether to adopt Zero, journey understand, install, first run? / A: Agreed. Catalogue material moves to a reference section.
+P0 exchange (page structure): Q: Ten pages in three sections (RAVINTIO 1-2, Zero 3-7, Reference 8-10), delete routing, change pipeline, and fast path? / A: Confirmed.
