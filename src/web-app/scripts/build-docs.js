@@ -1,213 +1,196 @@
 import fs from 'fs';
 import path from 'path';
-import { resolve } from 'path';
 import { marked } from 'marked';
 
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const DOCS_DIR = path.resolve(__dirname, '../../../planifest-docs');
+// site-content owns the pages. This script only reads them (ADR-002).
+const PAGES_DIR = path.resolve(__dirname, '../../site-content/pages');
 const OUT_DIR = path.resolve(__dirname, '../docs');
-const TEMPLATE_FILE = path.resolve(__dirname, '../doc-template.html');
 const MANIFEST_FILE = path.resolve(__dirname, '../docs.manifest.json');
+const SITEMAP_DATA_FILE = path.resolve(__dirname, '../public/sitemap-data.json');
+const REPO_URL = 'https://github.com/RAVINTIO/ravintio-zero';
 
-if (!fs.existsSync(OUT_DIR)) {
-  fs.mkdirSync(OUT_DIR, { recursive: true });
-}
-
-// --- Page order manifest (REQ-001) ---
-if (!fs.existsSync(MANIFEST_FILE)) {
-  console.error(`ERROR: docs.manifest.json not found at ${MANIFEST_FILE}`);
+const fail = message => {
+  console.error(`ERROR: ${message}`);
   process.exit(1);
-}
+};
+
+// --- Sectioned page manifest (ADR-003) ---
+if (!fs.existsSync(MANIFEST_FILE)) fail(`docs.manifest.json not found at ${MANIFEST_FILE}`);
 let manifest;
 try {
   manifest = JSON.parse(fs.readFileSync(MANIFEST_FILE, 'utf-8'));
 } catch (e) {
-  console.error(`ERROR: docs.manifest.json is not valid JSON: ${e.message}`);
-  process.exit(1);
+  fail(`docs.manifest.json is not valid JSON: ${e.message}`);
 }
-if (!Array.isArray(manifest.pages) || manifest.pages.length === 0) {
-  console.error('ERROR: docs.manifest.json must have a non-empty "pages" array');
-  process.exit(1);
+if (!Array.isArray(manifest.sections) || manifest.sections.length === 0) {
+  fail('docs.manifest.json must have a non-empty "sections" array');
 }
-const manifestPages = manifest.pages;
+for (const section of manifest.sections) {
+  if (!section.title || !Array.isArray(section.pages) || section.pages.length === 0) {
+    fail('every manifest section needs a "title" and a non-empty "pages" array');
+  }
+}
 
-// --- Template ---
-const rawTemplate = fs.existsSync(TEMPLATE_FILE)
-  ? fs.readFileSync(TEMPLATE_FILE, 'utf-8')
-  : `<!DOCTYPE html>
-<html lang="en">
+// Flattened in section order for prev and next links.
+const pages = manifest.sections.flatMap(section =>
+  section.pages.map(page => ({ ...page, section: section.title })));
+
+if (!fs.existsSync(PAGES_DIR)) fail(`pages folder not found at ${PAGES_DIR}`);
+fs.rmSync(OUT_DIR, { recursive: true, force: true });
+fs.mkdirSync(OUT_DIR, { recursive: true });
+
+const escapeHtml = s => s
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+// --- Shared page chrome ---
+const ICON_SUN = '<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+const ICON_MOON = '<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+const ICON_CODE = '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="code-icon" aria-hidden="true"><polyline points="20 18 24 12 20 6"></polyline><polyline points="4 6 0 12 4 18"></polyline><line x1="14" y1="2" x2="10" y2="22"></line></svg>';
+const ICON_MENU = '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" class="menu-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+
+// Top nav links go to the first page of each section.
+const topNavLinks = manifest.sections
+  .map(s => `<a href="${s.pages[0].file}" class="nav-link">${escapeHtml(s.title)}</a>`)
+  .join('\n            ');
+
+function sectionNav(currentFile) {
+  const groups = manifest.sections.map(section => {
+    const links = section.pages.map(page => {
+      const current = page.file === currentFile ? ' aria-current="page"' : '';
+      return `<li><a href="${page.file}"${current}>${escapeHtml(page.title)}</a></li>`;
+    }).join('');
+    return `<div class="doc-sections__group"><p class="doc-sections__title">${escapeHtml(section.title)}</p><ul>${links}</ul></div>`;
+  }).join('');
+  return `<nav class="doc-sections" aria-label="Documentation">${groups}</nav>`;
+}
+
+function pageHtml({ title, content, currentFile, pagination }) {
+  return `<!DOCTYPE html>
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{TITLE}} - Planifest Docs</title>
-    <!-- We reference main CSS here; Vite will resolve and built it -->
+    <title>${escapeHtml(title)} - RAVINTIO Docs</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
     <link rel="stylesheet" href="../src/style.css">
     <script type="module" src="../src/main.ts"></script>
   </head>
   <body>
     <div id="app">
-      <nav class="glass-nav">
+      <a class="skip-link" href="#content">Skip to content</a>
+      <nav class="glass-nav" aria-label="Site">
         <div class="nav-content">
-          <a href="../index.html" class="logo"><img src="../img/planifest-logo.svg" alt="Planifest Logo"></a>
+          <a href="../index.html" class="logo"><img src="../img/ravintio-logo.png" alt="" width="32" height="32"><span class="wordmark">RAVINTIO</span></a>
           <div class="nav-links">
-            <a href="../index.html#about" class="nav-link">About</a>
-            <a href="../index.html#structure" class="nav-link">Structure</a>
-            {{DOC_NAV_LINKS}}
+            ${topNavLinks}
           </div>
           <div class="nav-actions">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-              <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-              <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            </button>
-            <a href="https://github.com/planifest/planifest-framework" class="code-icon-link" aria-label="GitHub Repository" title="GitHub Repository" target="_blank" rel="noopener noreferrer">
-              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="code-icon"><polyline points="20 18 24 12 20 6"></polyline><polyline points="4 6 0 12 4 18"></polyline><line x1="14" y1="2" x2="10" y2="22"></line></svg>
-            </a>
-            <button class="hamburger-btn" aria-label="Toggle menu" title="Menu">
-              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" class="menu-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">${ICON_SUN}${ICON_MOON}</button>
+            <a href="${REPO_URL}" class="code-icon-link" aria-label="RAVINTIO Zero on GitHub" title="RAVINTIO Zero on GitHub" target="_blank" rel="noopener noreferrer">${ICON_CODE}</a>
+            <button class="hamburger-btn" aria-label="Toggle menu" title="Menu" aria-expanded="false">${ICON_MENU}</button>
           </div>
         </div>
       </nav>
-      <main class="doc-container glass-panel">
-        {{CONTENT}}
-        {{PREV_NEXT_NAV}}
-      </main>
+      <div class="doc-layout">
+        ${sectionNav(currentFile)}
+        <main id="content" class="doc-container glass-panel">
+          ${content}
+          ${pagination}
+        </main>
+      </div>
       <footer class="footer">
         <div class="container">
           <div class="footer-content">
-            <div class="brand"><img src="../img/planifest-logo.svg" alt="Planifest Logo" style="height: 32px;"></div>
-            <p>Generated via Agentic execution • Deployed with GitHub Actions</p>
+            <div class="brand"><img src="../img/ravintio-logo.png" alt="" width="28" height="28"><span class="wordmark">RAVINTIO</span></div>
             <div class="footer-links">
               <a href="sitemap.html">Sitemap</a>
+              <a href="${REPO_URL}" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
         </div>
       </footer>
     </div>
   </body>
-</html>`;
-
-// Validate required placeholders (REQ-002, R-004)
-if (!rawTemplate.includes('{{DOC_NAV_LINKS}}')) {
-  console.error('ERROR: Template is missing {{DOC_NAV_LINKS}} placeholder. Add it to doc-template.html inside <div class="nav-links">.');
-  process.exit(1);
-}
-if (!rawTemplate.includes('{{PREV_NEXT_NAV}}')) {
-  console.error('ERROR: Template is missing {{PREV_NEXT_NAV}} placeholder. Add it inside <main> after {{CONTENT}}.');
-  process.exit(1);
+</html>
+`;
 }
 
-// --- Generate doc nav links from manifest (REQ-002) ---
-const docNavLinksHtml = manifestPages
-  .map(p => `<a href="${p.file}" class="nav-link">${p.title}</a>`)
-  .join('\n            ');
+// --- Markdown rendering ---
+const slugify = text => text.toLowerCase()
+  .replace(/<[^>]+>/g, '')
+  .replace(/[^\w\s-]/g, '')
+  .trim()
+  .replace(/\s+/g, '-')
+  .replace(/-+/g, '-');
 
-const template = rawTemplate.replace('{{DOC_NAV_LINKS}}', docNavLinksHtml);
+marked.use({
+  renderer: {
+    heading({ tokens, depth, text }) {
+      const html = this.parser.parseInline(tokens);
+      return `<h${depth} id="${slugify(text)}">${html}</h${depth}>\n`;
+    },
+    code({ text, lang }) {
+      if (lang === 'mermaid') return `<pre class="mermaid">${escapeHtml(text)}</pre>\n`;
+      const cls = lang ? ` class="language-${escapeHtml(lang)}"` : '';
+      return `<pre><code${cls}>${escapeHtml(text)}</code></pre>\n`;
+    },
+  },
+});
 
-// --- Helpers ---
-const renderer = new marked.Renderer();
-renderer.heading = function({ text, depth }) {
-  const id = text.toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim();
-  return `<h${depth} id="${id}">${text}</h${depth}>\n`;
-};
-renderer.code = function({text, lang, escaped}) {
-  if (lang === 'mermaid') {
-    return `<pre class="mermaid">${text}</pre>`;
-  }
-  return `<pre><code class="language-${lang}">${escaped ? text : text}</code></pre>`;
-};
+// Page links are written as {slug}.md in the source.
+const rewriteLinks = markdown => markdown.replace(/\]\(([a-z0-9-]+)\.md(#[^)]*)?\)/g, ']($1.html$2)');
 
-marked.use({ renderer });
-
-function stripMetadata(markdown) {
-  let cleaned = markdown.replace(/href="([^"]+)\.md"/g, 'href="$1.html"');
-  cleaned = cleaned.replace(/\]\(([^)]+)\.md\)/g, ']($1.html)');
-  return cleaned;
-}
-
-function buildPrevNextNav(index) {
-  const prev = index > 0 ? manifestPages[index - 1] : null;
-  const next = index < manifestPages.length - 1 ? manifestPages[index + 1] : null;
-  if (!prev && !next) return '';
-  return `
-<nav class="doc-pagination">
-  ${prev ? `<a href="${prev.file}" class="doc-pagination__prev">← Previous<span class="doc-pagination__title">${prev.title}</span></a>` : '<span class="doc-pagination__spacer"></span>'}
-  ${next ? `<a href="${next.file}" class="doc-pagination__next">Next →<span class="doc-pagination__title">${next.title}</span></a>` : '<span class="doc-pagination__spacer"></span>'}
+function pagination(index) {
+  const prev = pages[index - 1];
+  const next = pages[index + 1];
+  const link = (page, cls, label) => page
+    ? `<a href="${page.file}" class="doc-pagination__${cls}">${label}<span class="doc-pagination__title">${escapeHtml(page.title)}</span></a>`
+    : '<span class="doc-pagination__spacer"></span>';
+  return `<nav class="doc-pagination" aria-label="Previous and next">
+  ${link(prev, 'prev', '← Previous')}
+  ${link(next, 'next', 'Next →')}
 </nav>`;
 }
 
-// --- Warn on undeclared pages (R-002) ---
-const manifestFileSet = new Set(manifestPages.map(p => p.file.replace('.html', '.md')));
-const allMdFiles = fs.readdirSync(DOCS_DIR).filter(f => f.endsWith('.md'));
-for (const f of allMdFiles) {
-  if (!manifestFileSet.has(f)) {
-    console.warn(`WARN: ${f} exists in planifest-docs but is not listed in docs.manifest.json — it will not appear in navigation`);
-  }
+// --- Undeclared and missing pages ---
+const declared = new Set(pages.map(p => p.file.replace(/\.html$/, '.md')));
+for (const f of fs.readdirSync(PAGES_DIR).filter(f => f.endsWith('.md'))) {
+  if (!declared.has(f)) console.warn(`WARN: ${f} is not listed in docs.manifest.json and will not be built`);
+}
+for (const f of declared) {
+  if (!fs.existsSync(path.join(PAGES_DIR, f))) fail(`docs.manifest.json lists ${f}, but it is missing from ${PAGES_DIR}`);
 }
 
-// --- Process pages in manifest order (REQ-001, REQ-002, REQ-003) ---
-const sitemapData = [];
-
-manifestPages.forEach(({ file, title }, index) => {
-  const mdFile = file.replace('.html', '.md');
-  const mdPath = path.join(DOCS_DIR, mdFile);
-
-  if (!fs.existsSync(mdPath)) {
-    console.warn(`WARN: Manifest references ${mdFile} but file not found in ${DOCS_DIR} — skipping`);
-    return;
-  }
-
-  const rawMarkdown = fs.readFileSync(mdPath, 'utf-8');
-  const cleanedMarkdown = stripMetadata(rawMarkdown);
-  const htmlContent = marked.parse(cleanedMarkdown);
-
-  sitemapData.push({ file, title });
-
-  const prevNextNav = buildPrevNextNav(index);
-
-  const finalHtml = template
-    .replace('{{TITLE}}', title)
-    .replace('{{CONTENT}}', htmlContent)
-    .replace('{{PREV_NEXT_NAV}}', prevNextNav);
-
-  const outHtmlPath = path.join(OUT_DIR, file);
-  fs.writeFileSync(outHtmlPath, finalHtml, 'utf-8');
-  console.log(`Generated: ${outHtmlPath}`);
+// --- Build pages ---
+pages.forEach((page, index) => {
+  const markdown = fs.readFileSync(path.join(PAGES_DIR, page.file.replace(/\.html$/, '.md')), 'utf-8');
+  const html = pageHtml({
+    title: page.title,
+    content: marked.parse(rewriteLinks(markdown)),
+    currentFile: page.file,
+    pagination: pagination(index),
+  });
+  fs.writeFileSync(path.join(OUT_DIR, page.file), html, 'utf-8');
+  console.log(`Generated: docs/${page.file}`);
 });
 
-const sitemapDataPath = path.join(__dirname, '../public/sitemap-data.json');
-fs.writeFileSync(sitemapDataPath, JSON.stringify(sitemapData, null, 2), 'utf-8');
-console.log(`Wrote JSON sitemap to: ${sitemapDataPath}`);
+// --- Sitemap ---
+const sitemapData = pages.map(({ file, title, section }) => ({ file, title, section }));
+fs.writeFileSync(SITEMAP_DATA_FILE, JSON.stringify(sitemapData, null, 2), 'utf-8');
 
-// Generate Sitemap HTML
-let sitemapContent = '<h1>Planifest Document Sitemap</h1>\n<ul>\n';
-sitemapData.forEach(item => {
-  sitemapContent += `<li><a href="${item.file}">${item.title}</a></li>\n`;
-});
-sitemapContent += '</ul>';
-
-const sitemapHtml = template
-  .replace('{{TITLE}}', 'Sitemap')
-  .replace('{{CONTENT}}', sitemapContent)
-  .replace('{{PREV_NEXT_NAV}}', '');
-
-fs.writeFileSync(path.join(OUT_DIR, 'sitemap.html'), sitemapHtml, 'utf-8');
-console.log('Generated Sitemap HTML.');
-
-// --- REQ-004 safeguard: patch index.html CTA if stale href detected ---
-const indexHtmlPath = path.resolve(__dirname, '../index.html');
-if (fs.existsSync(indexHtmlPath)) {
-  const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
-  const staleHref = './docs/p001-planifest-master-plan.html';
-  if (indexHtml.includes(staleHref)) {
-    const patched = indexHtml.replace(staleHref, './docs/01-overview.html');
-    fs.writeFileSync(indexHtmlPath, patched, 'utf-8');
-    console.log('Patched stale CTA href in index.html');
-  }
-}
+const sitemapContent = '<h1>Sitemap</h1>\n' + manifest.sections.map(section =>
+  `<h2>${escapeHtml(section.title)}</h2>\n<ul>\n` +
+  section.pages.map(p => `<li><a href="${p.file}">${escapeHtml(p.title)}</a></li>`).join('\n') +
+  '\n</ul>').join('\n');
+fs.writeFileSync(path.join(OUT_DIR, 'sitemap.html'),
+  pageHtml({ title: 'Sitemap', content: sitemapContent, currentFile: '', pagination: '' }), 'utf-8');
+console.log('Generated: docs/sitemap.html');
