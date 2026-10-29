@@ -128,3 +128,4 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 | MCP calls | `0` |
 | Parallel task batches | `0` |
 | Notes | none |
+- P3 cycle 1: check NFR-003 mobile layout. Error: templates.html scrolled to 360 px at 345 px viewport. Root cause: long file names in code font inside headings didn't wrap. Fix: overflow-wrap anywhere on inline code in doc pages. Result: all 12 pages pass at 360 px (2026-10-29T20:53:14Z)

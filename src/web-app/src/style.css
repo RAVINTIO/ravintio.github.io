@@ -720,3 +720,6 @@ a:focus-visible, button:focus-visible {
   .doc-sections { position: static; }
   .nav-content { padding: 1rem; }
 }
+
+/* Long file names in code font wrap rather than widen the page (NFR-003) */
+.doc-container :not(pre) > code { overflow-wrap: anywhere; }
