@@ -54,3 +54,4 @@ P0 exchange (audience): Q: Primary reader a developer with a coding agent decidi
 P0 exchange (page structure): Q: Ten pages in three sections (RAVINTIO 1-2, Zero 3-7, Reference 8-10), delete routing, change pipeline, and fast path? / A: Confirmed.
 P0 exchange (rename visibility): Q: (human-initiated) Is the site explaining the rename? / A: Remove any such explanation. Nobody has used Planifest, so no page names or references it. The brand guard test enforces zero Planifest mentions in published content.
 P0 exchange (content source): Q: (human-initiated) Reuse old pages? / A: No. The old docs were poor. Delete all old copy and write new content. Sources are the private strategy (public parts only) and the current Zero pack and repo, never the old pages.
+P0 exchange (decomposition): Q: One run with releaseSize large (12 of 14 points) or two runs? / A: One run. releaseSize set to large in product.yml.
