@@ -17,7 +17,7 @@ The human ruled that no published page names the earlier brand. The backlog entr
 
 ## Decision
 
-Add `src/web-app/tests/brand-guard.test.mjs`. It lists tracked files with `git ls-files` and also walks `dist/`. It fails on any case-insensitive match of the earlier brand in a path or in file content. The allowlist holds `plan/_archive/`, `plan/changelog/`, `ravintio-zero/`, and the guard test file. The test builds the search term from two string parts, so its own source holds no match.
+Add `src/web-app/tests/brand-guard.test.mjs`. It lists tracked files with `git ls-files` and also walks `dist/`. It fails on any case-insensitive match of the earlier brand in a path or in file content. The allowlist holds `plan/_archive/`, `plan/changelog/`, `plan/current/`, `ravintio-zero/`, and the guard test file. `plan/current/` holds this run's artefacts, which ship moves into `plan/_archive/`. The test builds the search term from two string parts, so its own source holds no match.
 
 ## Alternatives Considered
 

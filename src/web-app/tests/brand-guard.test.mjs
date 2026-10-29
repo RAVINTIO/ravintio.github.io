@@ -10,6 +10,7 @@ const EARLIER = new RegExp('plani' + 'fest', 'i');
 const ALLOW = [
   'plan/_archive/',
   'plan/changelog/',
+  'plan/current/', // run artefacts, archived at ship
   'ravintio-zero/',
   'src/web-app/tests/brand-guard.test.mjs',
 ];
