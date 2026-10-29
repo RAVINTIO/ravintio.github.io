@@ -108,7 +108,7 @@ quality:
 pipeline:
   templateVersion: "1.0.0"
   featureMode: "retrofit"
-  domainKnowledgePath: "plan/current"
+  domainKnowledgePath: "plan/_archive/0000005-ravintio-docs-rewrite-2026-10-29"
 
 metadata:
   createdAt: "2026-05-16"
