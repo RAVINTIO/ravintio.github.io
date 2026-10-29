@@ -97,3 +97,11 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 | MCP calls | `0` |
 | Parallel task batches | `0` |
 | Notes | none |
+- Done: REQ-004 test-writer (2026-10-29T20:38:22Z)
+- Done: REQ-004 implementer, U1 build and brand (2026-10-29T20:38:22Z)
+- Departure: U1 ran its TDD cycle inline rather than through three subagents, because the build script, template, and tests share one context. Tests went RED (8 of 9 failing) before the code.
+- Departure: batch 2 and batch 3 run together. U4's link and style tests run after all pages land, so U4 needs no wait on U3 and U5 content.
+- Departure: page-writing units run on the primary tier (sonnet), not the cheaper tier. The pages need new synthesis under strict style rules.
+- In progress: REQ-001 implementer, U3 pages 1 and 2 (2026-10-29T20:38:22Z)
+- In progress: REQ-002 implementer, U4 pages 3 to 7 (2026-10-29T20:38:22Z)
+- In progress: REQ-003 implementer, U5 pages 8 to 10 (2026-10-29T20:38:22Z)
