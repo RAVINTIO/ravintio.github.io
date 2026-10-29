@@ -59,8 +59,8 @@ version: "0.1.0"
 | P0 - Discovery | pass | Design confirmed: yes | 13 coaching exchanges, Scope Lock complete |
 | P1 - Plan | pass | All artifacts produced: yes | 5 ADRs, consistency check clean on first run |
 | P2 - Implement | pass | Implementation complete: yes | 5 departures recorded in the build log |
-| P3 - Validate and Accept | pending | | |
-| P4 - Ship | pending | | |
+| P3 - Validate and Accept | pass | CI clean and accepted: evidence in PR | 1 cycle |
+| P4 - Ship | pass | Archived: yes. PR raised by the human (local git only). | |
 
 ## Requirement Changes During Run
 

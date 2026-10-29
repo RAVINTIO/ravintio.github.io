@@ -27,7 +27,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 |-------|-------|
 | Start | `2026-10-28T23:59:41Z` |
 | End | `2026-10-29T20:30:26Z` |
-| Wall clock | |
+| Wall clock | `1230` |
 | Model tier | primary |
 | Skills loaded | ravintio-orchestrator, ravintio-migrator |
 | Agents spawned | `0` |
@@ -76,7 +76,7 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 |-------|-------|
 | Start | `2026-10-29T20:30:32Z` |
 | End | `2026-10-29T20:33:32Z` |
-| Wall clock | |
+| Wall clock | `3` |
 | Model tier | primary |
 | Skills loaded | ravintio-plan |
 | Agents spawned | `0` |
@@ -90,7 +90,7 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 |-------|-------|
 | Start | `2026-10-29T20:33:32Z` |
 | End | `2026-10-29T20:51:31Z` |
-| Wall clock | |
+| Wall clock | `17` |
 | Model tier | primary |
 | Skills loaded | ravintio-implement |
 | Agents spawned | `6` (sonnet) |
@@ -121,7 +121,7 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 |-------|-------|
 | Start | `2026-10-29T20:51:41Z` |
 | End | `2026-10-29T20:54:17Z` |
-| Wall clock | |
+| Wall clock | `2` |
 | Model tier | primary |
 | Skills loaded | ravintio-validate-and-accept |
 | Agents spawned | `0` |
@@ -135,11 +135,27 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-29T20:54:36Z` |
-| End | |
-| Wall clock | |
+| End | `2026-10-29T20:54:47Z` |
+| Wall clock | `0` |
 | Model tier | primary |
 | Skills loaded | ravintio-ship |
 | Agents spawned | `0` |
 | MCP calls | `0` |
 | Parallel task batches | `0` |
-| Notes | none |
+| Notes | Local git only. The human pushes and raises the PR. |
+
+---
+
+## Summary (filled at ship, P4)
+
+| Metric | Value |
+|--------|-------|
+| Total phases completed | `5` |
+| Total wall clock | `1255 min` (includes time waiting on human answers in P0) |
+| Total agents spawned | `6` |
+| Total MCP calls | `18` |
+| Phases using parallelism | `1` (P2) |
+| Primary tier agent calls | `6` (sonnet) |
+| Cheaper tier agent calls | `0` |
+| Self-corrections | `1` (P3 cycle 1) |
+| Phases skipped | none |
