@@ -5,11 +5,15 @@ You install Zero by copying one folder, `ravintio-zero/`, into your repository a
 ## Prerequisites
 
 - Claude Code or Codex
-- Node, because the hooks and scripts run as `node` scripts
+- Node, because the hooks and scripts run as `node` scripts. The pack states no minimum version.
 - Git
+- A GitHub remote named `origin`. The pre-push hook fetches `origin/main`, and ship pushes to it.
+- The `gh` command line tool, installed and signed in. The agent uses it to raise pull requests.
 - A terminal with Bash on macOS or Linux, or PowerShell on Windows
 
-To raise pull requests, the agent uses the `gh` command line tool. Without it, ship can print a PR description for you to use by hand.
+Run setup from the repository root.
+
+If `gh` is missing in an autonomous run, ship stops with `Blocked`. A gated run offers a printed PR description instead.
 
 ## Get the pack
 
@@ -25,13 +29,7 @@ To raise pull requests, the agent uses the `gh` command line tool. Without it, s
 
 1. Create the repository and enter it.
 2. Copy the `ravintio-zero/` folder into the repository root.
-3. Create the working folders.
-
-   ```bash
-   mkdir -p plan/current plan/changelog plan/backlog src docs
-   ```
-
-4. Run setup for your tool.
+3. Run setup for your tool.
 
    ```bash
    # macOS or Linux, Claude Code
@@ -44,24 +42,28 @@ To raise pull requests, the agent uses the `gh` command line tool. Without it, s
    .\ravintio-zero\setup.ps1 claude-code
    ```
 
-5. If you use Codex, pass `codex` instead of `claude-code`.
+4. If you use Codex, pass `codex` instead of `claude-code`.
 
    ```bash
    ./ravintio-zero/setup.sh codex
    ```
 
-6. Commit the result on a `feat/` branch.
+5. Commit the setup to `main`, or merge a setup pull request, before you start the first feature. The agent cuts the feature branch from `main`.
+
+Setup creates `src/` and `plan/`. The agent creates the other working folders when a run needs them.
 
 ## Install into an existing repository
 
+> **Warning:** Setup regenerates `CLAUDE.md` or `AGENTS.md` from a template. Before you run it, move your own instructions into `ravintio-overrides/instructions/`. Setup appends those files to the boot file on every run. Setup also changes `.claude/settings.json`. See [what setup changes](#what-setup-changes).
+
 1. Copy the `ravintio-zero/` folder into the repository root.
 2. Run the setup script for your tool, as in the previous section.
-3. Add a `component.yml` manifest to each existing component in `src/`. Use the component manifest template and guide. See [templates](templates.md).
-4. Start the agent and tell it the adoption mode, as the next section describes.
+3. Make sure each existing component lives under `src/`. Add a `component.yml` manifest to each one. Use the component manifest template and guide. See [templates](templates.md).
+4. Start the agent. It detects the adoption mode and recommends one for you to confirm, as the next section describes.
 
 ### Adoption modes
 
-The orchestrator picks an adoption mode from signals in your repository. It applies the first signal that matches.
+The orchestrator picks an adoption mode from signals in your repository. It applies the first signal that matches, then asks you to confirm.
 
 | Mode | Signal | What changes |
 |------|--------|--------------|
@@ -72,7 +74,7 @@ The orchestrator picks an adoption mode from signals in your repository. It appl
 
 The retrofit scan records version markers, entry points, components, data ownership, API contracts, conventions, and visible tech debt. The scan answers many questions for you.
 
-To ask for retrofit mode, start the agent with this prompt.
+If it detects the wrong mode, tell it. For example, ask for retrofit mode with this prompt.
 
 ```text
 Run the RAVINTIO pipeline in retrofit mode.
@@ -83,15 +85,18 @@ If you name a mode that conflicts with the detected signal, the agent warns you 
 
 ## What setup changes
 
-Setup writes into your repository. It never touches `ravintio-overrides/`.
+Setup writes into your repository. It reads `ravintio-overrides/` and does not edit your files there.
 
 | Change | Claude Code | Codex |
 |--------|-------------|-------|
 | Skills | Copied into `.claude/skills/` | Copied into `.agents/skills/` |
-| Boot file | `CLAUDE.md` | `AGENTS.md` |
+| Boot file | `CLAUDE.md`, regenerated from a template on every run | `AGENTS.md`, regenerated the same way |
 | Enforcement hooks | Wired into `.claude/settings.json` | `merge-guard` only, in `.codex/hooks.json` |
+| Settings | Adds `Agent` to the allowed tools. Sets empty commit and PR attribution if you have none. | None |
+| Command | Copies `feature-pipeline.md` into `.claude/commands/` | None |
 | Git hooks | `core.hooksPath` points at `ravintio-zero/hooks` | Same |
 | CI workflow | Copied to `.github/workflows/ravintio.yml` on first setup | Same |
+| Repository files | Writes `.gitignore`, `.gitattributes`, and `.claudeignore` if missing. Writes `src/README.md`, `plan/README.md`, and `plan/feature-structure.md` if missing. | Same |
 | Setup record | `plan/state/claude-code.md` | `plan/state/codex.md` |
 
 Setup also prunes skills that the pack has retired. It does not copy templates, standards, or schemas. Skills read those from `ravintio-zero/`.
@@ -102,6 +107,10 @@ Add `--strict-orchestrator` to make every session prove that it loaded the orche
 
 ```bash
 ./ravintio-zero/setup.sh claude-code --strict-orchestrator
+```
+
+```powershell
+.\ravintio-zero\setup.ps1 claude-code --strict-orchestrator
 ```
 
 See [project operations](project-operations.md#strict-orchestrator-mode) for how the handshake works.

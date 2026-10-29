@@ -16,7 +16,7 @@ For the full skill list, see [skills](skills.md).
 
 ### P0 Discovery
 
-The orchestrator assesses your brief and coaches you through the gaps. It detects the adoption mode, reads the version, and records its findings in `discovery.md`. It ends with the Scope Lock Challenge and the design for your confirmation. After you confirm, the design does not change unless you use the mid-pipeline change protocol.
+The orchestrator assesses your brief and coaches you through the gaps. It detects the adoption mode, reads the version, and records its findings in `discovery.md`. It ends with the Scope Lock Challenge and the design for your confirmation. After you confirm, the design does not change unless you use the mid-pipeline change protocol. A mid-pipeline change is a requirement change while P1 to P3 runs. The agent sorts it as cosmetic, additive, or contradictory and re-runs from the earliest affected phase.
 
 ### P1 Plan
 
@@ -51,7 +51,7 @@ On a failure, it fixes the root cause and re-runs. After five failed cycles, it 
 
 ### P4 Ship
 
-Ship writes the changelog to `plan/changelog/`, archives `plan/current/` to `plan/_archive/{feature-id}-{date}/`, and writes a build report. It then raises the pull request. It deletes the run sentinels last, after the archive is confirmed. CI tags the merge commit after you merge.
+Ship writes the changelog to `plan/changelog/`, archives `plan/current/` to `plan/_archive/{feature-id}-{date}/`, and writes a build report. It deletes the run sentinels after it confirms the archive and before it pushes, so no pull request carries them. It then raises the pull request. CI tags the merge commit after you merge.
 
 ## Response prefixes and statuses
 

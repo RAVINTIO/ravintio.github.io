@@ -4,14 +4,11 @@ This page walks you through one feature, from brief to pull request. The example
 
 Before you start, complete [Install Zero](install-zero.md).
 
-## 1. Create a branch
+## 1. Check your setup
 
-Work on a `feat/` branch, never on `main`. The agent asks about this at the start of discovery and offers to cut the branch for you.
+Make sure you committed the setup to `main`, as [Install Zero](install-zero.md) describes. If you had a Claude Code session open during setup, restart it. Claude Code reads hooks at session start.
 
-```bash
-git checkout main
-git checkout -b feat/health-check
-```
+You don't create the feature branch yourself. At the start of discovery, the agent reports your current branch and asks whether earlier pull requests are merged. It then offers `git checkout main` and `git checkout -b feat/{feature-id}`. It uses `feat/pending` until you confirm the id.
 
 ## 2. Write the feature brief
 
@@ -27,7 +24,7 @@ The feature brief guide in [templates](templates.md) describes each section. Gap
 
 ## 3. Start the agent
 
-Open your agent in the repository. The auto-trigger hook loads the orchestrator skill at the start of the session. Then send this prompt.
+Open your agent in the repository. On Claude Code, the auto-trigger hook loads the orchestrator skill at the start of the session. Codex has no such hook, so it relies on the instruction in `AGENTS.md`. Then send this prompt.
 
 ```text
 Run the RAVINTIO pipeline.
@@ -43,7 +40,7 @@ P0 Discovery: Starting: assessing the feature brief for the health-check endpoin
 Before it asks questions, the agent does its start-of-run checks.
 
 - It reports the current branch and asks whether earlier pull requests are merged.
-- It looks for a `product.yml` with a product `id`. If the file is missing, the agent asks you for a stable kebab-case id, such as `acme-api`.
+- It looks for a `product.yml` with a product `id`. Every project needs one, even with a single component. If the file or the id is missing, the agent stops and asks you for a stable kebab-case id, such as `acme-api`.
 - It scans the repository to detect the adoption mode and the last known version.
 - It scans `plan/backlog/` for deferred items and offers each one to you.
 
@@ -52,11 +49,12 @@ Before it asks questions, the agent does its start-of-run checks.
 The agent asks one question at a time and waits for your answer. Expect questions like this one.
 
 ```text
-P0 Discovery: Blocked: the brief does not say whether /health needs authentication.
-Should the endpoint be public, or limited to the internal network?
+P0 Discovery: The brief doesn't say whether /health needs authentication.
+I recommend no authentication because a load balancer calls it.
+Confirm? (no authentication / require a token)
 ```
 
-Answer in plain language. If a draft answer is wrong, say so and the agent revises it. If you want to defer a topic, say that, and the agent records the deferral in the scope.
+The agent recommends an answer and asks you to confirm or change it. Answer in plain language. If a recommendation is wrong, say so and the agent revises it. If you want to defer a topic, say that, and the agent records the deferral in the scope.
 
 Near the end, the agent runs the Scope Lock Challenge. It drafts answers for four paths and shows them together, labelled as drafts.
 
@@ -69,7 +67,7 @@ You accept, edit, or reject each item. A blanket "looks fine" does not count. Se
 
 ## 5. Confirm the design
 
-The agent writes `plan/current/design.md` and presents it. The design names the components, the data owners, the scope, the risks, the version, and the approved dependencies. Read it carefully, because it is fixed once you confirm it.
+The agent writes `plan/current/design.md` and presents it. The design names the components, the data owners, the scope, the risks, the version, and the approved dependencies. Read it carefully, because the agent can't change it without your approval.
 
 Next, the agent asks two questions.
 

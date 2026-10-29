@@ -1,6 +1,19 @@
 # Zero overview
 
-RAVINTIO Zero is a pipeline that makes your coding agent plan before it writes code. You write a feature brief. The agent asks questions, produces a reviewable plan, and builds only what that plan describes. A pull request ends every run.
+RAVINTIO Zero is a pipeline that makes your coding agent plan before it writes code. You write a feature brief. The agent asks questions, produces a reviewable plan, and builds only what that plan describes. A run ends in a pull request unless you pause, park, or stop it.
+
+## Terms
+
+These terms appear throughout the guide.
+
+- **Orchestrator:** The skill that runs discovery and routes the run through the phases. It loads at the start of a session.
+- **Phase:** One of the five steps of a run, from P0 to P4. Each phase has its own skill and output.
+- **Gate and gated run:** A gate is a stop where you review before the next phase starts. In a gated run the agent stops at every gate.
+- **Boot file:** The file the agent tool reads at session start, `CLAUDE.md` or `AGENTS.md`. Setup generates it.
+- **Sentinel:** A small marker file in `plan/` that tells the hooks a run is active. Ship deletes them.
+- **Build log:** The record of a run in `plan/current/build-log.md`. It holds decisions, stops, and resolutions.
+- **Parity check:** A check that a file under `plan/`, `docs/`, or a `component.yml` changed beside `src/`. It tests presence, not content.
+- **Improvement loop:** A review cycle after the first green build of a requirement. It runs up to two cycles per requirement.
 
 ## Why Zero exists
 
@@ -52,12 +65,13 @@ Both tools get the same pipeline skills and the same git hooks. See [project ope
 
 These rules hold in every run, whatever the model or configuration.
 
-- The agent surfaces requirement gaps and resolves or defers them before it implements. It records each deferral in `plan/current/scope.md`.
-- The agent never changes a data schema directly. It writes a migration proposal and waits for your approval.
-- Destructive schema operations need your approval.
-- One component owns each dataset. No component writes to another's data.
-- Code and documentation are written together.
-- Credentials stay out of the agent's context.
+1. No code without a confirmed design. The agent writes no application code until `plan/current/design.md` exists.
+2. No code without documentation. Every component has a `component.yml` manifest and `docs/` artefacts.
+3. No direct schema modification. The agent writes a migration proposal and waits for your approval.
+4. Destructive schema operations need your approval. That covers dropping a column or table, and renaming.
+5. One component owns each dataset. No component writes to another's data.
+6. No credentials in context. If one appears, the agent flags it and does not use it.
+7. Update documentation after any deviation. The agent changes the plan, docs, or manifest to match what it built.
 
 ## Limits of Zero
 

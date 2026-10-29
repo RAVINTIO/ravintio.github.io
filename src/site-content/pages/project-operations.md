@@ -23,20 +23,20 @@ On Claude Code, setup wires these hooks into `.claude/settings.json`. On Codex, 
 
 | Hook | Trigger | What it does |
 |------|---------|--------------|
-| `gate-write` | Before a write or edit | Blocks writes to code unless a confirmed `design.md` exists and the path belongs to a declared component. |
+| `gate-write` | Before a write or edit | Blocks writes unless `plan/current/design.md` exists and the path belongs to a declared component. It can't see whether you confirmed the design. |
 | `ratchet-check` | Before a write or edit | During a loop, blocks edits that weaken acceptance criteria or scope. |
-| `em-dash-guard` | Before a write or edit | Rejects em dashes in prose paths. |
+| `em-dash-guard` | Before a write or edit | Rejects em dashes in `plan/current/`, `docs/`, and the pack's `skills/`, `templates/`, and `standards/` folders. Add `<!-- ravintio-em-dash-allow -->` to a write to allow it. |
 | `check-design` | On each prompt | Injects the active component scope, or a stop message if there is no brief and no sentinel. |
 | `check-orchestrator-presence` | On each prompt | Reminds the agent to load the orchestrator while a run is active. |
 | `auto-trigger-orchestrator` | On each prompt | Loads the orchestrator at session start when no run is active. |
 | `check-reply-prefix` | When a reply ends | Warns about a missing phase prefix and logs it. It never blocks. |
 | `merge-guard` | Before a shell command | Blocks `gh pr merge` unless it squashes into an `initiative/*` branch. |
 
-A blocking hook exits with a message. Every hook fails open on an unexpected error, so a broken hook never stops a session.
+A blocking hook exits with a message. If a hook blocks you, read `ravintio-zero/standards/hook-enforcement.md`. The [standards](standards.md) page describes it. Every hook fails open on an unexpected error, so a broken hook never stops a session.
 
 ## Commit standards
 
-Every commit message follows this form.
+Follow this form for every commit message.
 
 ```text
 type(scope): short description
@@ -46,17 +46,19 @@ type(scope): short description
 - The scope is a feature id such as `0000003`, or a component id.
 - The subject uses the imperative mood and stays within 72 characters.
 
-The `commit-msg` hook blocks a commit that breaks these rules. It rejects:
+The `commit-msg` hook enforces only part of this. It rejects:
 
-- AI attribution, such as a `Co-Authored-By` line that names an AI tool
-- Affirmatory language, such as "Done" or "Working now"
+- AI attribution, including `Co-Authored-By` lines that name an AI tool and `Claude-Session:` lines
+- Affirmatory phrases, such as "Done" or "Working now"
 - Subjects over 72 characters
+
+The hook does not check the type or the scope. To bypass it on purpose, run `git commit --no-verify`.
 
 The person who commits owns the commit. The AI tool is not a contributor of record. See [standards](standards.md) for the full commit standard.
 
 ## The orchestrator sentinel
 
-When discovery starts, the orchestrator writes `plan/.orchestrator-active`. It holds the active feature id. The hooks read it to know a run is in progress. Ship deletes it last, after the archive is confirmed. You never create or delete it by hand during a run.
+When discovery starts, the orchestrator writes `plan/.orchestrator-active`. It holds the active feature id. The hooks read it to know a run is in progress. Ship deletes it after it confirms the archive and before it pushes, so no pull request carries it. You never create or delete it by hand during a run.
 
 If a run stops and you want a fresh start, take these steps.
 
@@ -73,6 +75,10 @@ By default, `check-orchestrator-presence` only reminds the agent. Strict mode ma
 
 ```bash
 ./ravintio-zero/setup.sh claude-code --strict-orchestrator
+```
+
+```powershell
+.\ravintio-zero\setup.ps1 claude-code --strict-orchestrator
 ```
 
 Setup then writes `plan/.orchestrator-strict`. The handshake works like this.

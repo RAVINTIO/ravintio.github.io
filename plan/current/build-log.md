@@ -89,14 +89,14 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-29T20:33:32Z` |
-| End | |
+| End | `2026-10-29T20:51:31Z` |
 | Wall clock | |
 | Model tier | primary |
 | Skills loaded | ravintio-implement |
-| Agents spawned | `0` |
+| Agents spawned | `6` (sonnet) |
 | MCP calls | `0` |
-| Parallel task batches | `0` |
-| Notes | none |
+| Parallel task batches | `2` |
+| Notes | 21 of 21 tests pass. One improvement cycle across all requirements. |
 - Done: REQ-004 test-writer (2026-10-29T20:38:22Z)
 - Done: REQ-004 implementer, U1 build and brand (2026-10-29T20:38:22Z)
 - Departure: U1 ran its TDD cycle inline rather than through three subagents, because the build script, template, and tests share one context. Tests went RED (8 of 9 failing) before the code.
@@ -113,3 +113,4 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 - In progress: REQ-002 refactor, Zero guide fixes (2026-10-29T20:49:33Z)
 - In progress: REQ-001 and REQ-003 refactor, overview and reference fixes (2026-10-29T20:49:33Z)
 - Done: REQ-001 and REQ-003 refactor, overview and reference fixes (2026-10-29T20:50:44Z)
+- Done: REQ-002 refactor, Zero guide fixes (2026-10-29T20:51:31Z)
