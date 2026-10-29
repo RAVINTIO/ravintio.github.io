@@ -56,3 +56,4 @@ P0 exchange (rename visibility): Q: (human-initiated) Is the site explaining the
 P0 exchange (content source): Q: (human-initiated) Reuse old pages? / A: No. The old docs were poor. Delete all old copy and write new content. Sources are the private strategy (public parts only) and the current Zero pack and repo, never the old pages.
 P0 exchange (decomposition): Q: One run with releaseSize large (12 of 14 points) or two runs? / A: One run. releaseSize set to large in product.yml.
 P0 exchange (acceptance criteria): Q: Seven criteria (build and nav, no Planifest, RAVINTIO capitals, no private sections, reference matches pack, links resolve, sentence and blocklist rules)? / A: Confirmed. Criterion 4 is a human checklist review. The rest are automated.
+P0 exchange (component design): Q: One component site-content at src/site-content/ (pages/, docs/, component.yml), delete both planifest-docs folders, web-app reads only? / A: Confirmed.
