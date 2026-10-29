@@ -108,3 +108,7 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 - Done: REQ-001 implementer, U3 pages 1 and 2 (2026-10-29T20:40:23Z)
 - Done: REQ-003 implementer, U5 pages 8 to 10 (2026-10-29T20:40:57Z)
 - Done: REQ-002 implementer, U4 pages 3 to 7 (2026-10-29T20:42:42Z)
+- Improve: cycle 1, all requirements: a fresh-context reviewer (sonnet) found 20 findings across the ten pages, including a branch contradiction between install and first run, missing setup side effects, and gated behaviour stated as universal (2026-10-29T20:49:33Z)
+- Departure: one improvement cycle covers all four requirements together, because the findings cross pages.
+- In progress: REQ-002 refactor, Zero guide fixes (2026-10-29T20:49:33Z)
+- In progress: REQ-001 and REQ-003 refactor, overview and reference fixes (2026-10-29T20:49:33Z)
