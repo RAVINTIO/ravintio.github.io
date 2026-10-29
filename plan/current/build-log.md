@@ -60,3 +60,4 @@ P0 exchange (component design): Q: One component site-content at src/site-conten
 P0 exchange (unbuilt tools): Q: Status label per tool (Zero and Framework Available, Accept, Qualify, Insight In design, Unbound In design experimental), purpose and boundaries only, no dates or promises? / A: Confirmed as shown.
 P0 exchange (scope and logo): Q: Scope as shown with a text wordmark, or a supplied logo? / A: Human supplied a RAVINTIO logo, a teal R on white. Saved as graphics/ravintio-logo.png. Scope otherwise as shown.
 P0 exchange (non-functional): Q: WCAG 2.2 AA, page weight under 300 KB excluding mermaid, no horizontal scroll at 360 px, build under 60 s in CI? / A: Confirmed, all four.
+P0 exchange (operations): no question asked. Deployment stays on the existing deploy.yml push-to-main workflow. A static site has no SLO, alerting, or runtime cost beyond GitHub Pages.
