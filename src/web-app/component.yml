@@ -103,7 +103,7 @@ quality:
     - "Q-001: component docs live in component-docs/"
     - "Q-002: generated docs/*.html and public/sitemap-data.json are not committed"
     - "Q-004: adding a page takes a page file and a manifest entry"
-    - "Q-005: asset paths are relative for the /ravintio-docs/ base path"
+    - "Q-005: asset paths are relative, so the site works at the org root or under a path"
 
 pipeline:
   templateVersion: "1.0.0"

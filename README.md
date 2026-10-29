@@ -1,6 +1,6 @@
 # RAVINTIO docs
 
-This repo holds the RAVINTIO documentation site. GitHub Pages serves it at `ravintio.github.io/ravintio-docs`.
+This repo holds the RAVINTIO documentation site. GitHub Pages serves it at `https://ravintio.github.io`. The repo is `RAVINTIO/ravintio.github.io`, which GitHub serves at the org root.
 
 The site explains what RAVINTIO is and describes its six tools. It also teaches you to adopt RAVINTIO Zero. This repo uses RAVINTIO Zero to manage its own changes.
 

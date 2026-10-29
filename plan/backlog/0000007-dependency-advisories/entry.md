@@ -1,11 +1,9 @@
 ---
-title: "Backlog Entry: 0000007
-0000008 - Clear npm audit advisories"
+title: "Backlog Entry: 0000007 - Clear npm audit advisories"
 summary: "A discovered-but-out-of-scope item deferred for pickup at a future discovery run."
 status: "open"
 ---
-# Backlog Entry: 0000007
-0000008 - Clear npm audit advisories
+# Backlog Entry: 0000007 - Clear npm audit advisories
 
 **Source feature:** 0000005-ravintio-docs-rewrite
 **Source phase:** P3

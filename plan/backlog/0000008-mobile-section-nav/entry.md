@@ -1,11 +1,9 @@
 ---
-title: "Backlog Entry: 0000007
-0000008 - Collapse the section nav on mobile"
+title: "Backlog Entry: 0000008 - Collapse the section nav on mobile"
 summary: "A discovered-but-out-of-scope item deferred for pickup at a future discovery run."
 status: "open"
 ---
-# Backlog Entry: 0000007
-0000008 - Collapse the section nav on mobile
+# Backlog Entry: 0000008 - Collapse the section nav on mobile
 
 **Source feature:** 0000005-ravintio-docs-rewrite
 **Source phase:** P3

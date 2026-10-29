@@ -6,7 +6,7 @@ Last updated: 0000005-ravintio-docs-rewrite
 
 ## What This Repo Is
 
-`ravintio-docs` holds the public RAVINTIO documentation site, served by GitHub Pages at `ravintio.github.io/ravintio-docs`. RAVINTIO Zero manages the repo, so every change runs through its pipeline.
+The `ravintio.github.io` repo holds the public RAVINTIO documentation site. GitHub Pages serves it at the org root, `https://ravintio.github.io`. RAVINTIO Zero manages the repo, so every change runs through its pipeline.
 
 ---
 

@@ -9,7 +9,7 @@ Last updated: 0000005-ravintio-docs-rewrite
 
 ## System Summary
 
-The RAVINTIO docs system is a static site on GitHub Pages at `ravintio.github.io/ravintio-docs`. Authors write Markdown pages. A Node script turns them into HTML at build time, and Vite bundles the result. GitHub Actions deploys it when a change merges to `main`. The system has no backend, no sign-in, and no stored user data.
+The RAVINTIO docs system is a static site on GitHub Pages at `https://ravintio.github.io`. Authors write Markdown pages. A Node script turns them into HTML at build time, and Vite bundles the result. GitHub Actions deploys it when a change merges to `main`. The system has no backend, no sign-in, and no stored user data.
 
 ---
 

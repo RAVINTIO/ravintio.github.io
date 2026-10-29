@@ -21,4 +21,4 @@ If a manifest entry has no page file, the build fails. If a page file has no man
 
 ## Q-005: Favicon and asset paths are relative
 
-GitHub Pages serves the site under `/ravintio-docs/`. Every icon and asset path is relative, so it works under any base path.
+GitHub Pages serves the site at the org root, `https://ravintio.github.io`. Every icon and asset path is relative, so the site also works under a path, such as a fork served at `/{repo}/`.
