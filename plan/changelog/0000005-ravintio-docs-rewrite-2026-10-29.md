@@ -2,7 +2,7 @@
 
 **Feature:** RAVINTIO docs rewrite
 **Version:** 0.4.0
-**PR:** pending. The human pushes the branch and raises the PR (local git only).
+**PR:** [#23](https://github.com/RAVINTIO/ravintio-docs/pull/23)
 
 ## What changed
 
