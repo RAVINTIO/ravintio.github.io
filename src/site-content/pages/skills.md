@@ -11,17 +11,19 @@ For how the phases fit together, see [pipeline](pipeline.md). For the standards 
 | Initiatives and records | `ravintio-initiative`, `ravintio-file-backlog`, `ravintio-postmortem`, `ravintio-retrospective` |
 | Pack maintenance | `ravintio-migrator`, `ravintio-refresh-setup`, `ravintio-optimise-agent` |
 
+An initiative is a charted set of feature runs that share one branch and ship as one pull request. To chart an initiative is to plan its steps with you and take your approval. The driver is a script that starts each step in turn.
+
 ## Pipeline phase skills
 
 These skills carry a feature from brief to pull request. The orchestrator calls the other four in order.
 
 ### `ravintio-orchestrator`
 
-This skill runs discovery and routes the work through the pipeline. It coaches you from a feature brief to a confirmed design. It then calls the plan, implement, validate-and-accept, and ship skills in turn. Your tool loads it first in every session. It also calls the migrator when it finds pending migrations.
+This skill runs discovery and routes the work through the pipeline. It coaches you from a feature brief to a confirmed design. It then calls the plan, implement, validate-and-accept, and ship skills in turn. On Claude Code, a hook loads it at the start of every session. On Codex, the `AGENTS.md` boot file tells the agent to load it. It also calls the migrator when it finds pending migrations.
 
 ### `ravintio-plan`
 
-This skill writes the plan-phase documents. They cover requirements, architecture decision records, scope, risks, and a glossary. You review them all at one human gate. The orchestrator calls it after the design is confirmed.
+This skill writes the plan-phase documents. They cover requirements, architecture decision records, scope, risks, and a glossary. In a gated run, you review them all at one human gate. An autonomous run continues without stopping. The orchestrator calls it after the design is confirmed.
 
 ### `ravintio-implement`
 
@@ -29,11 +31,11 @@ This skill builds each requirement with its tests and documentation together. It
 
 ### `ravintio-validate-and-accept`
 
-This skill checks the finished work. It runs CI, reviews security, and verifies the code by running it. It then presents the acceptance gate for you to approve. The orchestrator calls it after implementation.
+This skill checks the finished work. It runs CI, reviews security, and verifies the code by running it. In a gated run, it then presents the acceptance gate for you to approve. An autonomous run continues without stopping. The orchestrator calls it after implementation.
 
 ### `ravintio-ship`
 
-This skill closes a run. It archives the plan, assesses the build, writes the changelog, sets the version, and prepares the pull request. It stops at a final gate for your approval. The orchestrator calls it last.
+This skill closes a run. It archives the plan, assesses the build, writes the changelog, sets the version, and prepares the pull request. In a gated run, it stops at a final gate for your approval. An autonomous run continues without stopping. The orchestrator calls it last.
 
 ## TDD skills
 
@@ -61,7 +63,7 @@ These skills support work that spans several features, and the records you keep 
 
 ### `ravintio-initiative`
 
-This skill coordinates an initiative from chart to delivery in your own session. It charts the steps, activates the branch, starts the driver, and reports progress. It also delivers the initiative pull request. It never runs a step itself. Your tool loads it when an initiative is active and the session is not a step session.
+This skill coordinates an initiative from chart to delivery in your own session. It plans the steps with you, cuts the branch, starts the driver, and reports progress. It also delivers the initiative pull request. It never runs a step itself. Your tool loads it when an initiative is active and the session is not a step session.
 
 ### `ravintio-file-backlog`
 

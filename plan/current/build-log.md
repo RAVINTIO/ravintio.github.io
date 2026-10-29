@@ -112,3 +112,4 @@ Design confirmed by the human (2026-10-29T20:30:26Z).
 - Departure: one improvement cycle covers all four requirements together, because the findings cross pages.
 - In progress: REQ-002 refactor, Zero guide fixes (2026-10-29T20:49:33Z)
 - In progress: REQ-001 and REQ-003 refactor, overview and reference fixes (2026-10-29T20:49:33Z)
+- Done: REQ-001 and REQ-003 refactor, overview and reference fixes (2026-10-29T20:50:44Z)

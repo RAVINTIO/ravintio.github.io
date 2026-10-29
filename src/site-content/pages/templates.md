@@ -4,18 +4,20 @@ This page lists the 45 files in the RAVINTIO Zero templates folder. They live in
 
 For the skills that use these files, see [skills](skills.md). For where the documents land, see [pipeline](pipeline.md).
 
-| Group | When it is written |
-|-------|--------------------|
-| Discovery and design | Written by the orchestrator before the plan phase |
-| Plan phase | Written by the plan skill |
-| Implement phase | Written by the implement skill and the agents it calls |
-| Validate and ship | Written by the validate-and-accept and ship skills |
-| Initiatives, records, and run control | Written when a run pauses, parks, or finishes, or when work spans features |
-| Project boot files | Copied into your project during setup |
+An initiative is a charted set of feature runs that share one branch and ship as one pull request. To chart one is to plan its steps with you.
+
+| Group | Who writes it, and when |
+|-------|-------------------------|
+| Discovery and design | The orchestrator writes these before the plan phase |
+| Plan phase | The plan skill writes these |
+| Implement phase | The implement skill and the agents it calls write these |
+| Validate and ship | The validate-and-accept and ship skills write these |
+| Initiatives, records, and run control | Skills write these when a run pauses, parks, or finishes, or when work spans features |
+| Project boot files | Setup copies these into your project |
 
 ## Discovery and design
 
-Written by the orchestrator before the plan phase.
+The orchestrator writes these before the plan phase.
 
 ### `feature-brief.template.md`
 
@@ -39,11 +41,11 @@ The working record of a run. The orchestrator creates it at discovery and adds t
 
 ## Plan phase
 
-Written by the plan skill. See [pipeline](pipeline.md) for the phase order.
+The plan skill writes these. See [pipeline](pipeline.md) for the phase order.
 
 ### `execution-plan.template.md`
 
-Lists the requirements for a feature. Each requirement traces to a user story or acceptance criterion.
+Holds the non-functional requirements, an API and data summary, a test impact table, and the concurrency plan. It also indexes the requirement files, and each requirement traces to a user story or acceptance criterion.
 
 ### `execution-plan-guide.md`
 
@@ -79,7 +81,7 @@ Tracks technical, operational, and security risks with their mitigations. The pl
 
 ### `risk-register-guide.md`
 
-Explains how risks are found, assessed, and tracked during a feature.
+Explains how the plan skill and later phases find, assess, and track risks during a feature.
 
 ### `domain-glossary.template.md`
 
@@ -95,7 +97,7 @@ Estimates the cost of running a feature. The plan skill fills it in when cost ma
 
 ### `operational-model.template.md`
 
-Describes how a feature is deployed and run. Deployment standards point agents to the strategy it declares.
+Describes how you deploy and run a feature. Deployment standards point agents to the strategy it declares.
 
 ### `slo-definitions.template.md`
 
@@ -103,7 +105,7 @@ Defines the service level objectives for a feature. Observability work in later 
 
 ## Implement phase
 
-Written by the implement skill and the agents it calls.
+The implement skill and the agents it calls write these.
 
 ### `component.template.yml`
 
@@ -143,7 +145,7 @@ Switches individual loops on or off. Copy it to `ravintio-overrides/loop-toggles
 
 ## Validate and ship
 
-Written by the validate-and-accept and ship skills.
+The validate-and-accept and ship skills write these.
 
 ### `test-report.template.md`
 
@@ -175,15 +177,15 @@ Indexes the architecture decision records across all features. The ship phase up
 
 ### `product.template.yml`
 
-Aggregates one release version across components. It applies to projects with two or more components.
+Holds the product-level version manifest. Every project needs `product.yml` with an `id`, because discovery stops without it. The extra fields, such as the component list, apply to products with several components.
 
 ## Initiatives, records, and run control
 
-Written when a run pauses, parks, or finishes, or when work spans features.
+Skills write these when a run pauses, parks, or finishes, or when work spans features.
 
 ### `initiative.template.md`
 
-Defines an initiative, which is a chain of feature steps you approve once. The initiative skill uses it.
+Defines an initiative, which is a chain of feature steps you approve once. The initiative skill uses it. The driver is the script that starts each step in turn.
 
 ### `backlog-entry.template.md`
 
@@ -207,7 +209,7 @@ A blameless review of a finished run or initiative, with the changes it files. T
 
 ## Project boot files
 
-Copied into your project during setup.
+Setup copies these into your project.
 
 ### `standard-boot.md`
 

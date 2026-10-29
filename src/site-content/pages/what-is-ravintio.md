@@ -1,6 +1,6 @@
 # What is RAVINTIO
 
-RAVINTIO is a collection of six open-source tools for working with AI agents on software. The tools cover autonomous engineering, verification and assessment, and experimental research. Each tool works on its own.
+RAVINTIO is a family of six open-source tools for working with AI agents on software. Two are available now, and four are in design. The tools cover autonomous engineering, verification and assessment, and experimental research. Each tool is meant to work on its own.
 
 ## The name
 
@@ -46,9 +46,9 @@ Every tool follows the same ideas.
 
 ## The tools work independently
 
-Each tool works on its own. None of them requires another to be installed.
+Each tool is meant to work on its own. None of them requires another to be installed.
 
-You can combine them if it helps. RAVINTIO Accept can check a change from any source, including a change built with Zero. RAVINTIO Insight can assess a system however its developers built it. These links are optional.
+You can combine them if it helps. RAVINTIO Accept is designed to check a change from any source, including a change built with Zero. RAVINTIO Insight is designed to assess a system however its developers built it. These links are optional.
 
 ## Where to go next
 

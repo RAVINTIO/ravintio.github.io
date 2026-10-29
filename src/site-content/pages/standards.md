@@ -11,6 +11,8 @@ Two subfolders sit beside these files. `library-standards/` holds per-language l
 | Architecture and data | `api-design-standards.md`, `database-standards.md`, `monorepo-standards.md`, `stack-summary.md` |
 | Build and operations | `build-target-standards.md`, `deployment-standards.md`, `infrastructure-standards.md`, `observability-standards.md` |
 
+An initiative is a charted set of feature runs that share one branch and ship as one pull request. To chart one is to plan its steps with you. The driver is a script that starts each step in turn. A marker line is a log line in a fixed format, such as `Blocked:`, that a script counts.
+
 ## Pipeline and governance
 
 These files govern how the pipeline itself behaves.
@@ -29,11 +31,11 @@ This file explains what each enforcement hook does and which hooks Codex runs. R
 
 ### `pack-update-policy.md`
 
-This file defines how an update to the pack is detected, confirmed, and trusted. Backlog entries cite it when they mention the pack update policy. The refresh and migration skills follow it.
+This file defines how Zero detects a pack update and how you confirm and trust it. Backlog entries cite it when they mention the pack update policy. The refresh and migration skills follow it.
 
 ### `roadmap-standards.md`
 
-This file explains how an initiative is charted, activated, run, advanced, and delivered. The initiative, orchestrator, and ship skills point to it. Read it first when an initiative is involved.
+This file explains the five initiative stages. The initiative skill charts, activates, and delivers. The orchestrator runs each step. The ship skill advances it. The initiative, orchestrator, and ship skills point to it. Read it first when an initiative is involved.
 
 ### `workflow-governance-standards.md`
 
@@ -57,7 +59,7 @@ This file sets the formats for dates and other details in project documents. Age
 
 ### `language-quirks-en-gb.md`
 
-This file lists the deliberate exceptions to British English spelling. Code identifiers are never corrected, for example. Agents and humans check it before they correct any text.
+This file lists the deliberate exceptions to British English spelling. Agents never correct code identifiers, for example. Agents and humans check it before they correct any text.
 
 ## Architecture and data
 
@@ -81,7 +83,7 @@ This file ranks backend stacks by how well agents work with them. Use it when yo
 
 ## Build and operations
 
-These files cover how the system is built, shipped, and watched.
+These files cover how you build, ship, and watch the system.
 
 ### `build-target-standards.md`
 

@@ -18,10 +18,10 @@ RAVINTIO has six tools. Each one works on its own, and none requires another. Th
 You can use any tool alone. If you use more than one, they fit together in these ways:
 
 - Zero and Framework are alternatives. You pick the one whose governance depth suits your project.
-- Accept can check a change from Zero, from Framework, or from any other process.
-- Qualify checks agent skills, separately from any software release.
-- Insight assesses a system and its practices, however the software was built.
-- Unbound runs isolated experiments. It is never a route to production.
+- Accept is designed to check a change from Zero, from Framework, or from any other process.
+- Qualify is meant to check agent skills, separately from any software release.
+- Insight is meant to assess a system and its practices, however the software was built.
+- Unbound is designed to run isolated experiments. It is never a route to production.
 
 ## RAVINTIO Zero
 
@@ -62,7 +62,7 @@ Framework answers this question: how can we work within established governance r
 
 - Structured discovery and traceable requirements.
 - Architectural boundaries, decision records, and component ownership.
-- Threat modelling and security controls where they apply.
+- Security controls where they apply.
 - Planning across components and integrations.
 - Risk handling, approvals, and exception management.
 - Persistent state, decision records, and recovery.
@@ -80,11 +80,11 @@ Find the code in the [RAVINTIO Framework repository](https://github.com/RAVINTIO
 
 **Status:** In design
 
-RAVINTIO Accept is for independent acceptance. It traces a change from its functional requirement to the evidence that proves it. It works whoever or whatever built the change.
+RAVINTIO Accept is meant for independent acceptance. It is designed to trace a change from its functional requirement to the evidence that proves it. The intent is that it works whoever or whatever built the change.
 
-Accept answers this question: is this change demonstrably fit for release?
+Accept is designed to answer this question: is this change demonstrably fit for release?
 
-Its central idea is that an implementation claims it is done, and Accept asks where the evidence is. Accept keeps a missing check, a failed check, and a passed check apart.
+Its central idea is that an implementation claims it is done, and Accept asks where the evidence is. Accept is designed to keep a missing check, a failed check, and a passed check apart.
 
 **What it owns**
 
@@ -96,17 +96,17 @@ Its central idea is that an implementation claims it is done, and Accept asks wh
 
 - Your test frameworks, scanners, and CI/CD pipelines.
 - Your test management and defect tracking.
-- Your release governance and risk acceptance. Accept informs these decisions and doesn't make them for you.
+- Your release governance and risk acceptance. Accept is designed to inform these decisions and never make them for you.
 
-Accept isn't an implementation engine.
+Accept is not meant to be an implementation engine.
 
 ## RAVINTIO Qualify
 
 **Status:** In design
 
-RAVINTIO Qualify is for evaluating agent skills. It checks a skill when you first adopt it. It checks again after the skill changes.
+RAVINTIO Qualify is meant for evaluating agent skills. It is designed to check a skill when you first adopt it and again after the skill changes.
 
-Qualify answers this question: does a skill meet its criteria, and does it still after changes?
+Qualify is designed to answer this question: does a skill meet its criteria, and does it still after changes?
 
 **What it owns**
 
@@ -116,18 +116,18 @@ Qualify answers this question: does a skill meet its criteria, and does it still
 
 **What it doesn't replace**
 
-- Your software release acceptance. Qualify evaluates skills and not releases.
+- Your software release acceptance. Qualify is meant to evaluate skills and not releases.
 - Your own review of how a skill fits your work.
 
 ## RAVINTIO Insight
 
 **Status:** In design
 
-RAVINTIO Insight is for evidence-led assessment of software systems and engineering practices. It looks at architecture, security, reliability, testing, delivery, documentation, and AI workflows. It works the same way however the software was built, and it is read-only by default.
+RAVINTIO Insight is meant for evidence-led assessment of software systems and engineering practices. It is designed to look at architecture, security, reliability, testing, delivery, documentation, and AI workflows. The intent is that it works the same way however the software was built, and that it stays read-only by default.
 
-Insight answers this question: what does the available evidence indicate about risks and potential improvements?
+Insight is designed to answer this question: what does the available evidence indicate about risks and potential improvements?
 
-Insight separates observation from inference. It states its uncertainty and names the evidence it couldn't see.
+Insight is meant to separate observation from inference. It is designed to state its uncertainty and name the evidence it couldn't see.
 
 **What it owns**
 
@@ -140,17 +140,17 @@ Insight separates observation from inference. It states its uncertainty and name
 
 - Your monitoring and observability platforms.
 - Your incident management.
-- Your own decisions. Insight recommends changes and never makes them without your explicit permission.
+- Your own decisions. Insight is meant to recommend changes and never make them without your explicit permission.
 
 ## RAVINTIO Unbound
 
 **Status:** In design, experimental research only
 
-RAVINTIO Unbound is for research. It helps you study how models and agent skills behave when you supply only functional requirements. It leaves out prescribed practices such as upfront planning, architecture, and testing strategy. You can watch how decisions and outputs change over long autonomous runs.
+RAVINTIO Unbound is meant for research. It is designed to help you study how models and agent skills behave when you supply only functional requirements. It leaves out prescribed practices such as upfront planning, architecture, and testing strategy. The aim is to watch how decisions and outputs change over long autonomous runs.
 
-Unbound answers this question: how does an agent behave when you give it only functional requirements?
+Unbound is designed to answer this question: how does an agent behave when you give it only functional requirements?
 
-Unbound is never for production software. It is not a development method. Experiments run in isolation, with independent observation and operator control.
+Unbound is never for production software. It is not a development method. Experiments are meant to run in isolation, with independent observation and operator control.
 
 **What it owns**
 
