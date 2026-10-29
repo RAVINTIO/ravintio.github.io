@@ -1,6 +1,6 @@
 # Dependency Graph
 
-Last updated: 0000003-p9-phase-docs
+Last updated: 0000005-ravintio-docs-rewrite
 
 ---
 
@@ -9,76 +9,54 @@ Last updated: 0000003-p9-phase-docs
 ```mermaid
 graph TD
     subgraph Source
-        md["planifest-docs/\n(Markdown source)"]
-        manifest["docs.manifest.json\n(page order & titles)"]
-        framework["planifest-framework/\n(skills, hooks, templates, standards)"]
+        pages["src/site-content/pages/\n(Markdown)"]
+        manifest["docs.manifest.json\n(sections and order)"]
     end
 
     subgraph Build
-        builder["scripts/build-docs.js\n(Node.js — marked)"]
-        vite["Vite\n(bundle & optimise)"]
+        builder["scripts/build-docs.js\n(Node, marked)"]
+        vite["Vite\n(bundle)"]
     end
 
     subgraph Output
-        html["src/web-app/docs/*.html\n(generated pages)"]
-        sitemap["public/sitemap-data.json\n(runtime nav data)"]
-        dist["dist/\n(production bundle)"]
+        html["src/web-app/docs/*.html\n(generated, not committed)"]
+        sitemap["public/sitemap-data.json\n(generated, not committed)"]
+        dist["dist/"]
     end
 
     subgraph Deployment
-        ghpages["GitHub Pages\n(planifest.dev)"]
-        ci["GitHub Actions\n(.github/workflows/)"]
+        ci["GitHub Actions\n(deploy.yml)"]
+        host["GitHub Pages"]
     end
 
-    md -- "parsed by marked,\nlinks rewritten" --> builder
-    manifest -- "page order & titles" --> builder
-    builder -- "generates HTML\nwith nav + pagination" --> html
-    builder -- "writes" --> sitemap
-    html -- "bundled as\nmulti-page app" --> vite
-    sitemap -- "copied to dist" --> vite
+    pages --> builder
+    manifest --> builder
+    manifest --> vite
+    builder --> html
+    builder --> sitemap
+    html --> vite
+    sitemap --> vite
     vite --> dist
-    ci -- "triggers on merge to main" --> vite
-    dist -- "published" --> ghpages
+    ci -- "on merge to main" --> vite
+    dist --> host
 ```
 
 ---
 
-## Content Authoring Flow
+## Test Inputs
 
-```mermaid
-graph LR
-    author["Author edits\nplanifest-docs/*.md"]
-    build["node scripts/build-docs.js"]
-    preview["npm run dev\n(Vite dev server)"]
-    pr["Pull Request\n→ main"]
-    deploy["GitHub Actions\n→ GitHub Pages"]
-
-    author --> build --> preview
-    preview -- "approved" --> pr --> deploy
-```
+| Test | Reads |
+|------|-------|
+| `nav.test.mjs` | `docs.manifest.json`, `dist/docs/*.html` |
+| `brand-guard.test.mjs` | Every tracked file, `dist/` |
+| `capitals.test.mjs` | Pages, `index.html`, `dist/` |
+| `links.test.mjs` | `dist/` |
+| `style.test.mjs` | Pages |
+| `status-labels.test.mjs` | `six-tools.md`, `what-is-ravintio.md` |
+| `reference-match.test.mjs` | Reference pages, `ravintio-zero/skills/`, `standards/`, `templates/` |
 
 ---
 
-## planifest-framework (dev dependency only)
+## The installed pack
 
-`planifest-framework/` is a vendored copy used exclusively to manage development of this repo — it is not part of the build output and is not shipped with the site. It has no role at compile time or runtime for the web-app.
-
-The authoritative framework source is at [github.com/planifest/planifest-framework](https://github.com/planifest/planifest-framework). Consumer repos obtain the framework directly from there — not from this repo.
-
-```mermaid
-graph LR
-    source["github.com/planifest/\nplanifest-framework\n(source of truth)"]
-    vendored["planifest-framework/\n(vendored copy in this repo,\ndev only)"]
-    consumer["Any Consumer Repo"]
-    hooks[".claude/hooks/"]
-    skills[".claude/skills/"]
-    boot["CLAUDE.md / AGENTS.md"]
-
-    source -- "pulled to update\nvendored copy" --> vendored
-    vendored -- "governs development\nof planifest-docs only" --> vendored
-
-    source -- "copied by developer" --> consumer
-    consumer -- "setup.sh / setup.ps1\ninstalls" --> hooks
-    consumer -- "setup.sh / setup.ps1\ninstalls" --> skills
-    consumer -- "setup.sh / setup.ps1\nwrites" --> boot
-```
+`ravintio-zero/` is a copy of the RAVINTIO Zero pack. It governs how this repo changes. The site build doesn't read it. Only `reference-match.test.mjs` reads it, to keep the reference pages accurate.

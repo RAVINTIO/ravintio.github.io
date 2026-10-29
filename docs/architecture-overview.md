@@ -1,15 +1,15 @@
 # Architecture Overview
 
 > Living document. Reflects current system state. Updated after every pipeline run.
-> Do not archive this file — update it in place.
+> Do not archive this file. Update it in place.
 
-Last updated: 0000003-p9-phase-docs
+Last updated: 0000005-ravintio-docs-rewrite
 
 ---
 
 ## System Summary
 
-The Planifest docs system is a static documentation website for the Planifest framework, served via GitHub Pages. It is authored as markdown source files, compiled to HTML at build time by a Node.js script, bundled by Vite, and deployed automatically on merge to `main`. The system has no runtime backend, no user authentication, and no data storage.
+The RAVINTIO docs system is a static site on GitHub Pages at `ravintio.github.io/ravintio-docs`. Authors write Markdown pages. A Node script turns them into HTML at build time, and Vite bundles the result. GitHub Actions deploys it when a change merges to `main`. The system has no backend, no sign-in, and no stored user data.
 
 ---
 
@@ -17,9 +17,8 @@ The Planifest docs system is a static documentation website for the Planifest fr
 
 | Component | Type | Purpose | Status |
 |-----------|------|---------|--------|
-| `planifest-docs` | content | Markdown source for all documentation pages | active |
-| `web-app` | static site | Builds and serves the documentation site | active |
-| `planifest-framework` | dev dependency | Provides the confirmed-design pipeline that governs development of this repo | active |
+| `site-content` | content | Owns the Markdown pages | active |
+| `web-app` | static site | Builds and serves the site, owns the nav manifest and tests | active |
 
 ---
 
@@ -27,16 +26,18 @@ The Planifest docs system is a static documentation website for the Planifest fr
 
 ```mermaid
 flowchart LR
-    docs["planifest-docs/\n(Markdown source)"]
-    build["web-app build script\n(scripts/build-docs.js)"]
+    pages["src/site-content/pages/\n(Markdown)"]
+    manifest["docs.manifest.json\n(sections and order)"]
+    build["web-app build-docs.js"]
     vite["Vite bundler"]
     dist["dist/\n(static HTML)"]
-    ghpages["GitHub Pages\n(planifest.dev)"]
+    pagesHost["GitHub Pages"]
 
-    docs -->|"parsed at build time"| build
+    pages -->|"read at build time"| build
+    manifest --> build
     build -->|"generates HTML"| vite
     vite -->|"bundles"| dist
-    dist -->|"deployed by GitHub Actions"| ghpages
+    dist -->|"deployed by GitHub Actions"| pagesHost
 ```
 
 ---
@@ -45,10 +46,8 @@ flowchart LR
 
 | Data Store | Owner | Consumers |
 |------------|-------|-----------|
-| `planifest-docs/*.md` | `planifest-docs` | `web-app` (read-only at build time) |
-| `src/web-app/docs.manifest.json` | `web-app` | `web-app` build script (page ordering/titles) |
-
-No runtime database. No persistent user data.
+| `src/site-content/pages/*.md` | `site-content` | `web-app`, read only at build time |
+| `src/web-app/docs.manifest.json` | `web-app` | `web-app` build script and Vite config |
 
 ---
 
@@ -56,23 +55,22 @@ No runtime database. No persistent user data.
 
 | Dependency | Type | Components That Use It |
 |------------|------|----------------------|
-| GitHub Pages | hosting | `web-app` (deployment target) |
-| GitHub Actions | CI/CD | `web-app` (build and deploy workflow) |
+| GitHub Pages | hosting | `web-app` |
+| GitHub Actions | CI/CD | `web-app` |
 | Vite 7 | npm | `web-app` |
-| marked 17 | npm | `web-app` (markdown → HTML) |
-| mermaid 11 | npm | `web-app` (diagram rendering) |
+| marked 17 | npm | `web-app` |
+| mermaid 11 | npm | `web-app`, loaded only on pages with diagrams |
 
 ---
 
 ## Key Architectural Decisions
 
-See `docs/decisions-index.md` for the full list. Decisions that most shape the current architecture:
+See `docs/decisions-index.md` for the full list. These decisions shape the current architecture:
 
-- **ADR-001 (website)**: Static site generation with Vite — no SSR, no backend, pure static output
-- **ADR-002 (website)**: Build-time markdown rendering — docs are compiled, not interpreted at runtime
-- **ADR-003 (website)**: Deployment via GitHub Actions to GitHub Pages
-- **ADR-001 (0000001)**: `docs.manifest.json` as single source of truth for page order and titles
-- **ADR-001 (0000003)**: `planifest-docs` formalised as a tracked component with a `component.yml` manifest
+- Static site generation with Vite, with no backend (website ADR-001).
+- `site-content` owns the pages, and `web-app` only reads them (0000005 ADR-002).
+- A sectioned manifest sets the nav sections and page order (0000005 ADR-003).
+- Tests guard the brand and keep the reference pages in step with the pack (0000005 ADR-004 and ADR-005).
 
 ---
 
