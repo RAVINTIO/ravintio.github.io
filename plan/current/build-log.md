@@ -66,3 +66,4 @@ Scope Lock (first-run path): A reader new to RAVINTIO meets the name and the six
 Scope Lock (error path): Pack drift fails the build through the reference-match test, so stale pages never deploy. Old Planifest links reach a 404, accepted with no redirects. [source: draft-accepted]
 Scope Lock (cross-session continuity): Not applicable. The site is static and keeps no reader state. [source: draft-accepted]
 Scope Lock complete. All four scenario paths captured. The human answered "Accept all", taken as an explicit accept of each item.
+Run mode: autonomous (2026-10-29T20:25:29Z)
