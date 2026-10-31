@@ -1,7 +1,7 @@
 id: "ravintio-docs"
 name: "RAVINTIO Docs"
-version: "0.4.0"
-feature: "0000005-ravintio-docs-rewrite"
+version: "0.4.1"
+feature: "0000009-bug-fixes"
 versionPolicy: "max-component-version"
 releaseSize: "large"
 
