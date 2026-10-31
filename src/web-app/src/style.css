@@ -672,10 +672,33 @@ code {
   margin: 0;
   min-width: 0;
 }
-.doc-sections {
+.doc-sections__disclosure {
   position: sticky;
   top: 6rem;
+}
+.doc-sections {
   font-size: 0.95rem;
+}
+.doc-sections__summary {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.doc-sections__label {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.doc-sections__disclosure[open] > .doc-sections__summary { margin-bottom: 1rem; }
+.doc-sections__summary:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+/* Desktop shows the page list as a sidebar, so the toggle is hidden (ADR-002) */
+@media (min-width: 901px) {
+  .doc-sections__summary { display: none; }
 }
 .doc-sections__group + .doc-sections__group { margin-top: 1.5rem; }
 .doc-sections__title {
@@ -717,7 +740,7 @@ a:focus-visible, button:focus-visible {
 
 @media (max-width: 900px) {
   .doc-layout { grid-template-columns: minmax(0, 1fr); margin-top: 6rem; }
-  .doc-sections { position: static; }
+  .doc-sections__disclosure { position: static; }
   .nav-content { padding: 1rem; }
 }
 
