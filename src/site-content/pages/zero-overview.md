@@ -26,6 +26,15 @@ Every change takes the same route through five phases. A small change makes a sm
 
 Every agent reply starts with the phase prefix, so you always know where the run stands. See [the pipeline](pipeline.md) for the full detail.
 
+## How Zero keeps solutions simple
+
+Complexity that nobody asked for becomes a cost you pay on every later change. Zero works against it at each stage.
+
+- **Discovery** sizes each release. If the work is too large for one run, the agent recommends a split.
+- **Plan** derives requirements from your stories only. The agent never invents a requirement. Each decision record must state the downsides of a choice as well as the gains.
+- **Implement** writes the minimum code to pass each test. An improvement loop then asks whether a simpler solution passes the same tests.
+- **Standards** favour clarity over cleverness and code you can delete without side effects. They name over-abstraction and unused code as faults to remove.
+
 ## Who decides what
 
 You act as product owner and architect. The agent acts as implementer inside the limits you set.
