@@ -54,3 +54,12 @@ describe('req-004-copy-fixes: AC-2 review findings 5 to 8 applied', () => {
     assert.equal(subtitle?.[1], 'Coding agents that build to your design and standards, and prove the result.');
   });
 });
+
+describe('req-004-copy-fixes: six-tools name column', () => {
+  test('each tool name in the At a glance table breaks before the second word in a fixed-width span', () => {
+    const table = readBuilt('six-tools').match(/<table>[\s\S]*?<\/table>/)[0];
+    const names = [...table.matchAll(/<tr>\s*<td>([\s\S]*?)<\/td>/g)].map(m => m[1].trim());
+    assert.deepEqual(names, ['Zero', 'Framework', 'Accept', 'Qualify', 'Insight', 'Unbound']
+      .map(n => `<span class="tool-name">RAVINTIO<br>${n}</span>`));
+  });
+});

@@ -730,6 +730,12 @@ code {
   border-left-color: var(--color-brand-400);
 }
 
+/* Tool names in the six-tools table keep one fixed width at every window size */
+.doc-container .tool-name {
+  display: inline-block;
+  width: 6rem;
+}
+
 /* Wide tables and code scroll inside the panel, not the page (NFR-003) */
 .doc-container table { display: block; overflow-x: auto; }
 .doc-container pre { overflow-x: auto; }

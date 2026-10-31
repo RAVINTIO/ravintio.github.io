@@ -6,12 +6,12 @@ RAVINTIO has six tools. Each one works on its own, and none requires another. Th
 
 | Tool | Area | Status | The question it answers |
 |------|------|--------|-------------------------|
-| RAVINTIO Zero | Autonomous engineering | Available | How can we build this with minimal ceremony? |
-| RAVINTIO Framework | Autonomous engineering | Available | How can we work within established governance requirements? |
-| RAVINTIO Accept | Verification and assessment | In design | Is this change demonstrably fit for release? |
-| RAVINTIO Qualify | Verification and assessment | In design | Does a skill meet its criteria, and does it still after changes? |
-| RAVINTIO Insight | Verification and assessment | In design | What does the evidence say about risks and improvements? |
-| RAVINTIO Unbound | Experimental research | In design, experimental research only | How does an agent behave when you give it only functional requirements? |
+| <span class="tool-name">RAVINTIO<br>Zero</span> | Autonomous engineering | Available | How can we build this with minimal ceremony? |
+| <span class="tool-name">RAVINTIO<br>Framework</span> | Autonomous engineering | Available | How can we work within established governance requirements? |
+| <span class="tool-name">RAVINTIO<br>Accept</span> | Verification and assessment | In design | Is this change demonstrably fit for release? |
+| <span class="tool-name">RAVINTIO<br>Qualify</span> | Verification and assessment | In design | Does a skill meet its criteria, and does it still after changes? |
+| <span class="tool-name">RAVINTIO<br>Insight</span> | Verification and assessment | In design | What does the evidence say about risks and improvements? |
+| <span class="tool-name">RAVINTIO<br>Unbound</span> | Experimental research | In design, experimental research only | How does an agent behave when you give it only functional requirements? |
 
 ## How the tools relate
 
