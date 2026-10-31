@@ -44,3 +44,4 @@ None. Two 0.4.0 tests failed after U1. The build log records both as departures 
 | Human corrections at gates | 0 | 2 | ok |
 
 Breaches: 0. The gate reports and does not block. Counts come from marker lines only.
+Retrospective: plan/retrospectives/0000009-bug-fixes-2026-10-31.md
