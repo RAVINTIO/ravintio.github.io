@@ -1,7 +1,7 @@
 ---
 title: "Feature Brief - Bug fixes for copy, mobile nav, and dependencies"
 summary: "The business case, scope, and product requirements for the feature."
-status: "draft"
+status: "approved"
 version: "0.4.1"
 ---
 # Feature Brief - Bug fixes for copy, mobile nav, and dependencies
