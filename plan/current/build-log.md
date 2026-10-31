@@ -122,3 +122,4 @@ Gate accepted: P2 (autonomous, no stop)
 | Parallel task batches | `0` |
 | Notes | 0 self-correct cycles. Every criterion verified. No open critical or high finding. |
 Gate accepted: P3 (autonomous, evidence in the PR)
+- Postmortem: plan/postmortems/2026-10-31-advisory-after-discovery.md (2026-10-31T15:17:56Z)
