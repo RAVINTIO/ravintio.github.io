@@ -123,3 +123,33 @@ Gate accepted: P2 (autonomous, no stop)
 | Notes | 0 self-correct cycles. Every criterion verified. No open critical or high finding. |
 Gate accepted: P3 (autonomous, evidence in the PR)
 - Postmortem: plan/postmortems/2026-10-31-advisory-after-discovery.md (2026-10-31T15:17:56Z)
+
+### P4: Ship
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-10-31T15:18:06Z` |
+| End | `2026-10-31T15:18:23Z` |
+| Wall clock | `0` |
+| Model tier | primary |
+| Skills loaded | ravintio-ship, ravintio-postmortem, ravintio-retrospective |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | none |
+
+---
+
+## Summary (filled at ship, P4)
+
+| Metric | Value |
+|--------|-------|
+| Total phases completed | `5` |
+| Total wall clock | `1981 min` (includes time waiting on human answers in P0 and at the P2 stop) |
+| Total agents spawned | `1` |
+| Total MCP calls | `20` |
+| Phases using parallelism | `0` |
+| Primary tier agent calls | `0` |
+| Cheaper tier agent calls | `1` (sonnet, P2 reviewer) |
+| Self-corrections | `0` |
+| Phases skipped | none |

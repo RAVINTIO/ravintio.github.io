@@ -21,7 +21,7 @@ P2 stopped on REQ-006 AC-1. `npm audit` still reported 2 low advisories after th
 
 | Time | Event | Evidence |
 |------|-------|----------|
-| P0, before 2026-10-31T13:14:15Z | Discovery found that `npm audit fix` cleared all 16 advisories within current majors | `plan/_archive/0000009-bug-fixes-*/build-log.md`, P0 exchange (dependencies) |
+| P0, before 2026-10-31T13:14:15Z | Discovery found that `npm audit fix` cleared all 16 advisories within current majors | `plan/_archive/0000009-bug-fixes-2026-10-31/build-log.md`, P0 exchange (dependencies) |
 | 2026-10-31T13:14:15Z | The design approved patch and minor updates within current majors only | `design.md`, `Approved dependencies` |
 | 2026-10-31T13:33:23Z | P1 planned U6 from the P0 result. No audit ran. | P1 block start, `execution-plan.md` U6 row |
 | 2026-10-31T13:41:05Z | U6 ran `npm audit fix`. 2 low advisories remained (GHSA-238p-pmpm-9mq7 in `katex` 0.16.47). | Build log `Blocked:` line, commit `1097472` |
