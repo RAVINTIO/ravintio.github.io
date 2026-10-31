@@ -16,6 +16,9 @@ const BLOCKLIST = [
   /—/, /;/, /!/,
 ];
 
+// Human-confirmed copy where the word names the design goal rather than judging a task (0000009 US-001).
+const AGREED_PHRASES = [/as simple as the problem allows/gi];
+
 const MAX_WORDS = 24;
 
 // Prose lines only: drop code, tables, headings, HTML, and link targets.
@@ -42,7 +45,8 @@ describe('req-002-zero-adoption-guide: AC-3 prose meets the style rules', () => 
   test('no page uses a blocklisted word or mark in prose', () => {
     const hits = [];
     for (const slug of pageSlugs()) {
-      for (const s of proseUnits(readPage(slug))) {
+      for (const unit of proseUnits(readPage(slug))) {
+        const s = AGREED_PHRASES.reduce((acc, re) => acc.replace(re, ' '), unit);
         for (const re of BLOCKLIST) if (re.test(s)) hits.push(`${slug}: ${re} in "${s}"`);
       }
     }

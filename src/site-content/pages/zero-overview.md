@@ -2,26 +2,15 @@
 
 RAVINTIO Zero is a pipeline that makes your coding agent plan before it writes code. You write a feature brief. The agent asks questions, produces a reviewable plan, and builds only what that plan describes. A run ends in a pull request unless you pause, park, or stop it.
 
-## Terms
+## Why use Zero?
 
-These terms appear throughout the guide.
+Zero gives you the benefits in [why use RAVINTIO](what-is-ravintio.md#why-use-ravintio) with low ceremony. These reasons are specific to Zero.
 
-- **Orchestrator:** The skill that runs discovery and routes the run through the phases. It loads at the start of a session.
-- **Phase:** One of the five steps of a run, from P0 to P4. Each phase has its own skill and output.
-- **Gate and gated run:** A gate is a stop where you review before the next phase starts. In a gated run the agent stops at every gate.
-- **Boot file:** The file the agent tool reads at session start, `CLAUDE.md` or `AGENTS.md`. Setup generates it.
-- **Sentinel:** A small marker file in `plan/` that tells the hooks a run is active. Ship deletes them.
-- **Build log:** The record of a run in `plan/current/build-log.md`. It holds decisions, stops, and resolutions.
-- **Parity check:** A check that a file under `plan/`, `docs/`, or a `component.yml` changed beside `src/`. It tests presence, not content.
-- **Improvement loop:** A review cycle after the first green build of a requirement. It runs up to two cycles per requirement.
-
-## Why Zero exists
-
-Coding agents write code fast. The risk has moved from slow delivery to fast, plausible output that rests on unstated assumptions. Zero targets that risk with three ideas.
-
-1. **The plan is the reviewable artefact.** When an agent writes the code, the prompt and plan largely decide the result. Zero makes the plan explicit, so you review decisions before code exists.
-2. **Context lives with the component.** Each component keeps a manifest. Each feature keeps its plans and decision records. A later session, or a person, can read why the code looks the way it does.
-3. **Gaps trigger questions.** If your brief leaves something open, the agent stops and asks. It does not fill the gap with a guess.
+- **You review the plan before code exists.** The agent writes a design and a plan, and you confirm both. You catch a wrong assumption while it costs a comment, not a rewrite.
+- **Gaps become questions, not guesses.** If your brief leaves something open, the agent stops and asks you.
+- **Context lives with the component.** Each component keeps a manifest. Each feature keeps its plans and decision records. A later session, or a person, can read why the code looks the way it does.
+- **Every change takes the same route.** A small change makes a small run, and the gates stay. You always know where a run stands.
+- **It runs in the tools you already use.** Zero installs into your repo as plain files for Claude Code or Codex. It adds no service to run.
 
 ## How a run flows
 
@@ -36,6 +25,15 @@ Every change takes the same route through five phases. A small change makes a sm
 | P4 Ship | `P4 Ship:` | The agent archives the plan, writes a changelog, and raises the pull request. |
 
 Every agent reply starts with the phase prefix, so you always know where the run stands. See [the pipeline](pipeline.md) for the full detail.
+
+## How Zero keeps solutions simple
+
+Complexity that nobody asked for becomes a cost you pay on every later change. Zero works against it at each stage.
+
+- **Discovery** sizes each release. If the work is too large for one run, the agent recommends a split.
+- **Plan** derives requirements from your stories only. The agent never invents a requirement. Each decision record must state the downsides of a choice as well as the gains.
+- **Implement** writes the minimum code to pass each test. An improvement loop then asks whether a simpler solution passes the same tests.
+- **Standards** favour clarity over cleverness and code you can delete without side effects. They name over-abstraction and unused code as faults to remove.
 
 ## Who decides what
 
@@ -73,17 +71,31 @@ These rules hold in every run, whatever the model or configuration.
 6. No credentials in context. If one appears, the agent flags it and does not use it.
 7. Update documentation after any deviation. The agent changes the plan, docs, or manifest to match what it built.
 
-## Limits of Zero
+## When Zero fits
 
-Zero trades upfront effort for traceability. That trade does not always pay off.
+Zero suits changes you will maintain. It trades some upfront effort for a record of why the code looks the way it does.
 
-- **Overhead is real.** A small change still runs all five phases. Prototypes and exploratory work may not repay the cost.
-- **It depends on your review.** The pull request is a backstop only if you read the plans and the diffs. Zero structures the review. It cannot do the review for you.
-- **A plan does not prevent every defect.** A complete specification reduces errors from assumptions. It does not guarantee correct code.
-- **No benchmarks exist.** Nothing here measures outcomes with and without Zero.
-- **It structures agent sessions, not teams.** Zero is not a project management method.
-- **The parity check tests presence.** CI confirms that a file under `plan/`, `docs/`, or a `component.yml` changed beside `src/`. Reviewers check that the content matches the code.
+- **Code that lives on.** A product, service, or library that others will change later repays the plan and the records.
+- **Work you review.** The pull request carries the plans, the decisions, and the evidence. Zero structures the review, and you still do it.
+- **Agent sessions.** Zero structures how an agent works on a change. It works alongside your team's planning method.
+
+CI confirms that a file under `plan/`, `docs/`, or a `component.yml` changed beside `src/`. You confirm that the content matches the code.
+
+A throwaway prototype or a quick experiment may not need Zero. Every change runs all five phases, however small.
 
 ## Next step
 
 Follow [Install Zero](install-zero.md) to add the pack to a repository. For lists of what the pack contains, see [skills](skills.md), [standards](standards.md), and [templates](templates.md).
+
+## Terms
+
+These terms appear throughout the guide.
+
+- **Orchestrator:** The skill that runs discovery and routes the run through the phases. It loads at the start of a session.
+- **Phase:** One of the five steps of a run, from P0 to P4. Each phase has its own skill and output.
+- **Gate and gated run:** A gate is a stop where you review before the next phase starts. In a gated run the agent stops at every gate.
+- **Boot file:** The file the agent tool reads at session start, `CLAUDE.md` or `AGENTS.md`. Setup generates it.
+- **Sentinel:** A small marker file in `plan/` that tells the hooks a run is active. Ship deletes them.
+- **Build log:** The record of a run in `plan/current/build-log.md`. It holds decisions, stops, and resolutions.
+- **Parity check:** A check that a file under `plan/`, `docs/`, or a `component.yml` changed beside `src/`. It tests presence, not content.
+- **Improvement loop:** A review cycle after the first green build of a requirement. It runs up to two cycles per requirement.

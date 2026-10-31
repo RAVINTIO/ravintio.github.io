@@ -1,7 +1,7 @@
 {
   "name": "ravintio-docs-web-app",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "scripts": {
     "predev": "node scripts/build-docs.js",
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "marked": "^17.0.4",
-    "mermaid": "^11.13.0",
+    "mermaid": "^12.2.0",
     "typescript": "~5.9.3",
     "vite": "^7.3.1"
   }

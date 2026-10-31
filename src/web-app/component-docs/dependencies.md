@@ -17,7 +17,7 @@ None. GitHub Pages serves `dist/` through `.github/workflows/deploy.yml`.
 | Package | Version | Purpose |
 |---------|---------|---------|
 | `marked` | ^17.0.4 | Converts Markdown to HTML in `build-docs.js` |
-| `mermaid` | ^11.13.0 | Draws diagrams in the browser, loaded on demand |
+| `mermaid` | ^12.2.0 | Draws diagrams in the browser, loaded on demand |
 | `vite` | ^7.3.1 | Bundler and dev server |
 | `typescript` | ~5.9.3 | Type checking |
 

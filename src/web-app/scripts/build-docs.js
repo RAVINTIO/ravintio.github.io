@@ -67,7 +67,12 @@ function sectionNav(currentFile) {
     }).join('');
     return `<div class="doc-sections__group"><p class="doc-sections__title">${escapeHtml(section.title)}</p><ul>${links}</ul></div>`;
   }).join('');
-  return `<nav class="doc-sections" aria-label="Documentation">${groups}</nav>`;
+  const currentTitle = manifest.sections.flatMap(s => s.pages).find(p => p.file === currentFile)?.title ?? '';
+  // Native disclosure: open in the HTML, closed by main.ts on a phone (ADR-002).
+  return `<details class="doc-sections__disclosure" open>
+        <summary class="doc-sections__summary"><span class="doc-sections__label">Pages:</span> ${escapeHtml(currentTitle)}</summary>
+        <nav class="doc-sections" aria-label="Documentation">${groups}</nav>
+      </details>`;
 }
 
 function pageHtml({ title, content, currentFile, pagination }) {

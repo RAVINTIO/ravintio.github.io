@@ -1,3 +1,5 @@
+import { syncPageList, MOBILE_QUERY } from './page-list';
+
 // Theme Management
 const THEME_KEY = 'ravintio-theme';
 
@@ -14,6 +16,10 @@ const getPreferredTheme = () => {
 
 // Initialize Theme
 setTheme(getPreferredTheme());
+
+// Module scripts run once the document is parsed, so the element exists here.
+const pageList = document.querySelector<HTMLDetailsElement>('.doc-sections__disclosure');
+if (pageList) syncPageList(pageList, window.matchMedia(MOBILE_QUERY));
 
 // Mermaid loads only on pages with a diagram, to keep other pages light (NFR-002).
 const renderDiagrams = async () => {

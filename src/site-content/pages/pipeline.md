@@ -34,7 +34,7 @@ Some artefacts appear only when their trigger holds. Examples are an OpenAPI spe
 
 ### P2 Implement
 
-For each requirement, the agent runs a test-driven loop. It writes one failing test, writes the minimum code to pass, and then refactors. An improvement loop follows, with up to two cycles per requirement. Documentation lands in the same phase as the code.
+For each requirement, the agent runs a test-driven loop. It writes one failing test, writes the minimum code to pass, and then refactors. An improvement loop follows, with up to two cycles per requirement. Each cycle asks whether a simpler solution meets the same tests. Documentation lands in the same phase as the code.
 
 ### P3 Validate
 

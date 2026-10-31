@@ -5,7 +5,7 @@ You install Zero by copying one folder, `ravintio-zero/`, into your repository a
 ## Prerequisites
 
 - Claude Code or Codex
-- Node, because the hooks and scripts run as `node` scripts. The pack states no minimum version.
+- Node, because the hooks and scripts run as `node` scripts.
 - Git
 - A GitHub remote named `origin`. The pre-push hook fetches `origin/main`, and ship pushes to it.
 - The `gh` command line tool, installed and signed in. The agent uses it to raise pull requests.
