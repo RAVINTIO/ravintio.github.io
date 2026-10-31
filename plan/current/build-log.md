@@ -66,11 +66,14 @@ Gate accepted: P0 (2026-10-31T13:14:15Z)
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-31T13:33:23Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-10-31T13:36:07Z` |
+| Wall clock | `2` |
 | Model tier | primary |
 | Skills loaded | ravintio-orchestrator, ravintio-plan |
 | Agents spawned | `0` |
 | MCP calls | `0` |
 | Parallel task batches | `0` |
 | Notes | Resumed from the pause record. Backlog entries 0000007 and 0000008 removed, pulled in as US-006 and US-005. |
+
+Consistency check: clean.
+Gate accepted: P1 (autonomous, no stop)

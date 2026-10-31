@@ -43,7 +43,7 @@ Below 900 px the page list stacks above the content, so a phone reader scrolls p
 - The list renders open and then closes on a phone, so a slow script can show a brief flash.
 
 **Risks:**
-- A resize across 900 px leaves the list closed at desktop width. Mitigation: CSS forces the list visible at 900 px and above, whatever the `open` state.
+- A resize across 900 px leaves the list closed at desktop width. Mitigation: `main.ts` listens for the 900 px media query and sets `open` again when the viewport widens past it.
 
 ## Related ADRs
 
