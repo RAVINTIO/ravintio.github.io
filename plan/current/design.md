@@ -77,7 +77,7 @@
 ## Dependencies
 - Upstream: `ravintio-zero/` pack (claims about Zero).
 - Downstream: none.
-- Approved dependencies: none new. Patch and minor updates of existing `vite`, `mermaid`, and their transitive dependencies through `npm audit fix`, within current majors.
+- Approved dependencies: none new. Patch and minor updates of existing `vite`, `mermaid`, and their transitive dependencies through `npm audit fix`, within current majors. `mermaid` 12 (major bump), approved on 2026-10-31 to clear GHSA-238p-pmpm-9mq7 in `katex`.
 
 ## Active Skills
 None

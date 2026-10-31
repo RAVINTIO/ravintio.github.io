@@ -15,7 +15,7 @@ version: "0.1.0"
 
 | ID | Category | Description | Likelihood | Impact | Mitigation | Status |
 |----|----------|------------|------------|--------|-----------|--------|
-| R-001 | technical | The `mermaid` update changes how the pipeline diagram renders | low | medium | P3 browser check of the `pipeline` page | open |
+| R-001 | technical | The `mermaid` 12 upgrade changes how the pipeline diagram renders | low | medium | P3 browser check of the `pipeline` page | open |
 | R-002 | technical | New copy breaks the sentence-length or blocklist rules in `style.test.mjs` | medium | low | `style.test.mjs` runs in every P2 unit. Agreed copy that fails is reported, not rewritten silently. | open |
 | R-003 | operational | Readers on a phone miss the closed page list and can't find other pages | low | low | The summary names the current page and shows the native disclosure marker | open |
 | R-004 | technical | `main.ts` closes the disclosure after first paint, so the open list flashes on a phone | medium | low | Close it in a module script that runs before images load. P3 browser check at 360 px. | open |
