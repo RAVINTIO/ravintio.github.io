@@ -39,6 +39,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Migration 0005: `Applies when:` is false. The repo has no `plan/roadmap/*/roadmap.md` and no `roadmap/**` in `ravintio.yml`. Left pending.
 - Pack update check: resume detection compared pack `0.37.0` with the product version `0.4.1`. This is the false positive ruled in run 0000009. No `ravintio-zero/` file changed since `54db2ef`.
 - Backlog: discarded 0000010, 0000011, and 0000012. Each is a pack change that Zero had not logged and still needs. Moved to the Zero repo as uncommitted entries 0000328, 0000329, and 0000330.
+- Backlog: pulled in 0000006 and 0000013, folded into `feature-brief.md`. Repointed the 0000009 retrospective and postmortem links to the Zero ids.
+- Scope: the human added a third item, Playwright MCP, a Playwright regression suite, and a site quality review each run.
 
 ---
 
