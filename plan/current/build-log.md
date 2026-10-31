@@ -60,3 +60,17 @@ Scope Lock (cross-session continuity): No reader state. Each page lands in its o
 Run mode: autonomous (2026-10-31T05:27:17Z)
 Run speed: standard (2026-10-31T05:27:17Z)
 Gate accepted: P0 (2026-10-31T13:14:15Z)
+
+### P1: Plan
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-10-31T13:33:23Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary |
+| Skills loaded | ravintio-orchestrator, ravintio-plan |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | Resumed from the pause record. Backlog entries 0000007 and 0000008 removed, pulled in as US-006 and US-005. |
