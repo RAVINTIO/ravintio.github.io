@@ -50,6 +50,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Backlog: filed axe-core scans at the human's request.
 - P0 exchange (triage rule): Q: fix-now when the run caused it, it fails WCAG 2.2 A, a link, anchor, or console error, or a 390 px break. All else to the backlog. Stop and ask above 2 points of fix-now work. Add evidence to a matching entry instead of a duplicate? / A: confirmed.
 - P0 exchange (white flash): Q: inline theme script at the top of `<head>`, a `color-scheme` meta tag, `main.ts` keeps the toggle. Criteria: first frame matches saved dark, saved light, and the OS preference with no saved choice, on the homepage and a doc page? / A: confirmed.
+- P0 exchange (dependencies): Q: approve `@playwright/test` `1.64.1` (dev) and `@playwright/mcp` `0.0.83` (skipping `0.0.84`, released today on a `1.65.0` alpha), exact pins, patch updates within `1.64.x` allowed? / A: agreed.
 
 ---
 
