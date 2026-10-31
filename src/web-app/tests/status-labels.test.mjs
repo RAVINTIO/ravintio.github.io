@@ -33,16 +33,6 @@ describe('req-001-ravintio-overview: AC-2 every tool carries its status label', 
   });
 });
 
-describe('req-001-ravintio-overview: AC-1 page 1 names all eight principles', () => {
-  test('What is RAVINTIO names each principle', () => {
-    const text = stripCode(readPage('what-is-ravintio'));
-    for (const p of ['Resilience', 'Autonomy', 'Vigilance', 'Intelligence',
-      'Neutrality', 'Transparency', 'Ingenuity', 'Optimisation']) {
-      assert.match(text, new RegExp(`\\b${p}\\b`), p);
-    }
-  });
-});
-
 describe('req-001-ravintio-overview: AC-3 no dated or promised work', () => {
   test('pages 1 and 2 hold no coming-soon wording, roadmap, or dates', () => {
     for (const slug of ['what-is-ravintio', 'six-tools']) {

@@ -1,21 +1,21 @@
 # What is RAVINTIO
 
-RAVINTIO is a family of six open-source tools for working with AI agents on software. Two are available now, and four are in design. The tools cover autonomous engineering, verification and assessment, and experimental research. Each tool is meant to work on its own.
+RAVINTIO lets a coding agent do real engineering work on its own while you keep control of what ships. It's a set of open-source tools. RAVINTIO Zero and RAVINTIO Framework are available now.
 
-## The name
+## Why use RAVINTIO
 
-RAVINTIO is an abbreviation. Each letter stands for a quality that responsible autonomous engineering needs. Always write RAVINTIO in block capitals.
+Coding agents write code fast. RAVINTIO makes that code something you can trust, review, and maintain.
 
-| Letter | Quality | What it means for you |
-|--------|---------|-----------------------|
-| R | Resilience | Agents diagnose routine failures, recover, and keep making progress. |
-| A | Autonomy | Agents work independently inside boundaries that you approve. |
-| V | Vigilance | The tools watch for risk, falling quality, and unmet expectations. |
-| I | Intelligence | Agents investigate and reason before they make an engineering decision. |
-| N | Neutrality | The tools avoid favouring one implementation, agent, or earlier conclusion. |
-| T | Transparency | Decisions, evidence, limits, and progress stay open to inspection. |
-| I | Ingenuity | Agents try safe alternatives before they escalate a routine obstacle. |
-| O | Optimisation | Outcomes, efficiency, and practices improve without weakening safeguards. |
+- **Changes are designed before they're built.** The agent works from a design and requirements you confirm. It builds against them and no further.
+- **Work follows your standards.** Code, tests, commits, and docs follow the same standards on every change. Hooks block commits and actions that break your rules.
+- **Documentation comes with the code.** Every component gets the same set of docs: purpose, interface, dependencies, risks, and test coverage. Project-wide docs stay current with each change.
+- **Architectural decisions are on record.** Each significant choice gets a decision record. The record states the context, the options, and the consequences, good and bad.
+- **Constraints hold.** The agent uses only the dependencies you approved, and it stays inside the boundaries you set. Outside them, it stops and asks you.
+- **Solutions stay as simple as the problem allows.** The agent builds what the requirements ask for and no more. It writes the minimum code to pass each test, then looks for a simpler version. Unneeded layers, unused code, and speculative features never reach your codebase. They would become someone's maintenance burden later.
+- **Done means proven.** The agent runs the tests, the checks, and the software itself before it hands back. The pull request carries the evidence.
+- **Failures get fixed, not reported.** The agent diagnoses build, test, and security failures and repairs them before it escalates.
+- **Work survives a new session.** Plans, decisions, and progress live in plain files in your repo. Work resumes where it stopped.
+- **No lock-in.** RAVINTIO works with your own CI, version control, and pull request flow. It adds no service to run.
 
 ## The three areas
 
@@ -34,15 +34,8 @@ Zero and Framework are alternative approaches to the same job. You choose one or
 Every tool follows the same ideas.
 
 - **Humans keep authority over consequential decisions.** You decide intent, scope, risk, acceptance, and release.
-- **Agents act within explicit boundaries.** Routine choices and recoverable failures don't need a human prompt.
-- **Agents investigate before they escalate.** They read approved artefacts, existing code, and repository conventions first.
-- **Agents repair before they stop.** They diagnose and fix build, test, and security failures where policy allows.
-- **Work continues while it makes progress.** A retry count is never the only reason to stop.
-- **Execution state is durable.** Work survives a reset of the context window or an interrupted session.
-- **Evidence beats assertion.** An agent saying it has finished is not proof that it has.
 - **Assessment challenges the work.** Acceptance and review don't trust a self-report.
 - **Learning is blameless.** Reviews look at systems and conditions, not at individuals.
-- **Artefacts are portable and reversible.** Plain text, explicit contracts, and controlled changes keep lock-in low.
 
 ## The tools work independently
 

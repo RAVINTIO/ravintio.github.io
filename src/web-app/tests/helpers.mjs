@@ -70,3 +70,17 @@ export function stripCode(markdown) {
     .replace(/\]\([^)]*\)/g, ']')
     .replace(/https?:\/\/\S+/g, ' ');
 }
+
+// Splits a built page into its H2 sections: [{ title, html }].
+export function builtSections(slug) {
+  const parts = readBuilt(slug).split(/<h2 id="[^"]*">/).slice(1);
+  return parts.map(p => {
+    const end = p.indexOf('</h2>');
+    return { title: p.slice(0, end), html: p.slice(end + 5) };
+  });
+}
+
+// Returns the bold lead text of each list item in a block of built HTML.
+export function boldLeads(html) {
+  return [...html.matchAll(/<li><strong>([^<]*)<\/strong>/g)].map(m => m[1]);
+}

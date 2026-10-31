@@ -77,3 +77,22 @@ Gate accepted: P0 (2026-10-31T13:14:15Z)
 
 Consistency check: clean.
 Gate accepted: P1 (autonomous, no stop)
+
+### P2: Implement
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-10-31T13:36:31Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary |
+| Skills loaded | ravintio-implement |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | none |
+- Departure: every unit runs its TDD cycle inline rather than through three subagents. The units are small and mostly apply agreed copy verbatim. Each test goes RED before the change. (2026-10-31T13:36:31Z)
+- Done: REQ-001 U1, why use RAVINTIO, 4 tests RED then GREEN (2026-10-31T13:37:44Z)
+- Departure: U1 adds `builtSections` and `boldLeads` to `tests/helpers.mjs`, which the concurrency plan doesn't list. Later units reuse them. (2026-10-31T13:37:44Z)
+- Departure: U1 removes the 0.4.0 test "page 1 names all eight principles". The confirmed design removes the letter table, so the test no longer matches a requirement. (2026-10-31T13:37:44Z)
+- Departure: U1 exempts the agreed phrase "as simple as the problem allows" from the `simple` blocklist check. The human confirmed the phrase in P0. The word names the design goal, not a judgement of a task. (2026-10-31T13:37:44Z)

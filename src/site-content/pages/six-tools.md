@@ -1,6 +1,6 @@
 # The six tools
 
-RAVINTIO has six tools. Each one works on its own, and none requires another. This page gives the purpose, the question, and the boundaries of each tool. For the name and shared principles, see [what is RAVINTIO](what-is-ravintio.md).
+RAVINTIO has six tools. Each one works on its own, and none requires another. This page gives the purpose, the question, and the boundaries of each tool. For why to use RAVINTIO and its shared principles, see [what is RAVINTIO](what-is-ravintio.md).
 
 ## At a glance
 
