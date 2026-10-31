@@ -15,7 +15,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Tool | `claude-code` |
 | Primary model | `claude-opus-5-5` |
 | Cheaper model | `claude-sonnet-5-5` |
-| Run speed | `pending` |
+| Run speed | `standard` |
 
 ---
 
@@ -57,3 +57,5 @@ Scope Lock (happy path): The developer reads "Why use RAVINTIO" first, follows o
 Scope Lock (first-run path): On a fresh setup, mkdir -p plan/current precedes the cp, so the copy succeeds. On first phone load the disclosure starts closed and names the current page. [source: draft-accepted]
 Scope Lock (error path): If npm audit fix changes built output or breaks a test, the unit stops and reports. No major bump, no loosened test. Without JavaScript or CSS, the page list renders as a plain list. [source: draft-accepted]
 Scope Lock (cross-session continuity): No reader state. Each page lands in its own commit, so an interrupted run resumes at the next unit. The disclosure starts closed on every load. [source: draft-accepted]
+Run mode: autonomous (2026-10-31T05:27:17Z)
+Run speed: standard (2026-10-31T05:27:17Z)
