@@ -12,9 +12,10 @@ You don't create the feature branch yourself. At the start of discovery, the age
 
 ## 2. Write the feature brief
 
-Copy the template and fill it in.
+Create the run folder, then copy the template and fill it in. Setup creates `plan/` but not `plan/current/`.
 
 ```bash
+mkdir -p plan/current
 cp ravintio-zero/templates/feature-brief.template.md plan/current/feature-brief.md
 ```
 
@@ -156,5 +157,7 @@ You merge the pull request. The agent never merges into `main`. After the merge,
 - A pull request with code, tests, and documentation.
 - An archived plan, a changelog entry, and a build report.
 - A record of every decision, in git history.
+
+These outputs keep the work reviewable after the run ends. A reviewer sees the design, the decisions, and the evidence in one pull request. The next session, or the next person, picks up the reasoning from the repo.
 
 Read [the pipeline](pipeline.md) for the detail behind each step. If you want to pause or shelve a run, see [pause, park, and resume](pipeline.md#pause-park-and-resume).

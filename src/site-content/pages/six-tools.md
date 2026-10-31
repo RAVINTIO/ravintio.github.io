@@ -31,7 +31,7 @@ RAVINTIO Zero is a lightweight, governed workflow for autonomous engineering. It
 
 Zero answers this question: how can we build this with minimal ceremony?
 
-**What it owns**
+**What it does**
 
 - Concise requirements, constraints, and acceptance criteria.
 - An execution plan and persistent task state.
@@ -39,7 +39,7 @@ Zero answers this question: how can we build this with minimal ceremony?
 - Essential build, test, security, and quality checks.
 - An evidence summary and a clear point where the agent hands back to you.
 
-**What it doesn't replace**
+**What it works alongside**
 
 - Your CI/CD pipelines and deployment tools.
 - Your test frameworks, static analysis, and security scanners.
@@ -58,7 +58,7 @@ RAVINTIO Framework is a structured workflow for autonomous engineering. It fits 
 
 Framework answers this question: how can we work within established governance requirements?
 
-**What it owns**
+**What it does**
 
 - Structured discovery and traceable requirements.
 - Architectural boundaries, decision records, and component ownership.
@@ -67,7 +67,7 @@ Framework answers this question: how can we work within established governance r
 - Risk handling, approvals, and exception management.
 - Persistent state, decision records, and recovery.
 
-**What it doesn't replace**
+**What it works alongside**
 
 - Your CI/CD pipelines, test tools, and security scanners.
 - Your repositories and pull request workflows.
@@ -86,13 +86,13 @@ Accept is designed to answer this question: is this change demonstrably fit for 
 
 Its central idea is that an implementation claims it is done, and Accept asks where the evidence is. Accept is designed to keep a missing check, a failed check, and a passed check apart.
 
-**What it owns**
+**What it does**
 
 - Mapping requirements and acceptance criteria to evidence.
 - Evaluating that evidence against policy.
 - A result of accept, reject, or needs a human decision.
 
-**What it doesn't replace**
+**What it works alongside**
 
 - Your test frameworks, scanners, and CI/CD pipelines.
 - Your test management and defect tracking.
@@ -108,13 +108,13 @@ RAVINTIO Qualify is meant for evaluating agent skills. It is designed to check a
 
 Qualify is designed to answer this question: does a skill meet its criteria, and does it still after changes?
 
-**What it owns**
+**What it does**
 
 - Defined criteria for what a skill must do.
 - Evaluation of a skill against those criteria.
 - Re-evaluation after a skill changes.
 
-**What it doesn't replace**
+**What it works alongside**
 
 - Your software release acceptance. Qualify is meant to evaluate skills and not releases.
 - Your own review of how a skill fits your work.
@@ -129,14 +129,14 @@ Insight is designed to answer this question: what does the available evidence in
 
 Insight is meant to separate observation from inference. It is designed to state its uncertainty and name the evidence it couldn't see.
 
-**What it owns**
+**What it does**
 
 - Evidence gathering and reproducible checks.
 - Findings with severity, confidence, and evidence links.
 - Recommendations for follow-up work.
 - Support for blameless review of incidents.
 
-**What it doesn't replace**
+**What it works alongside**
 
 - Your monitoring and observability platforms.
 - Your incident management.
@@ -152,12 +152,12 @@ Unbound is designed to answer this question: how does an agent behave when you g
 
 Unbound is never for production software. It is not a development method. Experiments are meant to run in isolation, with independent observation and operator control.
 
-**What it owns**
+**What it does**
 
 - Controlled, isolated experiments.
 - Independent observation of agent behaviour.
 - Comparison between models and skills.
 
-**What it doesn't replace**
+**What it works alongside**
 
 - Any route you use to build and ship real software. Use Zero or Framework for that.
