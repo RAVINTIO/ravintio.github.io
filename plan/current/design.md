@@ -29,7 +29,7 @@
   - US-005 AC-3: at 1280 px the sidebar is unchanged.
   - US-006 AC-1: `npm audit` reports 0 advisories.
   - US-006 AC-2: `npm run build` and `npm test` pass.
-- Confirmed copy (agreed text in the P0 coaching log of `build-log.md`):
+- Confirmed copy (agreed text in `plan/current/agreed-copy.md`):
   - Copy bug 1: new opening paragraph and the "Why use RAVINTIO" list on `what-is-ravintio.md`. Letter table and capitals line removed. Principles trimmed.
   - Copy bug 2: the simplicity bullet after "Constraints hold", the zero-overview simplicity section, and the pipeline P2 sentence.
   - Review findings 1 to 8: `mkdir -p plan/current` in first-run step 2. Zero overview leads with "Why use Zero", glossary last. "When Zero fits". Install drops "The pack states no minimum version". First-run "What you have now" adds what the outputs give you. Six-tools headings become "What it does" and "What it works alongside". Hero subtitle becomes "Coding agents that build to your design and standards, and prove the result."
@@ -97,4 +97,4 @@ None
 You may fetch, pull, and push feature branches, and raise pull requests into `main` with `gh pr create`. Never merge a pull request into `main`, and never push to `main` directly. The human reviews and merges every pull request. Work on a `feat/` branch directly in the working directory. Don't use git worktrees. If a push or `gh` command fails, report the exact error and stop. Never retry with force.
 
 ## Confirmation
-Human confirmed this design before proceeding: pending
+Human confirmed this design before proceeding: yes // Date and Time confirmed: 31 Oct 2026 @ 13:14 UTC

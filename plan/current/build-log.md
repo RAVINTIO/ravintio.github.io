@@ -26,8 +26,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-30T06:16:40Z` |
-| End | `pending` |
-| Wall clock | `pending` |
+| End | `2026-10-31T13:14:15Z` |
+| Wall clock | `1857` |
 | Model tier | primary |
 | Skills loaded | ravintio-orchestrator, ravintio-file-backlog |
 | Agents spawned | `0` |
@@ -59,3 +59,4 @@ Scope Lock (error path): If npm audit fix changes built output or breaks a test,
 Scope Lock (cross-session continuity): No reader state. Each page lands in its own commit, so an interrupted run resumes at the next unit. The disclosure starts closed on every load. [source: draft-accepted]
 Run mode: autonomous (2026-10-31T05:27:17Z)
 Run speed: standard (2026-10-31T05:27:17Z)
+Gate accepted: P0 (2026-10-31T13:14:15Z)
