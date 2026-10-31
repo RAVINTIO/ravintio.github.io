@@ -3,10 +3,21 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { EXPECTED_SECTIONS, readBuilt, WEB_APP } from './helpers.mjs';
+import { syncPageList, MOBILE_QUERY } from '../src/page-list.ts';
 
 const pages = EXPECTED_SECTIONS.flatMap(s => s.pages);
 const css = fs.readFileSync(path.join(WEB_APP, 'src/style.css'), 'utf-8');
-const mainTs = fs.readFileSync(path.join(WEB_APP, 'src/main.ts'), 'utf-8');
+const escapeHtml = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+function fakeQuery(matches) {
+  const listeners = [];
+  return {
+    matches,
+    addEventListener: (_type, fn) => listeners.push(fn),
+    change(next) { this.matches = next; listeners.forEach(fn => fn()); },
+  };
+}
 
 describe('req-005-mobile-section-nav: AC-3 nav sits in a disclosure', () => {
   test('every built page wraps the page list in an open details element', () => {
@@ -28,13 +39,24 @@ describe('req-005-mobile-section-nav: AC-1 closed on a phone, naming the current
     for (const [slug, title] of pages) {
       const summary = readBuilt(slug).match(/<summary[^>]*>([\s\S]*?)<\/summary>/);
       assert.ok(summary, slug);
-      assert.match(summary[1], new RegExp(title), slug);
+      assert.ok(summary[1].includes(escapeHtml(title)), slug);
     }
   });
 
-  test('main.ts closes the disclosure at the mobile breakpoint and reopens it on desktop', () => {
-    assert.match(mainTs, /matchMedia\('\(max-width: 900px\)'\)/);
-    assert.match(mainTs, /\.doc-sections__disclosure/);
-    assert.match(mainTs, /addEventListener\('change'/);
+  test('the page list closes at 900 px and below, opens above, and follows resizes', () => {
+    assert.equal(MOBILE_QUERY, '(max-width: 900px)');
+    const phone = { open: true };
+    const phoneQuery = fakeQuery(true);
+    syncPageList(phone, phoneQuery);
+    assert.equal(phone.open, false);
+    phoneQuery.change(false);
+    assert.equal(phone.open, true);
+
+    const desktop = { open: true };
+    const desktopQuery = fakeQuery(false);
+    syncPageList(desktop, desktopQuery);
+    assert.equal(desktop.open, true);
+    desktopQuery.change(true);
+    assert.equal(desktop.open, false);
   });
 });

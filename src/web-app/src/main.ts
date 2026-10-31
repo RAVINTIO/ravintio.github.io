@@ -1,3 +1,5 @@
+import { syncPageList, MOBILE_QUERY } from './page-list';
+
 // Theme Management
 const THEME_KEY = 'ravintio-theme';
 
@@ -15,14 +17,9 @@ const getPreferredTheme = () => {
 // Initialize Theme
 setTheme(getPreferredTheme());
 
-// Page list disclosure: closed on a phone, open as a sidebar on desktop (ADR-002).
 // Module scripts run once the document is parsed, so the element exists here.
 const pageList = document.querySelector<HTMLDetailsElement>('.doc-sections__disclosure');
-if (pageList) {
-  const mobile = window.matchMedia('(max-width: 900px)');
-  pageList.open = !mobile.matches;
-  mobile.addEventListener('change', e => { pageList.open = !e.matches; });
-}
+if (pageList) syncPageList(pageList, window.matchMedia(MOBILE_QUERY));
 
 // Mermaid loads only on pages with a diagram, to keep other pages light (NFR-002).
 const renderDiagrams = async () => {

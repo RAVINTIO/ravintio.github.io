@@ -9,7 +9,7 @@ Last updated: 0000009-bug-fixes
 | ID | Type | Purpose | Stack | Status |
 |----|------|---------|-------|--------|
 | `site-content` | content | The Markdown pages that explain RAVINTIO and teach RAVINTIO Zero | Markdown | active |
-| `web-app` | static site | Builds the pages into the site, with sectioned nav, logo, and tests | Vite 7, TypeScript 5.9, vanilla CSS, marked 17, mermaid 11, Node test runner | active |
+| `web-app` | static site | Builds the pages into the site, with sectioned nav, logo, and tests | Vite 7, TypeScript 5.9, vanilla CSS, marked 17, mermaid 12, Node test runner | active |
 
 ---
 

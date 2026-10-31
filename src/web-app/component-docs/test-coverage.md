@@ -15,7 +15,7 @@ The tests run with `npm test` from `src/web-app`, after `npm run build`. They us
 | `zero-overview.test.mjs` | 0000009 REQ-003 | `zero-overview` section order and "When Zero fits" |
 | `simplicity.test.mjs` | 0000009 REQ-002 | Simplicity section and the P2 simplicity sentence |
 | `copy-fixes.test.mjs` | 0000009 REQ-004 | First-run step 2 runs on a fresh setup, plus four copy fixes |
-| `mobile-nav.test.mjs` | 0000009 REQ-005 | Page-list disclosure markup, desktop CSS, and the mobile close in `main.ts` |
+| `mobile-nav.test.mjs` | 0000009 REQ-005 | Page-list disclosure markup, desktop CSS, and `syncPageList` behaviour at each breakpoint |
 
 Requirement IDs without a prefix belong to feature 0000005.
 

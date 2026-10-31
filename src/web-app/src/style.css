@@ -697,6 +697,7 @@ code {
   outline-offset: 2px;
 }
 /* Desktop shows the page list as a sidebar, so the toggle is hidden (ADR-002) */
+/* Pairs with the max-width: 900px query below and MOBILE_QUERY in page-list.ts */
 @media (min-width: 901px) {
   .doc-sections__summary { display: none; }
 }
