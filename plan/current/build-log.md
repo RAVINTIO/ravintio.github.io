@@ -46,6 +46,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - P0 exchange (suite coverage): Q: page loads with no console errors, internal links and anchors, theme toggle and persistence, no light frame before dark, page list at 900 px, Mermaid renders, no horizontal scroll at 390 px. Chromium only, against `vite preview`? / A: confirmed as proposed.
 - P0 exchange (CI): Q: CI runs no tests today. Add `site-tests.yml` on pull requests into `main` to build, run `node --test`, run Playwright, and upload the report on failure? / A: confirmed.
 - P0 exchange (review mechanism): Q: a permanent `site-quality-review` capability skill plus repo instruction `custom-003-site-quality-review.md` that runs it in P3 after the suite passes, writing `plan/current/site-quality-report.md`? / A: confirmed.
+- P0 exchange (review areas): Q: accessibility (WCAG 2.2 AA, from the accessibility tree), layout (390 px and 1280 px, both themes), content (repo style, pack facts), performance (weight under 500 KB, LCP under 2.5 s on preview), navigation and metadata. No new dependency, `axe-core` deferred? / A: confirmed.
 
 ---
 
