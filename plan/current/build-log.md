@@ -41,6 +41,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Backlog: discarded 0000010, 0000011, and 0000012. Each is a pack change that Zero had not logged and still needs. Moved to the Zero repo as uncommitted entries 0000328, 0000329, and 0000330.
 - Backlog: pulled in 0000006 and 0000013, folded into `feature-brief.md`. Repointed the 0000009 retrospective and postmortem links to the Zero ids.
 - Scope: the human added a third item, Playwright MCP, a Playwright regression suite, and a site quality review each run.
+- P0 exchange (release size): Q: the items come to about 16 points against 14. Split Framework docs out? / A: yes. Framework is under major rework, so its docs wait anyway. Re-filed as a new backlog entry.
 
 ---
 
