@@ -11,7 +11,7 @@ RAVINTIO has six tools. Each one works on its own, and none requires another. Th
 | <span class="tool-name">RAVINTIO<br>Accept</span> | Verification and assessment | In design | Is this change demonstrably fit for release? |
 | <span class="tool-name">RAVINTIO<br>Qualify</span> | Verification and assessment | In design | Does a skill meet its criteria, and does it still after changes? |
 | <span class="tool-name">RAVINTIO<br>Insight</span> | Verification and assessment | In design | What does the evidence say about risks and improvements? |
-| <span class="tool-name">RAVINTIO<br>Unbound</span> | Experimental research | In design, experimental research only | How does an agent behave when you give it only functional requirements? |
+| <span class="tool-name">RAVINTIO<br>Unbound</span> | Experimental research | In design | How does an agent behave when you give it only functional requirements? |
 
 ## How the tools relate
 
@@ -144,7 +144,7 @@ Insight is meant to separate observation from inference. It is designed to state
 
 ## RAVINTIO Unbound
 
-**Status:** In design, experimental research only
+**Status:** In design
 
 RAVINTIO Unbound is meant for research. It is designed to help you study how models and agent skills behave when you supply only functional requirements. It leaves out prescribed practices such as upfront planning, architecture, and testing strategy. The aim is to watch how decisions and outputs change over long autonomous runs.
 

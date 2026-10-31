@@ -9,7 +9,7 @@ const LABELS = {
   'RAVINTIO Accept': 'In design',
   'RAVINTIO Qualify': 'In design',
   'RAVINTIO Insight': 'In design',
-  'RAVINTIO Unbound': 'In design, experimental research only',
+  'RAVINTIO Unbound': 'In design',
 };
 
 // Each tool is a "## RAVINTIO {Name}" section holding one "**Status:** {label}" line.
@@ -39,5 +39,16 @@ describe('req-001-ravintio-overview: AC-3 no dated or promised work', () => {
       const text = stripCode(readPage(slug));
       assert.doesNotMatch(text, /coming soon|roadmap|\bplanned for\b|\b20\d\d\b|\bQ[1-4]\b/i, slug);
     }
+  });
+});
+
+describe('req-001-ravintio-overview: AC-2 table status matches the tool sections', () => {
+  test('the At a glance table shows each tool with its confirmed status label', () => {
+    const rows = readPage('six-tools').split('\n').filter(l => l.startsWith('| <span class="tool-name">'));
+    const found = Object.fromEntries(rows.map(l => {
+      const cells = l.split('|').map(c => c.trim());
+      return [cells[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(), cells[3]];
+    }));
+    assert.deepEqual(found, LABELS);
   });
 });
