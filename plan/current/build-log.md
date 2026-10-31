@@ -53,3 +53,7 @@ P0 exchange (dependencies): Q: none (finding) / A: npm audit fix clears all 16 a
 P0 exchange (version): Q: Patch 0.4.1 or minor 0.5.0? Recommended 0.4.1. / A: 0.4.1 agreed.
 P0 exchange (mobile nav): Q: Collapsed disclosure above the content, or move the page links into the menu, below 900 px? / A: Collapsed disclosure, closed by default, showing the current page.
 P0 exchange (stories and criteria): Q: Six stories US-001 to US-006 with 13 acceptance criteria, 9 of 14 points, one run? / A: Confirmed.
+Scope Lock (happy path): The developer reads "Why use RAVINTIO" first, follows overview, install, and first run with every command working, and on a phone sees the page list closed above the content. [source: draft-accepted]
+Scope Lock (first-run path): On a fresh setup, mkdir -p plan/current precedes the cp, so the copy succeeds. On first phone load the disclosure starts closed and names the current page. [source: draft-accepted]
+Scope Lock (error path): If npm audit fix changes built output or breaks a test, the unit stops and reports. No major bump, no loosened test. Without JavaScript or CSS, the page list renders as a plain list. [source: draft-accepted]
+Scope Lock (cross-session continuity): No reader state. Each page lands in its own commit, so an interrupted run resumes at the next unit. The disclosure starts closed on every load. [source: draft-accepted]
