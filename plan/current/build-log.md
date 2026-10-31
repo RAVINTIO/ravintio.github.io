@@ -42,6 +42,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Backlog: pulled in 0000006 and 0000013, folded into `feature-brief.md`. Repointed the 0000009 retrospective and postmortem links to the Zero ids.
 - Scope: the human added a third item, Playwright MCP, a Playwright regression suite, and a site quality review each run.
 - P0 exchange (release size): Q: the items come to about 16 points against 14. Split Framework docs out? / A: yes. Framework is under major rework, so its docs wait anyway. Re-filed as a new backlog entry.
+- P0 exchange (MCP scope): Q: check in a project `.mcp.json` with `@playwright/mcp` pinned, or leave it at user scope? / A: project `.mcp.json`, pinned.
 
 ---
 
