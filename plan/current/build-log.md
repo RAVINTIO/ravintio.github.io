@@ -49,6 +49,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - P0 exchange (review areas): Q: accessibility (WCAG 2.2 AA, from the accessibility tree), layout (390 px and 1280 px, both themes), content (repo style, pack facts), performance (weight under 500 KB, LCP under 2.5 s on preview), navigation and metadata. No new dependency, `axe-core` deferred? / A: confirmed.
 - Backlog: filed axe-core scans at the human's request.
 - P0 exchange (triage rule): Q: fix-now when the run caused it, it fails WCAG 2.2 A, a link, anchor, or console error, or a 390 px break. All else to the backlog. Stop and ask above 2 points of fix-now work. Add evidence to a matching entry instead of a duplicate? / A: confirmed.
+- P0 exchange (white flash): Q: inline theme script at the top of `<head>`, a `color-scheme` meta tag, `main.ts` keeps the toggle. Criteria: first frame matches saved dark, saved light, and the OS preference with no saved choice, on the homepage and a doc page? / A: confirmed.
 
 ---
 
