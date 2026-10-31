@@ -51,3 +51,4 @@ P0 exchange (site review): Q: (human-initiated) Review the rest of the site agai
 P0 exchange (backlog 0000006): Q: Leave, pull in, or discard 0000006-framework-docs? Recommended leave. / A: Leave for now.
 P0 exchange (dependencies): Q: none (finding) / A: npm audit fix clears all 16 advisories within current majors, vite 7.3.7 and mermaid 11.17.2. No new dependency.
 P0 exchange (version): Q: Patch 0.4.1 or minor 0.5.0? Recommended 0.4.1. / A: 0.4.1 agreed.
+P0 exchange (mobile nav): Q: Collapsed disclosure above the content, or move the page links into the menu, below 900 px? / A: Collapsed disclosure, closed by default, showing the current page.
