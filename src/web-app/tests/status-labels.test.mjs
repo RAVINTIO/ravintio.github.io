@@ -47,7 +47,9 @@ describe('req-001-ravintio-overview: AC-2 table status matches the tool sections
     const rows = readPage('six-tools').split('\n').filter(l => l.startsWith('| <span class="tool-name">'));
     const found = Object.fromEntries(rows.map(l => {
       const cells = l.split('|').map(c => c.trim());
-      return [cells[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(), cells[3]];
+      const status = cells[3].match(/^<span class="status-label">([^<]+)<\/span>$/);
+      assert.ok(status, `${cells[1]} status sits in a fixed-width span`);
+      return [cells[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(), status[1]];
     }));
     assert.deepEqual(found, LABELS);
   });

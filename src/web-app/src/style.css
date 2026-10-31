@@ -735,6 +735,12 @@ code {
   display: inline-block;
   width: 6rem;
 }
+/* Status labels in the six-tools table stay on one line at a fixed width */
+.doc-container .status-label {
+  display: inline-block;
+  width: 5rem;
+  white-space: nowrap;
+}
 
 /* Wide tables and code scroll inside the panel, not the page (NFR-003) */
 .doc-container table { display: block; overflow-x: auto; }
