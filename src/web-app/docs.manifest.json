@@ -3,7 +3,7 @@
     {
       "title": "RAVINTIO",
       "pages": [
-        { "file": "what-is-ravintio.html", "title": "What is RAVINTIO" },
+        { "file": "what-is-ravintio.html", "title": "What is RAVINTIO?" },
         { "file": "six-tools.html", "title": "The six tools" }
       ]
     },

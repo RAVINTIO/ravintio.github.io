@@ -2,7 +2,7 @@
 
 RAVINTIO Zero is a pipeline that makes your coding agent plan before it writes code. You write a feature brief. The agent asks questions, produces a reviewable plan, and builds only what that plan describes. A run ends in a pull request unless you pause, park, or stop it.
 
-## Why use Zero
+## Why use Zero?
 
 Zero gives you the benefits in [why use RAVINTIO](what-is-ravintio.md#why-use-ravintio) with low ceremony. These reasons are specific to Zero.
 

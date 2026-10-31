@@ -1,8 +1,8 @@
-# What is RAVINTIO
+# What is RAVINTIO?
 
 RAVINTIO lets a coding agent do real engineering work on its own while you keep control of what ships. It's a set of open-source tools. RAVINTIO Zero and RAVINTIO Framework are available now.
 
-## Why use RAVINTIO
+## Why use RAVINTIO?
 
 Coding agents write code fast. RAVINTIO makes that code something you can trust, review, and maintain.
 

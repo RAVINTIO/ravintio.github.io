@@ -18,7 +18,7 @@ const AGREED_LEADS = [
 describe('req-001-why-use-ravintio: AC-1 Why use RAVINTIO holds the agreed list', () => {
   test('the first H2 is Why use RAVINTIO with the ten agreed leads in order', () => {
     const [first] = builtSections('what-is-ravintio');
-    assert.equal(first.title, 'Why use RAVINTIO');
+    assert.equal(first.title, 'Why use RAVINTIO?');
     assert.deepEqual(boldLeads(first.html), AGREED_LEADS);
   });
 

@@ -16,7 +16,7 @@ export const PACK = path.join(REPO, 'ravintio-zero');
 // The confirmed page structure from design.md.
 export const EXPECTED_SECTIONS = [
   { title: 'RAVINTIO', pages: [
-    ['what-is-ravintio', 'What is RAVINTIO'],
+    ['what-is-ravintio', 'What is RAVINTIO?'],
     ['six-tools', 'The six tools'],
   ] },
   { title: 'Zero', pages: [

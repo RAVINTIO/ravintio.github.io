@@ -5,7 +5,7 @@ import { readBuilt, builtSections } from './helpers.mjs';
 describe('req-003-zero-overview-reframe: AC-1 section order', () => {
   test('Why use Zero is first, How a run flows second, and Terms last', () => {
     const titles = builtSections('zero-overview').map(s => s.title);
-    assert.equal(titles[0], 'Why use Zero');
+    assert.equal(titles[0], 'Why use Zero?');
     assert.equal(titles[1], 'How a run flows');
     assert.equal(titles.at(-1), 'Terms');
   });

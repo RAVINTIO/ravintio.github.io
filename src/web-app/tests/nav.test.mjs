@@ -36,7 +36,7 @@ describe('req-004-brand-and-structure: sectioned nav', () => {
 describe('req-001-ravintio-overview: AC-1 overview pages in the RAVINTIO section', () => {
   test('RAVINTIO section lists What is RAVINTIO then The six tools', () => {
     const s = readManifest().sections.find(x => x.title === 'RAVINTIO');
-    assert.deepEqual(s.pages.map(p => p.title), ['What is RAVINTIO', 'The six tools']);
+    assert.deepEqual(s.pages.map(p => p.title), ['What is RAVINTIO?', 'The six tools']);
   });
 });
 
