@@ -43,6 +43,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Scope: the human added a third item, Playwright MCP, a Playwright regression suite, and a site quality review each run.
 - P0 exchange (release size): Q: the items come to about 16 points against 14. Split Framework docs out? / A: yes. Framework is under major rework, so its docs wait anyway. Re-filed as a new backlog entry.
 - P0 exchange (MCP scope): Q: check in a project `.mcp.json` with `@playwright/mcp` pinned, or leave it at user scope? / A: project `.mcp.json`, pinned.
+- P0 exchange (suite coverage): Q: page loads with no console errors, internal links and anchors, theme toggle and persistence, no light frame before dark, page list at 900 px, Mermaid renders, no horizontal scroll at 390 px. Chromium only, against `vite preview`? / A: confirmed as proposed.
 
 ---
 
