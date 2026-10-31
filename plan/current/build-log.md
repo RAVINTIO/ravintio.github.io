@@ -83,14 +83,14 @@ Gate accepted: P1 (autonomous, no stop)
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-31T13:36:31Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-10-31T15:13:18Z` |
+| Wall clock | `96` |
 | Model tier | primary |
 | Skills loaded | ravintio-implement |
-| Agents spawned | `0` |
+| Agents spawned | `1` (sonnet, improvement reviewer) |
 | MCP calls | `0` |
-| Parallel task batches | `0` |
-| Notes | none |
+| Parallel task batches | `3` (run in sequence inline) |
+| Notes | 38 of 38 tests pass. `npm audit` reports 0 vulnerabilities. |
 - Departure: every unit runs its TDD cycle inline rather than through three subagents. The units are small and mostly apply agreed copy verbatim. Each test goes RED before the change. (2026-10-31T13:36:31Z)
 - Done: REQ-001 U1, why use RAVINTIO, 4 tests RED then GREEN (2026-10-31T13:37:44Z)
 - Departure: U1 adds `builtSections` and `boldLeads` to `tests/helpers.mjs`, which the concurrency plan doesn't list. Later units reuse them. (2026-10-31T13:37:44Z)
@@ -106,3 +106,4 @@ Gate accepted: P1 (autonomous, no stop)
 - Done: REQ-006 U6, `mermaid` 12.2.0 with `katex` 0.18.10. `npm audit` reports 0 vulnerabilities. Build and 38 of 38 tests pass. (2026-10-31T15:11:10Z)
 - Improve: cycle 1, all requirements: a fresh-context reviewer (sonnet) found three items. The disclosure test only grepped `main.ts`. The open-state assignment repeated. The summary check built a regex from a raw title. Fixed by extracting `syncPageList` to `src/page-list.ts` with a behaviour test, which fails when the logic is reversed. (2026-10-31T15:13:00Z)
 - Departure: one improvement cycle covers all six requirements, because the reviewer read the whole diff. The reviewer confirmed every new Zero claim against the pack. (2026-10-31T15:13:00Z)
+Gate accepted: P2 (autonomous, no stop)
