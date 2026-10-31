@@ -3,7 +3,7 @@
 > Living document. Index of all ADRs across all features. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000005-ravintio-docs-rewrite
+Last updated: 0000009-bug-fixes
 
 ---
 
@@ -26,6 +26,8 @@ Last updated: 0000005-ravintio-docs-rewrite
 | ADR-003 | Group the nav manifest into sections with slug file names | 0000005-ravintio-docs-rewrite | active | Three labelled sections, and page files named by slug |
 | ADR-004 | Guard against the earlier brand with an allowlisted test | 0000005-ravintio-docs-rewrite | active | A test fails on the earlier brand outside history paths |
 | ADR-005 | Verify reference pages against the installed pack | 0000005-ravintio-docs-rewrite | active | A test fails when a reference page and the pack differ |
+| ADR-001 | Keep the stack and patch dependencies within current majors | 0000009-bug-fixes | active | `npm audit fix` clears advisories. `mermaid` moves to 12 by human approval. |
+| ADR-002 | Use a native disclosure for the mobile page list | 0000009-bug-fixes | active | A `<details>` element holds the page list, closed by script at 900 px and below |
 
 ---
 

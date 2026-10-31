@@ -3,7 +3,7 @@
 > Living document. Reflects current system state. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000005-ravintio-docs-rewrite
+Last updated: 0000009-bug-fixes
 
 ---
 
@@ -70,6 +70,7 @@ See `docs/decisions-index.md` for the full list. These decisions shape the curre
 - Static site generation with Vite, with no backend (website ADR-001).
 - `site-content` owns the pages, and `web-app` only reads them (0000005 ADR-002).
 - A sectioned manifest sets the nav sections and page order (0000005 ADR-003).
+- A native `<details>` disclosure holds the page list. It closes on narrow screens and shows as a sidebar on wide ones (0000009 ADR-002).
 - Tests guard the brand and keep the reference pages in step with the pack (0000005 ADR-004 and ADR-005).
 
 ---

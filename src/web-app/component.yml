@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "web-app"
 name: "RAVINTIO Docs Web App"
-feature: "0000005-ravintio-docs-rewrite"
-version: "0.4.0"
+feature: "0000009-bug-fixes"
+version: "0.4.1"
 status: "active"
 type: "microfrontend"
 domain: "documentation-site"
@@ -76,6 +76,7 @@ scope:
     - "Sectioned nav manifest"
     - "Logo, wordmark, and favicons"
     - "Theme toggle and mobile menu"
+    - "Page-list disclosure on narrow screens"
     - "Mermaid diagram rendering on demand"
     - "Site tests"
   outOfScope:
@@ -96,7 +97,6 @@ quality:
     integration: 0
     e2e: 0
   techDebt:
-    - "TD-001: Vite dev-server advisories (dev only)"
     - "TD-002: fixed nav height in scroll-margin-top"
     - "TD-003: HTML checks use regular expressions"
   quirks:
@@ -112,7 +112,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-05-16"
-  updatedAt: "2026-10-29"
+  updatedAt: "2026-10-31"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-implement"

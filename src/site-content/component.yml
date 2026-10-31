@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "site-content"
 name: "RAVINTIO Docs Site Content"
-feature: "0000005-ravintio-docs-rewrite"
-version: "0.4.0"
+feature: "0000009-bug-fixes"
+version: "0.4.1"
 status: "active"
 type: "component-pack"
 domain: "documentation"
@@ -91,7 +91,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-10-29"
-  updatedAt: "2026-10-29"
+  updatedAt: "2026-10-31"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-plan"
