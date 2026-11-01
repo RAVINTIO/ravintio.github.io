@@ -116,6 +116,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - In progress: U4 REQ-006 TDD track (2026-11-01T16:01:18Z)
 - In progress: U3 REQ-002 TDD track (2026-11-01T16:01:18Z)
 - In progress: U5 REQ-003 TDD track (2026-11-01T16:01:18Z)
+- U5 REQ-003: RED exit 1 (`site-tests.yml is missing`), GREEN exit 0, 4 of 4 tests. Refactor: no change worth making. CI timing (AC-3) is measured on the PR in P3.
+- Done: U5 REQ-003 TDD track (2026-11-01T16:02:04Z)
 
 ---
 
