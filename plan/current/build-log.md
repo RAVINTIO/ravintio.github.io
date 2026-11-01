@@ -110,6 +110,12 @@ Design confirmed: 2026-11-01T08:55:35Z
 - Done: U2 REQ-004 TDD track (2026-11-01T16:00:00Z)
 - U6 REQ-005: RED exit 1 (`custom-003-site-quality-review.md is missing`), GREEN exit 0, 7 of 7 tests. Setup re-run with `--strict-orchestrator` installed the skill and the instruction. Setup copies only `SKILL.md`, so the skill now reads its report template from the source path.
 - Done: U6 REQ-005 TDD track (2026-11-01T16:00:58Z)
+- U1 REQ-001: RED exit 1 (`npx canceled due to missing packages`), GREEN exit 0, 23 of 23 tests. Three runs: 5.4 s, 2.2 s, and 2.3 s. `npm test` 49 of 49. No site defect found.
+- Done: U1 REQ-001 TDD track (2026-11-01T16:01:18Z)
+- Departure: batch 2 runs U4 then U3 in one subagent, not in parallel. Both rebuild `dist/` and start `vite preview` on port 4173, so parallel runs would clash. U5 runs inline in parallel with them.
+- In progress: U4 REQ-006 TDD track (2026-11-01T16:01:18Z)
+- In progress: U3 REQ-002 TDD track (2026-11-01T16:01:18Z)
+- In progress: U5 REQ-003 TDD track (2026-11-01T16:01:18Z)
 
 ---
 
