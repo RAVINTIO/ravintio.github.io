@@ -23,7 +23,7 @@
   - US-002
     - AC-1: the theme toggle switches the theme, and the choice persists across a reload, on the homepage and a doc page.
     - AC-2: the page list is collapsed at 390 px and opens on click. At 1280 px it shows open.
-    - AC-3: each Mermaid diagram renders as an SVG.
+    - AC-3: if a page holds a Mermaid diagram, each diagram renders as an SVG. If no page holds one, the test reports as skipped and names the reason. (Reworded in P1: no page holds a diagram today.)
   - US-003
     - AC-1: `site-tests.yml` runs on each pull request into `main`. It builds the site, then runs the `node --test` suite and the Playwright suite.
     - AC-2: when a Playwright test fails, the job fails and uploads the Playwright report as an artefact.

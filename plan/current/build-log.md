@@ -80,6 +80,9 @@ Design confirmed: 2026-11-01T08:55:35Z
 | Notes | none |
 
 - Departure: the plan artifacts run inline, not as parallel subagents. Six short requirements share one design and many cross-references, so a subagent brief would repeat most of the design.
+- Blocked: US-002 AC-3 has nothing to test. No page in `src/site-content/pages/` holds a Mermaid diagram. (2026-11-01T15:55:10Z)
+- Requirement change: cosmetic: US-002 AC-3 reworded to check diagrams when a page holds one and report a named skip when none does. Re-ran nothing. (2026-11-01T15:55:10Z)
+- Resolved: the human chose the reworded criterion with a reported skip. (2026-11-01T15:55:10Z)
 
 ---
 
