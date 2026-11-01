@@ -65,6 +65,24 @@ Design confirmed: 2026-11-01T08:55:35Z
 
 ---
 
+### P1: Plan
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-01T08:56:06Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary |
+| Skills loaded | ravintio-plan |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | none |
+
+- Departure: the plan artifacts run inline, not as parallel subagents. Six short requirements share one design and many cross-references, so a subagent brief would repeat most of the design.
+
+---
+
 <!-- Copy and fill in this block at each phase boundary. Headings use the form
      "### P<n>: {Phase Name}" with n from 1 to 4 and the phase names
      P1: Plan, P2: Implement, P3: Validate and Accept, P4: Ship.
