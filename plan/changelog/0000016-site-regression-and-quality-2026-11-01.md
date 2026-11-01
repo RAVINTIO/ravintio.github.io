@@ -4,6 +4,47 @@ summary: "Execution log for the agent session."
 status: "active"
 version: "0.1.0"
 ---
+
+# Changelog (0000016-site-regression-and-quality, 01 Nov 2026)
+
+**Feature:** Site regression suite and quality review
+**Version:** 0.5.0
+**PR:** pending
+
+## What changed
+
+- A Playwright suite in `src/web-app/tests/e2e/` loads every page in Chromium. It checks status, console errors, links and anchors, and sideways scroll at 390 px. It also checks the theme toggle, the mobile page list, Mermaid diagrams, and the theme on first paint.
+- `site-tests.yml` runs the content suite and the Playwright suite on each pull request into `main`. A failed run uploads the Playwright report.
+- `.mcp.json` pins Playwright MCP at `0.0.83` for every session in the repo.
+- A `site-quality-review` capability skill and repo instruction `custom-003` review the site in P3 of every run. Fix-now findings get fixed in the run, and the rest go to the backlog.
+- An inline script sets the theme before first paint, so dark-theme readers no longer see a light frame.
+- `vite.config.ts` sets `appType: 'mpa'`, so the dev and preview servers return 404 for a missing page.
+- `.gitignore` covers `.playwright-mcp/`, `playwright-report/`, and `test-results/`.
+
+## Why
+
+The site had no browser tests, and CI ran no tests at all. Breakage reached readers before anyone saw it. Dark-theme readers saw a white flash on every page load (backlog 0000013).
+
+## Deviations
+
+- REQ-002 AC-3 now reports a named skip, because no page holds a Mermaid diagram. You approved the rewording in P1.
+- Setup installs only `SKILL.md`, so the review skill reads its report template from `ravintio-overrides/`.
+- P2 ran each unit as one TDD track per subagent, not three subagents. U4 and U3 ran in sequence because both use `dist/` and port 4173.
+- The improvement review found that `vite preview` served the homepage for missing pages. `appType: 'mpa'` fixed it.
+
+## Validation results
+
+- `npm test` passes 53 of 53. `npm run test:e2e` passes 33, with 1 named skip. Typecheck, build, and `npm audit` pass.
+- Browser checks in both themes at 390 px and 1280 px verified 15 criteria. REQ-003 AC-1 and AC-2 depend on this pull request's CI run.
+- Security risk is low, with no critical, high, or medium finding.
+- The first quality review fixed one item and filed backlog 0000017 to 0000021. The security review filed 0000022.
+
+## Skipped phases
+
+None
+
+---
+
 # Iteration Log - 0000016-site-regression-and-quality
 
 > **Audience:** The ship phase's build assessment (P4) and post-run technical review. This is NOT the PR changelog: the PR changelog (written at the start of ship) is the human-readable audit trail for PR reviewers.
@@ -18,8 +59,8 @@ version: "0.1.0"
 | P0 - Discovery | pass | Design confirmed: yes | 13 coaching exchanges and the scope lock |
 | P1 - Plan | pass | All artifacts produced: yes | 4 ADRs |
 | P2 - Implement | pass | Implementation complete: yes | 1 deviation: the skill reads its report template from the source path |
-| P3 - Validate and Accept | pending | CI clean and accepted: pending | |
-| P4 - Ship | pending | Archived and PR raised: pending | |
+| P3 - Validate and Accept | pass | CI clean and accepted: yes (autonomous, evidence in the PR) | 1 cycle |
+| P4 - Ship | pass | Archived and PR raised: yes | |
 
 ## Requirement Changes During Run
 
