@@ -1,7 +1,7 @@
 {
   "name": "ravintio-docs-web-app",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "predev": "node scripts/build-docs.js",
@@ -9,9 +9,11 @@
     "prebuild": "node scripts/build-docs.js",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "marked": "^17.0.4",
     "mermaid": "^12.2.0",
     "typescript": "~5.9.3",

@@ -44,5 +44,5 @@ First missed chance to catch it: P1. A fresh audit at the plan gate would have s
 | Type | Action | Owner | Lives in | Verified by | Filed as |
 |------|--------|-------|----------|-------------|----------|
 | corrective | Approve `mermaid` 12 and upgrade | human | `design.md`, `src/web-app/package.json` | `npm audit` reports 0 | Build log `Resolved:` line |
-| detective | Re-run the dependency audit in P1 when a requirement targets advisories | pack maintainer | `ravintio-zero/skills/ravintio-plan/SKILL.md` | A pack test on the plan skill | [backlog 0000010](../backlog/0000010-refresh-audit-before-implement/entry.md) |
-| preventive | Ask in discovery whether a major bump is pre-approved for an advisory fix | pack maintainer | orchestrator discovery coaching reference | A pack test on the coaching reference | [backlog 0000011](../backlog/0000011-approve-dependency-outcomes/entry.md) |
+| detective | Re-run the dependency audit in P1 when a requirement targets advisories | pack maintainer | `ravintio-zero/skills/ravintio-plan/SKILL.md` | A pack test on the plan skill | Zero backlog 0000328 (was 0000010 here) |
+| preventive | Ask in discovery whether a major bump is pre-approved for an advisory fix | pack maintainer | orchestrator discovery coaching reference | A pack test on the coaching reference | Zero backlog 0000329 (was 0000011 here) |

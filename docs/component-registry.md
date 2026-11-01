@@ -1,6 +1,6 @@
 # Component Registry
 
-Last updated: 0000009-bug-fixes
+Last updated: 0000016-site-regression-and-quality
 
 ---
 
@@ -9,7 +9,7 @@ Last updated: 0000009-bug-fixes
 | ID | Type | Purpose | Stack | Status |
 |----|------|---------|-------|--------|
 | `site-content` | content | The Markdown pages that explain RAVINTIO and teach RAVINTIO Zero | Markdown | active |
-| `web-app` | static site | Builds the pages into the site, with sectioned nav, logo, and tests | Vite 7, TypeScript 5.9, vanilla CSS, marked 17, mermaid 12, Node test runner | active |
+| `web-app` | static site | Builds the pages into the site, with sectioned nav, logo, and tests | Vite 7, TypeScript 5.9, vanilla CSS, marked 17, mermaid 12, Node test runner, Playwright 1.64 | active |
 
 ---
 
@@ -50,6 +50,8 @@ Last updated: 0000009-bug-fixes
 - `vite.config.ts` reads the manifest for its build inputs.
 - `src/main.ts` runs the theme toggle, the mobile menu, and on-demand diagrams.
 - `src/style.css` holds the styles and the teal brand colours.
-- `tests/*.test.mjs` hold the site tests, run with `npm test`.
+- `tests/*.test.mjs` hold the content suite, run with `npm test`.
+- `tests/e2e/*.spec.ts` and `playwright.config.ts` hold the regression suite, run with `npm run test:e2e` after a build.
+- `index.html` and the `build-docs.js` template set the theme before first paint with an inline script.
 
 **Not responsible for:** page text.

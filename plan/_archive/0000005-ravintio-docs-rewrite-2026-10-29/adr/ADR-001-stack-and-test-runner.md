@@ -1,7 +1,7 @@
 ---
 title: "ADR 001: Keep the Vite stack and test with the Node test runner"
 summary: "The site keeps Vite, marked, and mermaid, and adds tests that run on node --test with no new dependency."
-status: "accepted"
+status: "superseded"
 version: "0.1.0"
 ---
 # ADR-001 - Keep the Vite stack and test with the Node test runner
@@ -56,4 +56,4 @@ Keep Vite 7, `marked`, `mermaid`, and TypeScript as declared in `design.md`. Add
 
 ## Superseded By
 
-- none
+- 0000016 ADR-001 (Add Playwright for browser tests beside node --test)

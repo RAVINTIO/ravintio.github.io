@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "web-app"
 name: "RAVINTIO Docs Web App"
-feature: "0000009-bug-fixes"
-version: "0.4.1"
+feature: "0000016-site-regression-and-quality"
+version: "0.5.0"
 status: "active"
 type: "microfrontend"
 domain: "documentation-site"
@@ -16,7 +16,8 @@ purpose:
     - "Own docs.manifest.json, the source of nav sections, page order, and titles"
     - "Render the section nav, top nav, and previous and next links on every page"
     - "Serve the logo, wordmark, favicons, theme toggle, and mobile menu"
-    - "Run the site tests in tests/"
+    - "Run the content suite in tests/ and the Playwright regression suite in tests/e2e/"
+    - "Set the theme before first paint with an inline script in each page template"
   notResponsibleFor:
     - "Page text (site-content)"
     - "The ravintio-zero pack"
@@ -38,7 +39,7 @@ stack:
   componentLibrary: "none"
   database: "none"
   orm: "none"
-  testing: "node-test"
+  testing: "node-test, playwright"
   iac: "none"
   cloud: "none"
   compute: "none"
@@ -79,6 +80,8 @@ scope:
     - "Page-list disclosure on narrow screens"
     - "Mermaid diagram rendering on demand"
     - "Site tests"
+    - "Playwright regression suite on Chromium"
+    - "Theme set before first paint"
   outOfScope:
     - "Page text (site-content)"
     - "Site search"
@@ -90,12 +93,14 @@ risk:
     - "R-001: manifest and page files fall out of step"
     - "R-003: reference pages drift from the pack"
     - "scroll-margin-top: 72px fixed to the nav height"
+    - "R-006: the first-frame test depends on paint order"
+    - "R-007: the inline theme script needs a hash under a future Content Security Policy"
 
 quality:
   testCoverage:
     unit: 0
     integration: 0
-    e2e: 0
+    e2e: 1
   techDebt:
     - "TD-002: fixed nav height in scroll-margin-top"
     - "TD-003: HTML checks use regular expressions"
@@ -104,6 +109,9 @@ quality:
     - "Q-002: generated docs/*.html and public/sitemap-data.json are not committed"
     - "Q-004: adding a page takes a page file and a manifest entry"
     - "Q-005: asset paths are relative, so the site works at the org root or under a path"
+    - "Q-006: the Playwright suite tests an existing build, so npm run build runs first"
+    - "Q-007: the theme logic lives in the inline script and in main.ts"
+    - "Q-008: appType mpa, so the dev and preview servers return 404 for a missing page"
 
 pipeline:
   templateVersion: "1.0.0"
@@ -112,7 +120,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-05-16"
-  updatedAt: "2026-10-31"
+  updatedAt: "2026-11-01"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-implement"

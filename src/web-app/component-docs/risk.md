@@ -7,3 +7,5 @@
 | R-003 | Reference pages drift from the `ravintio-zero/` pack | High | Medium | Mitigated. `tests/reference-match.test.mjs` fails on any missing or extra item. |
 | R-004 | Vite dev-server advisories | Low | None in production | Open. Dev-only exposure. |
 | R-005 | `scroll-margin-top` is fixed at 72px to match the nav height | Low | Low | Open |
+| R-006 | The first-frame test depends on paint order and turns flaky | Medium | Medium | Mitigated. The test reads the theme state before the module script runs, not a screenshot. |
+| R-007 | A future Content Security Policy blocks the inline theme script | Low | Low | Open. Allow the script by hash (0000016 ADR-004). |

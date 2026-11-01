@@ -1,6 +1,6 @@
 # Dependency Graph
 
-Last updated: 0000009-bug-fixes
+Last updated: 0000016-site-regression-and-quality
 
 ---
 
@@ -26,6 +26,7 @@ graph TD
 
     subgraph Deployment
         ci["GitHub Actions\n(deploy.yml)"]
+        tests["GitHub Actions\n(site-tests.yml)"]
         host["GitHub Pages"]
     end
 
@@ -39,6 +40,7 @@ graph TD
     vite --> dist
     ci -- "on merge to main" --> vite
     dist --> host
+    tests -- "on pull request" --> vite
 ```
 
 ---
@@ -54,6 +56,10 @@ graph TD
 | `style.test.mjs` | Pages |
 | `status-labels.test.mjs` | `six-tools.md`, `what-is-ravintio.md` |
 | `reference-match.test.mjs` | Reference pages, `ravintio-zero/skills/`, `standards/`, `templates/` |
+| `mcp-config.test.mjs` | `.mcp.json` |
+| `site-tests-workflow.test.mjs` | `.github/workflows/site-tests.yml` |
+| `quality-review.test.mjs` | `ravintio-overrides/capability-skills/site-quality-review/`, `ravintio-overrides/instructions/custom-003-site-quality-review.md` |
+| `e2e/*.spec.ts` | `docs.manifest.json`, `dist/` served by `vite preview` |
 
 ---
 

@@ -13,3 +13,6 @@ GEMINI.md
 
 # macOS
 .DS_Store
+
+# Playwright MCP output
+.playwright-mcp/
