@@ -59,6 +59,7 @@ Scope Lock (first-run path): Chromium installs once locally and in CI, the first
 Scope Lock (error path): a red test fails the PR check with the report as an artefact, a missing MCP blocks P3, and fix-now work over 2 points stops for the human. [source: draft-accepted]
 Scope Lock (cross-session continuity): the review writes as it goes, an `In progress:` marker reruns it, and the duplicate check prevents double filing. [source: draft-accepted]
 Scope Lock complete. All four scenario paths captured.
+Run mode: autonomous (2026-11-01T03:10:57Z)
 
 ---
 
