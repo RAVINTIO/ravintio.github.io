@@ -15,7 +15,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Tool | `claude-code` |
 | Primary model | `claude-opus-5-5` |
 | Cheaper model | `claude-sonnet-5-5` |
-| Run speed | `pending` |
+| Run speed | `standard` |
 
 ---
 
@@ -60,6 +60,7 @@ Scope Lock (error path): a red test fails the PR check with the report as an art
 Scope Lock (cross-session continuity): the review writes as it goes, an `In progress:` marker reruns it, and the duplicate check prevents double filing. [source: draft-accepted]
 Scope Lock complete. All four scenario paths captured.
 Run mode: autonomous (2026-11-01T03:10:57Z)
+Run speed: standard (2026-11-01T08:55:00Z)
 
 ---
 
