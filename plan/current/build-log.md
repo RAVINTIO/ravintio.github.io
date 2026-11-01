@@ -1,8 +1,8 @@
 ---
-title: "Build Log - pending"
+title: "Build Log - 0000016-site-regression-and-quality"
 summary: "Working record of the pipeline run, maintained by the orchestrator."
 ---
-# Build Log - pending
+# Build Log - 0000016-site-regression-and-quality
 
 > Created at discovery (P0). Appended by the orchestrator at each phase boundary. Survives session changes.
 
@@ -10,7 +10,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 | Field | Value |
 |-------|-------|
-| Feature ID | `pending` |
+| Feature ID | `0000016-site-regression-and-quality` |
 | Pipeline start | `2026-10-31T18:19:38Z` |
 | Tool | `claude-code` |
 | Primary model | `claude-opus-5-5` |
@@ -53,6 +53,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - P0 exchange (dependencies): Q: approve `@playwright/test` `1.64.1` (dev) and `@playwright/mcp` `0.0.83` (skipping `0.0.84`, released today on a `1.65.0` alpha), exact pins, patch updates within `1.64.x` allowed? / A: agreed.
 - P0 exchange (NFRs): Q: Playwright suite under 60 s locally, `site-tests.yml` under 5 min in CI, 0 flaky tests over 3 runs with `retries: 0`? / A: confirmed.
 - P0 exchange (version): Q: `0.5.0`, a minor bump. `web-app` to `0.5.0`, `site-content` stays `0.4.1` unless the review changes a page? / A: confirmed.
+- P0 exchange (feature id): Q: `0000016-site-regression-and-quality`? / A: confirmed. Branch renamed from `feat/pending`.
 
 ---
 

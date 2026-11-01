@@ -1,8 +1,8 @@
 ---
-title: "Discovery - pending"
+title: "Discovery - 0000016-site-regression-and-quality"
 summary: "Raw discovery-pass findings: what the orchestrator knew before coaching began."
 ---
-# Discovery - pending
+# Discovery - 0000016-site-regression-and-quality
 
 > Created at the start of discovery (P0), before the first coaching question, in every adoption mode.
 > Raw findings only. Decisions belong in `design.md`, the Q&A audit trail in `build-log.md`.

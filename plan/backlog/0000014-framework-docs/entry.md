@@ -5,7 +5,7 @@ status: "open"
 ---
 # Backlog Entry: 0000014 - Document RAVINTIO Framework
 
-**Source feature:** pending
+**Source feature:** 0000016-site-regression-and-quality
 **Source phase:** P0
 **Deferral source:** deliberate scope decision
 **Date filed:** 2026-10-31

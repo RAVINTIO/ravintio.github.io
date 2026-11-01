@@ -5,7 +5,7 @@ status: "open"
 ---
 # Backlog Entry: 0000015 - Add axe-core accessibility scans
 
-**Source feature:** pending
+**Source feature:** 0000016-site-regression-and-quality
 **Source phase:** P0
 **Deferral source:** human request
 **Date filed:** 2026-10-31

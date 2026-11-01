@@ -1,12 +1,12 @@
 ---
-title: "Feature Brief - pending"
+title: "Feature Brief - Site regression and quality"
 summary: "The business case, scope, and product requirements for the feature."
 status: "draft"
 version: "0.1.0"
 ---
-# Feature Brief - pending
+# Feature Brief - Site regression and quality
 
-**Feature ID:** pending
+**Feature ID:** 0000016-site-regression-and-quality
 
 ## Business Goal
 
