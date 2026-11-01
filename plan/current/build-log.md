@@ -138,12 +138,12 @@ Design confirmed: 2026-11-01T08:55:35Z
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-01T16:07:30Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-01T16:12:54Z` |
+| Wall clock | `5` |
 | Model tier | primary |
 | Skills loaded | ravintio-validate-and-accept, site-quality-review |
 | Agents spawned | `0` |
-| MCP calls | `0` |
+| MCP calls | `16` |
 | Parallel task batches | `0` |
 | Notes | none |
 
@@ -154,7 +154,9 @@ Design confirmed: 2026-11-01T08:55:35Z
 - Site quality review: 11 pages, 1 fix-now finding (fixed, 1 point) and 5 backlog findings filed as 0000017 to 0000021. Report in `site-quality-report.md`.
 - Done: site quality review (2026-11-01T16:11:30Z)
 - Security review: overall low. No critical, high, or medium finding. Three low findings and two informational ones, in `security-report.md`.
-- Verification: 13 criteria verified, REQ-003 AC-3 verified locally, and REQ-003 AC-1 and AC-2 not-verifiable until the pull request runs CI.
+- Verification: 15 criteria verified, with REQ-003 AC-3 verified locally. REQ-003 AC-1 and AC-2 are not-verifiable until the pull request runs CI.
+- Backlog: filed security finding S-001 as 0000022.
+- Acceptance evidence written. Autonomous run, so no gate stop.
 
 ---
 
