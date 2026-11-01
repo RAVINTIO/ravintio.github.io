@@ -88,6 +88,6 @@ Checks that passed:
 
 | ID | Page | Finding | Evidence | Sorting | Action |
 |----|------|---------|----------|---------|--------|
-| N-000 | Repo root | Playwright MCP writes snapshots and screenshots to `.playwright-mcp/`, which git did not ignore. This run caused it. | `git status` listed `.playwright-mcp/` as untracked | fix-now | Fixed in `806f820`, size S |
+| N-003 | Repo root | Playwright MCP writes snapshots and screenshots to `.playwright-mcp/`, which git did not ignore. This run caused it. | `git status` listed `.playwright-mcp/` as untracked | fix-now | Fixed in `806f820`, size S |
 | N-001 | All ten doc pages | No meta description. Only the homepage has one. | `meta[name=description]` missing on each doc page | backlog | 0000017 |
 | N-002 | Any missing URL | No custom 404 page, so GitHub Pages shows its own page with no site nav | `/404.html` returned 404 | backlog | 0000018 |

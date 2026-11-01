@@ -1,9 +1,9 @@
 ---
-title: "Backlog Entry: 0000021 - Rewrite passive sentences on four pages"
+title: "Backlog Entry: 0000021 - Rewrite passive sentences on three pages"
 summary: "A discovered-but-out-of-scope item deferred for pickup at a future discovery run."
 status: "open"
 ---
-# Backlog Entry: 0000021 - Rewrite passive sentences on four pages
+# Backlog Entry: 0000021 - Rewrite passive sentences on three pages
 
 **Source feature:** 0000016-site-regression-and-quality
 **Source phase:** P3
@@ -14,7 +14,7 @@ status: "open"
 
 ## Problem
 
-Area: content. Pages: `six-tools.md`, `project-operations.md`, `skills.md`, and `first-run.md`. These sentences break the repo's active-voice rule:
+Area: content. Pages: `six-tools.md`, `project-operations.md`, and `skills.md`. These sentences break the repo's active-voice rule:
 - `six-tools.md` lines 21, 24, 83, and 85: "is designed to".
 - `project-operations.md` line 3: "how commit messages are checked".
 - `project-operations.md` line 11: "if code is staged without documentation".
