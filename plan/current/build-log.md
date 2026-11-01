@@ -52,6 +52,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - P0 exchange (white flash): Q: inline theme script at the top of `<head>`, a `color-scheme` meta tag, `main.ts` keeps the toggle. Criteria: first frame matches saved dark, saved light, and the OS preference with no saved choice, on the homepage and a doc page? / A: confirmed.
 - P0 exchange (dependencies): Q: approve `@playwright/test` `1.64.1` (dev) and `@playwright/mcp` `0.0.83` (skipping `0.0.84`, released today on a `1.65.0` alpha), exact pins, patch updates within `1.64.x` allowed? / A: agreed.
 - P0 exchange (NFRs): Q: Playwright suite under 60 s locally, `site-tests.yml` under 5 min in CI, 0 flaky tests over 3 runs with `retries: 0`? / A: confirmed.
+- P0 exchange (version): Q: `0.5.0`, a minor bump. `web-app` to `0.5.0`, `site-content` stays `0.4.1` unless the review changes a page? / A: confirmed.
 
 ---
 
