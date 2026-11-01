@@ -54,6 +54,11 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - P0 exchange (NFRs): Q: Playwright suite under 60 s locally, `site-tests.yml` under 5 min in CI, 0 flaky tests over 3 runs with `retries: 0`? / A: confirmed.
 - P0 exchange (version): Q: `0.5.0`, a minor bump. `web-app` to `0.5.0`, `site-content` stays `0.4.1` unless the review changes a page? / A: confirmed.
 - P0 exchange (feature id): Q: `0000016-site-regression-and-quality`? / A: confirmed. Branch renamed from `feat/pending`.
+Scope Lock (happy path): PRs run both suites in `site-tests.yml`, P3 runs the quality review and files or fixes findings, and dark readers see no light frame. [source: draft-accepted]
+Scope Lock (first-run path): Chromium installs once locally and in CI, the first review treats all findings as new, and `.mcp.json` prompts once. [source: draft-accepted]
+Scope Lock (error path): a red test fails the PR check with the report as an artefact, a missing MCP blocks P3, and fix-now work over 2 points stops for the human. [source: draft-accepted]
+Scope Lock (cross-session continuity): the review writes as it goes, an `In progress:` marker reruns it, and the duplicate check prevents double filing. [source: draft-accepted]
+Scope Lock complete. All four scenario paths captured.
 
 ---
 
