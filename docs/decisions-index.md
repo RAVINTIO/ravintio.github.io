@@ -3,7 +3,7 @@
 > Living document. Index of all ADRs across all features. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000009-bug-fixes
+Last updated: 0000016-site-regression-and-quality
 
 ---
 
@@ -21,13 +21,17 @@ Last updated: 0000009-bug-fixes
 | ADR-003 | Project Operations as a Dedicated Website Page | 0000002-doc-structure | superseded | Page placement now comes from 0000005 ADR-003 |
 | ADR-001 | Content Folder Formalised as a Tracked Component | 0000003-p9-phase-docs | superseded | Replaced by `site-content` (0000005 ADR-002) |
 | ADR-002 | Remove Broken Anchors, Not Add Sections | 0000003-p9-phase-docs | superseded | The pages it covered were deleted in 0000005 |
-| ADR-001 | Keep the Vite stack and test with the Node test runner | 0000005-ravintio-docs-rewrite | active | Tests use `node --test` with no new dependency |
+| ADR-001 | Keep the Vite stack and test with the Node test runner | 0000005-ravintio-docs-rewrite | superseded | Superseded by 0000016 ADR-001, which adds Playwright for browser tests |
 | ADR-002 | site-content owns the page Markdown | 0000005-ravintio-docs-rewrite | active | `src/site-content/` owns the pages, and `web-app` reads them |
 | ADR-003 | Group the nav manifest into sections with slug file names | 0000005-ravintio-docs-rewrite | active | Three labelled sections, and page files named by slug |
 | ADR-004 | Guard against the earlier brand with an allowlisted test | 0000005-ravintio-docs-rewrite | active | A test fails on the earlier brand outside history paths |
 | ADR-005 | Verify reference pages against the installed pack | 0000005-ravintio-docs-rewrite | active | A test fails when a reference page and the pack differ |
 | ADR-001 | Keep the stack and patch dependencies within current majors | 0000009-bug-fixes | active | `npm audit fix` clears advisories. `mermaid` moves to 12 by human approval. |
 | ADR-002 | Use a native disclosure for the mobile page list | 0000009-bug-fixes | active | A `<details>` element holds the page list, closed by script at 900 px and below |
+| ADR-001 | Add Playwright for browser tests beside node --test | 0000016-site-regression-and-quality | active | Playwright 1.64.1 on Chromium tests the built site. The Node content suite stays. |
+| ADR-002 | Run site tests in a separate pull request workflow | 0000016-site-regression-and-quality | active | `site-tests.yml` runs both suites on pull requests with read-only permissions |
+| ADR-003 | Run the quality review as a capability skill from a repo instruction | 0000016-site-regression-and-quality | active | `site-quality-review` runs in P3 through `custom-003` and a pinned Playwright MCP |
+| ADR-004 | Set the theme with an inline script before first paint | 0000016-site-regression-and-quality | active | An inline script and a `color-scheme` meta tag remove the light first frame |
 
 ---
 

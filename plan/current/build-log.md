@@ -123,6 +123,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - U3 REQ-002: RED shown by mutation for each criterion. GREEN: 33 passed and 1 skipped, three runs of 2.7 s, 2.3 s, and 2.4 s. The list reporter hides skip reasons, so the orchestrator added a printed reason to AC-3.
 - Done: U3 REQ-002 TDD track (2026-11-01T16:04:51Z)
 - In progress: U7 docs close-out (2026-11-01T16:04:51Z)
+- U7: `web-app` to `0.5.0` in `component.yml`, `package.json`, and `package-lock.json`. Updated the component docs, the four living docs, and the decisions index. Drift fixed: `architecture-overview.md` listed `mermaid` 11, not 12. Change record written.
+- Done: U7 docs close-out (2026-11-01T16:05:05Z)
 
 ---
 

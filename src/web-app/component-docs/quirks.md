@@ -22,3 +22,11 @@ If a manifest entry has no page file, the build fails. If a page file has no man
 ## Q-005: Favicon and asset paths are relative
 
 GitHub Pages serves the site at the org root, `https://ravintio.github.io`. Every icon and asset path is relative, so the site also works under a path, such as a fork served at `/{repo}/`.
+
+## Q-006: The Playwright suite tests an existing build
+
+`npm run test:e2e` serves `dist/` with `vite preview` on port 4173. It doesn't build. Run `npm run build` first.
+
+## Q-007: The theme logic lives in two places
+
+An inline script at the top of `<head>` sets `data-theme` before first paint. `main.ts` reads that value and owns the toggle. A change to how the theme is chosen needs both places (0000016 ADR-004).

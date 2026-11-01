@@ -1,6 +1,8 @@
 # Test coverage - web-app
 
-The tests run with `npm test` from `src/web-app`, after `npm run build`. They use the Node test runner.
+Two suites run from `src/web-app`, after `npm run build`. The content suite runs with `npm test` on the Node test runner. The regression suite runs with `npm run test:e2e` in Chromium. `.github/workflows/site-tests.yml` runs both on each pull request.
+
+## Content suite
 
 | Test | Requirement | Checks |
 |------|-------------|--------|
@@ -16,7 +18,18 @@ The tests run with `npm test` from `src/web-app`, after `npm run build`. They us
 | `simplicity.test.mjs` | 0000009 REQ-002 | Simplicity section and the P2 simplicity sentence |
 | `copy-fixes.test.mjs` | 0000009 REQ-004 | First-run step 2 runs on a fresh setup, plus four copy fixes |
 | `mobile-nav.test.mjs` | 0000009 REQ-005 | Page-list disclosure markup, desktop CSS, and `syncPageList` behaviour at each breakpoint |
+| `mcp-config.test.mjs` | 0000016 REQ-004 | `.mcp.json` pins `@playwright/mcp` at `0.0.83` |
+| `site-tests-workflow.test.mjs` | 0000016 REQ-003 | `site-tests.yml` trigger, permissions, step order, and report upload |
+| `quality-review.test.mjs` | 0000016 REQ-005 | The quality review skill and repo instruction hold the areas, targets, rule, cap, and duplicate check |
+
+## Regression suite
+
+| Test | Requirement | Checks |
+|------|-------------|--------|
+| `e2e/page-health.spec.ts` | 0000016 REQ-001 | Each page returns 200 with no console errors, links and anchors resolve, and no sideways scroll at 390 px |
+| `e2e/interactive.spec.ts` | 0000016 REQ-002 | Theme toggle and persistence, the page list at 390 px and 1280 px, and Mermaid diagrams, with a named skip when no page holds one |
+| `e2e/first-frame.spec.ts` | 0000016 REQ-006 | The first frame matches a saved theme or the system preference |
 
 Requirement IDs without a prefix belong to feature 0000005.
 
-The tests read files and built HTML. No browser test runs. Keyboard use, colour contrast, and the disclosure at 360 px get a manual check at P3.
+Keyboard use and colour contrast get a manual check in the P3 quality review.

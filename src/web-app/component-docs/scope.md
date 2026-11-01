@@ -10,6 +10,8 @@
 - Theme toggle and mobile menu
 - Mermaid diagram rendering on demand
 - Site tests in `tests/`
+- The Playwright regression suite in `tests/e2e/`
+- The inline theme script in each page template
 
 ## Out of scope
 
