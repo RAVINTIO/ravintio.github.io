@@ -87,6 +87,28 @@ Design confirmed: 2026-11-01T08:55:35Z
 
 ---
 
+### P2: Implement
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-01T15:58:40Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary (orchestrator), primary `sonnet` (TDD tracks) |
+| Skills loaded | ravintio-implement |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `3` |
+| Notes | none |
+
+- Departure: each unit runs as one TDD track (test-writer, implementer, and refactor in sequence) in one `sonnet` subagent, not three subagents. The improvement loop runs as one fresh-context review across the whole diff, as the 0000009 retrospective recommends. Pack backlog 0000330 covers this gap in Zero.
+- Departure: U2 runs inline in the orchestrator. It is one config file and one parse test, and a subagent brief would be longer than the unit.
+- In progress: U1 REQ-001 TDD track (2026-11-01T15:58:40Z)
+- In progress: U2 REQ-004 TDD track (2026-11-01T15:58:40Z)
+- In progress: U6 REQ-005 TDD track (2026-11-01T15:58:40Z)
+
+---
+
 <!-- Copy and fill in this block at each phase boundary. Headings use the form
      "### P<n>: {Phase Name}" with n from 1 to 4 and the phase names
      P1: Plan, P2: Implement, P3: Validate and Accept, P4: Ship.
