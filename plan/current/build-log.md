@@ -153,6 +153,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - Rework: REQ-004: the Playwright MCP browser writes snapshots and screenshots to `.playwright-mcp/` in the repo root, which git did not ignore. Added it to `.gitignore`. Quality review fix-now finding N-003, size S. (2026-11-01T16:10:53Z)
 - Site quality review: 11 pages, 1 fix-now finding (fixed, 1 point) and 5 backlog findings filed as 0000017 to 0000021. Report in `site-quality-report.md`.
 - Done: site quality review (2026-11-01T16:11:30Z)
+- Security review: overall low. No critical, high, or medium finding. Three low findings and two informational ones, in `security-report.md`.
+- Verification: 13 criteria verified, REQ-003 AC-3 verified locally, and REQ-003 AC-1 and AC-2 not-verifiable until the pull request runs CI.
 
 ---
 
