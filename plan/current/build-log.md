@@ -151,6 +151,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - Execution: Playwright MCP drove the preview at 390 px and 1280 px in both themes. See `verification-report.md`.
 - In progress: site quality review (2026-11-01T16:08:54Z)
 - Rework: REQ-004: the Playwright MCP browser writes snapshots and screenshots to `.playwright-mcp/` in the repo root, which git did not ignore. Added it to `.gitignore`. Quality review fix-now finding F-001, size S. (2026-11-01T16:10:53Z)
+- Site quality review: 11 pages, 1 fix-now finding (fixed, 1 point) and 5 backlog findings filed as 0000017 to 0000021. Report in `site-quality-report.md`.
+- Done: site quality review (2026-11-01T16:11:30Z)
 
 ---
 
