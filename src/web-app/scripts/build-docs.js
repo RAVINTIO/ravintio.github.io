@@ -80,6 +80,19 @@ function pageHtml({ title, content, currentFile, pagination }) {
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Sets the theme before first paint (ADR-004). main.ts still owns the toggle. -->
+    <script>
+      (function () {
+        var theme;
+        try {
+          var saved = localStorage.getItem('ravintio-theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch (e) {}
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${escapeHtml(title)} - RAVINTIO Docs</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">

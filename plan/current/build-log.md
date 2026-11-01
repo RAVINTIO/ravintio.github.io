@@ -118,6 +118,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - In progress: U5 REQ-003 TDD track (2026-11-01T16:01:18Z)
 - U5 REQ-003: RED exit 1 (`site-tests.yml is missing`), GREEN exit 0, 4 of 4 tests. Refactor: no change worth making. CI timing (AC-3) is measured on the PR in P3.
 - Done: U5 REQ-003 TDD track (2026-11-01T16:02:04Z)
+- U4 REQ-006: RED exit 1, 6 of 6 failing (`data-theme` received `undefined` with module scripts blocked). GREEN exit 0, 6 of 6. Refactor: no change worth making.
+- Done: U4 REQ-006 TDD track (2026-11-01T16:04:51Z)
 
 ---
 
