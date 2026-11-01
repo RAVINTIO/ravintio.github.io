@@ -106,6 +106,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - In progress: U1 REQ-001 TDD track (2026-11-01T15:58:40Z)
 - In progress: U2 REQ-004 TDD track (2026-11-01T15:58:40Z)
 - In progress: U6 REQ-005 TDD track (2026-11-01T15:58:40Z)
+- U2 REQ-004: RED exit 1 (`.mcp.json is missing at the repo root`), GREEN exit 0. Refactor: no change worth making.
+- Done: U2 REQ-004 TDD track (2026-11-01T16:00:00Z)
 
 ---
 
