@@ -13,6 +13,8 @@ for (const section of manifest.sections) {
 
 export default defineConfig({
   base: './', // For GitHub Pages standard relative layout
+  // No SPA fallback, so the dev and preview servers return 404 for a missing page, as GitHub Pages does.
+  appType: 'mpa',
   build: {
     rollupOptions: {
       input: {

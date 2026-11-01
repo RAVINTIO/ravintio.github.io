@@ -30,3 +30,7 @@ GitHub Pages serves the site at the org root, `https://ravintio.github.io`. Ever
 ## Q-007: The theme logic lives in two places
 
 An inline script at the top of `<head>` sets `data-theme` before first paint. `main.ts` reads that value and owns the toggle. A change to how the theme is chosen needs both places (0000016 ADR-004).
+
+## Q-008: The dev and preview servers have no SPA fallback
+
+`vite.config.ts` sets `appType: 'mpa'`. A missing page returns 404 locally, as it does on GitHub Pages, so the link check catches it.

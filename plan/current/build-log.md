@@ -125,6 +125,11 @@ Design confirmed: 2026-11-01T08:55:35Z
 - In progress: U7 docs close-out (2026-11-01T16:04:51Z)
 - U7: `web-app` to `0.5.0` in `component.yml`, `package.json`, and `package-lock.json`. Updated the component docs, the four living docs, and the decisions index. Drift fixed: `architecture-overview.md` listed `mermaid` 11, not 12. Change record written.
 - Done: U7 docs close-out (2026-11-01T16:05:05Z)
+- Improve: cycle 1, fresh-context review of the whole diff. Three findings, all applied:
+  - `vite preview` fell back to the homepage with status 200 for a missing page, so the link check passed a broken page link. Set `appType: 'mpa'` in `vite.config.ts`. A broken link injected into the build now fails AC-2.
+  - REQ-006 AC-2 ran under a light system preference, so it couldn't tell a saved `light` from the fallback. It now runs under a dark preference. Dropping the `light` branch now fails it.
+  - REQ-006 AC-1 accepted a dark background on either `<html>` or `<body>`. It now checks `<body>`, which `style.css` sets.
+  Stopped after one cycle: the three fixes were the reviewer's whole list. (2026-11-01T16:06:54Z)
 
 ---
 

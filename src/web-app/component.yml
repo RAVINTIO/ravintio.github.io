@@ -111,6 +111,7 @@ quality:
     - "Q-005: asset paths are relative, so the site works at the org root or under a path"
     - "Q-006: the Playwright suite tests an existing build, so npm run build runs first"
     - "Q-007: the theme logic lives in the inline script and in main.ts"
+    - "Q-008: appType mpa, so the dev and preview servers return 404 for a missing page"
 
 pipeline:
   templateVersion: "1.0.0"

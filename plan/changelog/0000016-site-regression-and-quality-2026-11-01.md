@@ -32,6 +32,7 @@ version: "0.1.0"
 - U1: `__dirname` is undefined in the ESM package. The page list now reads the manifest from the config directory.
 - U3: Playwright's list reporter hides `test.skip` reasons. AC-3 now prints its reason before it skips.
 - U6: setup copies only `SKILL.md` into `.claude/skills/`. The skill now reads `report.template.md` from `ravintio-overrides/capability-skills/site-quality-review/`.
+- Review: `vite preview` served the homepage with status 200 for a missing page. `appType: 'mpa'` in `vite.config.ts` makes the dev and preview servers return 404, as GitHub Pages does. REQ-006 AC-1 and AC-2 also got tighter checks.
 
 ## Quirks
 
@@ -43,4 +44,4 @@ version: "0.1.0"
 ## Recommended Improvements
 
 - Add `site-tests.yml` as a required check in the branch protection settings, so a failed suite blocks a merge.
-- The first-frame test blocks module scripts and reads the theme after load. It proves that the inline script sets the theme without `main.ts`, not paint order itself.
+- The first-frame test blocks module scripts and reads the theme after load. It proves that the inline script sets the theme without `main.ts`. It doesn't measure paint order itself.

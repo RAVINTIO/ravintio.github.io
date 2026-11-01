@@ -23,12 +23,16 @@ for (const path of paths) {
     await page.addInitScript((key) => localStorage.setItem(key, 'dark'), THEME_KEY);
     const state = await loadWithoutModule(page, path);
     expect(state.theme).toBe('dark');
-    expect([state.htmlBg, state.bodyBg]).toContain(DARK_BG);
+    expect(state.bodyBg).toBe(DARK_BG); // style.css sets the page background on body
   });
 
-  test(`req-006 AC-2: ${path} paints light first when light is saved`, async ({ page }) => {
-    await page.addInitScript((key) => localStorage.setItem(key, 'light'), THEME_KEY);
+  test(`req-006 AC-2: ${path} paints light first when light is saved`, async ({ browser }) => {
+    // A dark system preference proves the saved choice wins over the fallback.
+    const context = await browser.newContext({ colorScheme: 'dark' });
+    await context.addInitScript((key) => localStorage.setItem(key, 'light'), THEME_KEY);
+    const page = await context.newPage();
     const state = await loadWithoutModule(page, path);
+    await context.close();
     expect(state.theme).toBe('light');
   });
 
