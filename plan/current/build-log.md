@@ -120,6 +120,9 @@ Design confirmed: 2026-11-01T08:55:35Z
 - Done: U5 REQ-003 TDD track (2026-11-01T16:02:04Z)
 - U4 REQ-006: RED exit 1, 6 of 6 failing (`data-theme` received `undefined` with module scripts blocked). GREEN exit 0, 6 of 6. Refactor: no change worth making.
 - Done: U4 REQ-006 TDD track (2026-11-01T16:04:51Z)
+- U3 REQ-002: RED shown by mutation for each criterion. GREEN: 33 passed and 1 skipped, three runs of 2.7 s, 2.3 s, and 2.4 s. The list reporter hides skip reasons, so the orchestrator added a printed reason to AC-3.
+- Done: U3 REQ-002 TDD track (2026-11-01T16:04:51Z)
+- In progress: U7 docs close-out (2026-11-01T16:04:51Z)
 
 ---
 
