@@ -36,4 +36,4 @@ You review the site in P3, after the Playwright suite passes. You write `plan/cu
    - If one exists, append the new evidence under a dated heading and file nothing new.
    - Otherwise reserve an id with `node ravintio-zero/scripts/reserve-id.mjs`. Write `plan/backlog/{id}-{slug}/entry.md` from `ravintio-zero/templates/backlog-entry.template.md`.
    - Set the source phase to P3 and the deferral source to `discovered mid-flight`. Include the page, area, evidence, and a suggested fix.
-9. Write `plan/current/site-quality-report.md` from `report.template.md` in this folder. Add each finding to the file as you find it. Stop the preview server at the end.
+9. Write `plan/current/site-quality-report.md` from `ravintio-overrides/capability-skills/site-quality-review/report.template.md`. Setup installs only `SKILL.md`, so read the template from that source path. Add each finding to the file as you find it. Stop the preview server at the end.

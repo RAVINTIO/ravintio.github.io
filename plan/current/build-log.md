@@ -108,6 +108,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 - In progress: U6 REQ-005 TDD track (2026-11-01T15:58:40Z)
 - U2 REQ-004: RED exit 1 (`.mcp.json is missing at the repo root`), GREEN exit 0. Refactor: no change worth making.
 - Done: U2 REQ-004 TDD track (2026-11-01T16:00:00Z)
+- U6 REQ-005: RED exit 1 (`custom-003-site-quality-review.md is missing`), GREEN exit 0, 7 of 7 tests. Setup re-run with `--strict-orchestrator` installed the skill and the instruction. Setup copies only `SKILL.md`, so the skill now reads its report template from the source path.
+- Done: U6 REQ-005 TDD track (2026-11-01T16:00:58Z)
 
 ---
 
