@@ -165,8 +165,8 @@ Design confirmed: 2026-11-01T08:55:35Z
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-01T16:13:21Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-01T16:13:37Z` |
+| Wall clock | `0` |
 | Model tier | primary |
 | Skills loaded | ravintio-ship, ravintio-retrospective |
 | Agents spawned | `0` |
@@ -217,12 +217,12 @@ Design confirmed: 2026-11-01T08:55:35Z
 
 | Metric | Value |
 |--------|-------|
-| Total phases completed | `{{count}}` |
-| Total wall clock | `{{minutes from pipeline start to the P4 End}}` |
-| Total agents spawned | `{{count}}` |
-| Total MCP calls | `{{count}}` |
-| Phases using parallelism | `{{count}}` |
-| Primary tier agent calls | `{{count}}` |
-| Cheaper tier agent calls | `{{count}}` |
-| Self-corrections | `{{count}}` |
-| Phases skipped | `{{list or "none"}}` |
+| Total phases completed | `5` |
+| Total wall clock | `1313` |
+| Total agents spawned | `4` |
+| Total MCP calls | `16` |
+| Phases using parallelism | `1` |
+| Primary tier agent calls | `4` |
+| Cheaper tier agent calls | `0` |
+| Self-corrections | `4` |
+| Phases skipped | none |
