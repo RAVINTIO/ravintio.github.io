@@ -1,7 +1,7 @@
 ---
 title: "Feature Brief - Site regression and quality"
 summary: "The business case, scope, and product requirements for the feature."
-status: "draft"
+status: "approved"
 version: "0.1.0"
 ---
 # Feature Brief - Site regression and quality
@@ -10,11 +10,11 @@ version: "0.1.0"
 
 ## Business Goal
 
-Pending coaching.
+The docs site has no browser tests and runs no tests in CI. Breakage reaches readers before anyone sees it. This run adds a Playwright regression suite, runs both suites on each pull request, and adds a quality review to every run. It also fixes the white flash that dark-theme readers see on each page load.
 
 ## Features
 
-Stories and criteria are pending coaching.
+The stories and the 17 acceptance criteria are in `plan/current/design.md`. This table records where each item came from.
 
 | Feature | Source | Notes |
 |---------|--------|-------|
@@ -24,3 +24,7 @@ Stories and criteria are pending coaching.
 ## Deferred
 
 - Framework user docs: split out to keep the run within the 14-point budget. Framework is under major rework. Re-filed in `plan/backlog/`.
+
+## Scenario Paths
+
+The four paths are in the build log under `Scope Lock`. The human accepted each draft.
