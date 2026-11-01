@@ -150,6 +150,7 @@ Design confirmed: 2026-11-01T08:55:35Z
 - CI: library audit pass (Playwright is the pack's preferred E2E framework), `tsc --noEmit` pass, build pass, `npm test` 53 of 53, `npm run test:e2e` 33 passed and 1 skipped, `npm audit` 0 vulnerabilities. No lint step is declared. Self-correct cycles: 0.
 - Execution: Playwright MCP drove the preview at 390 px and 1280 px in both themes. See `verification-report.md`.
 - In progress: site quality review (2026-11-01T16:08:54Z)
+- Rework: REQ-004: the Playwright MCP browser writes snapshots and screenshots to `.playwright-mcp/` in the repo root, which git did not ignore. Added it to `.gitignore`. Quality review fix-now finding F-001, size S. (2026-11-01T16:10:53Z)
 
 ---
 
