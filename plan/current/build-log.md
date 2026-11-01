@@ -26,10 +26,10 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-10-31T18:19:38Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-01T08:55:35Z` |
+| Wall clock | `875` |
 | Model tier | primary |
-| Skills loaded | ravintio-orchestrator, ravintio-migrator |
+| Skills loaded | ravintio-orchestrator, ravintio-migrator, ravintio-file-backlog |
 | Agents spawned | `0` |
 | MCP calls | `0` |
 | Parallel task batches | `0` |
@@ -61,6 +61,7 @@ Scope Lock (cross-session continuity): the review writes as it goes, an `In prog
 Scope Lock complete. All four scenario paths captured.
 Run mode: autonomous (2026-11-01T03:10:57Z)
 Run speed: standard (2026-11-01T08:55:00Z)
+Design confirmed: 2026-11-01T08:55:35Z
 
 ---
 
