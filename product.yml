@@ -1,7 +1,7 @@
 id: "ravintio-docs"
 name: "RAVINTIO Docs"
-version: "0.4.1"
-feature: "0000009-bug-fixes"
+version: "0.5.0"
+feature: "0000016-site-regression-and-quality"
 versionPolicy: "max-component-version"
 releaseSize: "large"
 
