@@ -37,7 +37,7 @@ See `plan/current/security-report.md`.
 
 ## Execution
 
-Playwright MCP drove the preview in Chromium at 390 px and 1280 px, in both themes. A script read `data-theme` when `<body>` first arrived. It matched the saved theme, or the system preference when nothing was saved. Fifteen criteria are `verified`. REQ-003 AC-1 and AC-2 are `not-verifiable` until this pull request runs `site-tests.yml`. See `plan/current/verification-report.md`.
+Playwright MCP drove the preview in Chromium at 390 px and 1280 px, in both themes. A script read `data-theme` when `<body>` first arrived. It matched the saved theme, or the system preference when nothing was saved. Sixteen criteria are `verified`. The `site-tests` job passed on this pull request in 1 min 0 s. REQ-003 AC-2 stays `not-verifiable`, because it needs a failing run. See `plan/current/verification-report.md`.
 
 ## Site quality review
 

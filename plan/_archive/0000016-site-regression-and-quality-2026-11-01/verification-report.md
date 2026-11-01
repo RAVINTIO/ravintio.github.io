@@ -19,9 +19,9 @@
 | REQ-002 | AC-1 | Browser click on `#theme-toggle` | verified | On `pipeline.html` the theme went from `light` to `dark`. After a reload, `data-theme` and the saved value both held `dark`. |
 | REQ-002 | AC-2 | Browser at 390 px and 1280 px | verified | Closed on load at 390 px, open after a click on the summary, and open at 1280 px |
 | REQ-002 | AC-3 | `npm run test:e2e` output | verified | No page holds a Mermaid diagram. The test reports as skipped and prints `no page holds a Mermaid diagram`. |
-| REQ-003 | AC-1 | `site-tests.yml` content test | not-verifiable | The workflow runs on a pull request, and P4 raises it. P4 records the first run's result. |
+| REQ-003 | AC-1 | First CI run on PR 25 | verified | The `site-tests` job built the site and ran both suites. It passed. |
 | REQ-003 | AC-2 | `site-tests.yml` content test | not-verifiable | A real failure needs a failing pull request. The content test confirms the `if: failure()` upload of `playwright-report`. |
-| REQ-003 | AC-3 | Three local runs, plus the CI job | verified locally | Three runs passed with `retries: 0`, at 2.7 s, 2.3 s, and 2.4 s. The CI duration comes from the first pull request run. |
+| REQ-003 | AC-3 | Three local runs, plus the CI job | verified | Three runs passed with `retries: 0`, at 2.7 s, 2.3 s, and 2.4 s. The `site-tests` job on PR 25 took 1 min 0 s. |
 | REQ-004 | AC-1 | `.mcp.json` parse test | verified | One `playwright` server running `npx @playwright/mcp@0.0.83`, with no range or `latest` tag. A new session loads it after a one-time approval. |
 | REQ-005 | AC-1 | Ran the review in this P3 | verified | The installed skill ran after the suite passed. `custom-003` is in the repo instructions. |
 | REQ-005 | AC-2 | Read the written report | verified | `site-quality-report.md` holds all five areas, each with its target and findings |
