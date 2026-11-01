@@ -9,7 +9,7 @@ version: "0.1.0"
 
 **Feature:** Site regression suite and quality review
 **Version:** 0.5.0
-**PR:** pending
+**PR:** [#25](https://github.com/RAVINTIO/ravintio.github.io/pull/25)
 
 ## What changed
 
