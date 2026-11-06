@@ -5,7 +5,7 @@
 - Adoption mode: standard-iterative. Signal: `plan/_archive/` holds three prior runs and `src/` holds two components. Assumed as the only signal.
 - Feature ID: 0000024-explainer-six-tools
 - Version: `0.6.0`, a minor bump from `0.5.0`.
-- Discovery: see `plan/current/discovery.md`.
+- Discovery: see `plan/_archive/0000024-explainer-six-tools-2026-11-06/discovery.md`.
 
 ## Product Layer
 - User stories:

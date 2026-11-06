@@ -133,8 +133,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-06T16:49:53Z` |
-| End | `pending` |
-| Wall clock | `pending` |
+| End | `2026-11-06T16:50:02Z` |
+| Wall clock | `0` |
 | Model tier | primary |
 | Skills loaded | ravintio-ship, ravintio-retrospective |
 | Agents spawned | `0` |
@@ -148,12 +148,12 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 | Metric | Value |
 |--------|-------|
-| Total phases completed | `pending` |
-| Total wall clock | `pending` |
-| Total agents spawned | `pending` |
-| Total MCP calls | `pending` |
-| Phases using parallelism | `pending` |
-| Primary tier agent calls | `pending` |
-| Cheaper tier agent calls | `pending` |
-| Self-corrections | `pending` |
-| Phases skipped | `pending` |
+| Total phases completed | `5` |
+| Total wall clock | `1060` |
+| Total agents spawned | `5` |
+| Total MCP calls | `20` |
+| Phases using parallelism | `0` |
+| Primary tier agent calls | `5` |
+| Cheaper tier agent calls | `0` |
+| Self-corrections | `2` |
+| Phases skipped | `none` |

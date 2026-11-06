@@ -45,4 +45,4 @@ Suggested action: Rewrite each sentence with a named actor, for example "Accept 
 
 ## Features and acceptance criteria
 
-See `plan/current/design.md`, Product Layer: US-001 to US-003 with eight criteria.
+See `plan/_archive/0000024-explainer-six-tools-2026-11-06/design.md`, Product Layer: US-001 to US-003 with eight criteria.
