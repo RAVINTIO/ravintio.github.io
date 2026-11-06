@@ -74,6 +74,25 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Parallel task batches | `0` |
 | Notes | Small artifact set, written inline rather than dispatched. Consistency check clean on the first run. The design's eight criteria map to seven checkbox lines, recorded in the execution plan. |
 
+### P2: Implement
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-06T16:36:45Z` |
+| End | `pending` |
+| Wall clock | `pending` |
+| Model tier | primary (orchestrator), primary `opus` (TDD tracks) |
+| Skills loaded | ravintio-implement |
+| Agents spawned | `pending` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | Baseline: `npm run build` and `npm test` pass, 53 of 53. |
+
+- Departure: each unit runs as one TDD track (test-writer, implementer, and refactor in sequence) in one subagent, not three subagents, as in run 0000016. The improvement loop runs as one fresh-context review across the whole diff. Pack backlog 0000330 covers this gap in Zero.
+- Departure: the TDD tracks run on `opus` rather than `haiku`, because U1 and U3 are prose rewrites that the style rules constrain.
+- Batches: four, all sequential. Every unit rebuilds `dist/` and shares port 4173, as the concurrency plan states.
+- In progress: U1 REQ-001 TDD track (2026-11-06T16:36:45Z)
+
 ---
 
 ## Summary (filled at ship, P4)
