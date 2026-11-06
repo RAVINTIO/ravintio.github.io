@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { marked } from 'marked';
+import { escapeHtml, checkDescriptions } from './manifest.js';
 
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -11,6 +12,7 @@ const OUT_DIR = path.resolve(__dirname, '../docs');
 const MANIFEST_FILE = path.resolve(__dirname, '../docs.manifest.json');
 const SITEMAP_DATA_FILE = path.resolve(__dirname, '../public/sitemap-data.json');
 const REPO_URL = 'https://github.com/RAVINTIO/ravintio-zero';
+const SITEMAP_DESCRIPTION = 'Browse every page of the RAVINTIO documentation, grouped by section.';
 
 const fail = message => {
   console.error(`ERROR: ${message}`);
@@ -33,6 +35,11 @@ for (const section of manifest.sections) {
     fail('every manifest section needs a "title" and a non-empty "pages" array');
   }
 }
+try {
+  checkDescriptions(manifest);
+} catch (e) {
+  fail(e.message);
+}
 
 // Flattened in section order for prev and next links.
 const pages = manifest.sections.flatMap(section =>
@@ -41,12 +48,6 @@ const pages = manifest.sections.flatMap(section =>
 if (!fs.existsSync(PAGES_DIR)) fail(`pages folder not found at ${PAGES_DIR}`);
 fs.rmSync(OUT_DIR, { recursive: true, force: true });
 fs.mkdirSync(OUT_DIR, { recursive: true });
-
-const escapeHtml = s => s
-  .replace(/&/g, '&amp;')
-  .replace(/</g, '&lt;')
-  .replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;');
 
 // --- Shared page chrome ---
 const ICON_SUN = '<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
@@ -75,7 +76,7 @@ function sectionNav(currentFile) {
       </details>`;
 }
 
-function pageHtml({ title, content, currentFile, pagination }) {
+function pageHtml({ title, description, content, currentFile, pagination }) {
   return `<!DOCTYPE html>
 <html lang="en-GB">
   <head>
@@ -94,6 +95,7 @@ function pageHtml({ title, content, currentFile, pagination }) {
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="${escapeHtml(description)}" />
     <title>${escapeHtml(title)} - RAVINTIO Docs</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -193,6 +195,7 @@ pages.forEach((page, index) => {
   const markdown = fs.readFileSync(path.join(PAGES_DIR, page.file.replace(/\.html$/, '.md')), 'utf-8');
   const html = pageHtml({
     title: page.title,
+    description: page.description,
     content: marked.parse(rewriteLinks(markdown)),
     currentFile: page.file,
     pagination: pagination(index),
@@ -210,5 +213,5 @@ const sitemapContent = '<h1>Sitemap</h1>\n' + manifest.sections.map(section =>
   section.pages.map(p => `<li><a href="${p.file}">${escapeHtml(p.title)}</a></li>`).join('\n') +
   '\n</ul>').join('\n');
 fs.writeFileSync(path.join(OUT_DIR, 'sitemap.html'),
-  pageHtml({ title: 'Sitemap', content: sitemapContent, currentFile: '', pagination: '' }), 'utf-8');
+  pageHtml({ title: 'Sitemap', description: SITEMAP_DESCRIPTION, content: sitemapContent, currentFile: '', pagination: '' }), 'utf-8');
 console.log('Generated: docs/sitemap.html');

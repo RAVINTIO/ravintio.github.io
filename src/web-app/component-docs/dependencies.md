@@ -6,7 +6,7 @@
 |-----------|------|-------------|
 | `site-content` | filesystem, build time | Markdown pages in `src/site-content/pages/` |
 | `ravintio-zero/` | filesystem, test time | The reference-match test reads the pack folders |
-| `docs.manifest.json` | internal config | Sections, page order, and titles, owned by `web-app` |
+| `docs.manifest.json` | internal config | Sections, page order, titles, and meta descriptions, owned by `web-app` |
 | Chromium | browser, test time | Installed by `npx playwright install chromium` |
 
 ## Downstream

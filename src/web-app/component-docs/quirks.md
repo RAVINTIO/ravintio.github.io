@@ -15,9 +15,9 @@ Mermaid draws each diagram once. If a page holds a diagram, the theme toggle rel
 ## Q-004: Adding a page takes two edits
 
 1. Add `{slug}.md` to `src/site-content/pages/`.
-2. Add the page to a section in `docs.manifest.json`.
+2. Add the page to a section in `docs.manifest.json`, with a `file`, a `title`, and a `description` of 50 to 160 characters.
 
-If a manifest entry has no page file, the build fails. If a page file has no manifest entry, the build warns and skips it.
+If a manifest entry has no page file or no description, the build fails. If a page file has no manifest entry, the build warns and skips it.
 
 ## Q-005: Favicon and asset paths are relative
 
