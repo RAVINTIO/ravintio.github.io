@@ -23,3 +23,7 @@ Add a `404.html` with the site header, a short message, and links to the homepag
 ## Why Deferred
 
 The P3 site quality review sorted it as a backlog finding. It doesn't break an existing page, fail WCAG level A, or come from this run.
+
+## Evidence 2026-11-06
+
+The run 0000024 site quality review found this issue still present on the local preview.
