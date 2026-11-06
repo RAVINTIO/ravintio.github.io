@@ -46,6 +46,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Backlog 0000021: pulled in to the brief.
 - P0 exchange (explainer shape): Q: Restructure the explainer around the shared purpose, with one equal-length entry per tool, keep six-tools.md apart from passive fixes, and change the homepage subtitle? / A: Yes.
 - P0 exchange (acceptance criteria): Q: Three stories with eight criteria, including a passive-voice check with an allowlist in style.test.mjs? / A: Yes, all eight.
+- P0 exchange (version): Q: Minor bump from 0.5.0 to 0.6.0? / A: Yes. Confirmed version 0.6.0.
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---
