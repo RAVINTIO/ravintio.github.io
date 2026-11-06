@@ -105,6 +105,20 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Improve: cycle 1, fresh-context review of the whole diff. Four findings, all applied in `5a61144`: "will" hedges for in-design tools, negated forms in the voice check, table cells in the voice check, and a dead exception. Node 85 of 85, Playwright 33 passed and 1 skipped.
 - Done: improvement review across the whole diff (2026-11-06T16:46:19Z)
 - Departure: cycle 2 did not run. Cycle 1 covered the whole diff, and the refactor changed only wording and test coverage.
+### P3: Validate and Accept
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-06T16:46:30Z` |
+| End | `pending` |
+| Wall clock | `pending` |
+| Model tier | primary |
+| Skills loaded | ravintio-validate-and-accept, site-quality-review |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | none |
+
 ---
 
 ## Summary (filled at ship, P4)
