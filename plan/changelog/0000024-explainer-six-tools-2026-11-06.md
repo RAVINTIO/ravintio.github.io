@@ -9,7 +9,7 @@ version: "0.1.0"
 
 **Feature:** Rebalance the explainer to all six tools
 **Version:** 0.6.0
-**PR:** pending
+**PR:** [#26](https://github.com/RAVINTIO/ravintio.github.io/pull/26)
 
 ## What changed
 
