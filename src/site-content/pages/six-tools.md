@@ -80,11 +80,11 @@ Find the code in the [RAVINTIO Framework repository](https://github.com/RAVINTIO
 
 **Status:** In design
 
-RAVINTIO Accept aims to provide independent acceptance. It will trace a change from its functional requirement to the evidence that proves it. The intent is that it works whoever or whatever built the change.
+RAVINTIO Accept aims to provide independent acceptance. Its design traces a change from its functional requirement to the evidence that proves it. The intent is that it works whoever or whatever built the change.
 
 Accept aims to answer this question: is this change demonstrably fit for release?
 
-Its central idea is that an implementation claims it is complete, and Accept asks where the evidence is. Accept will keep a missing check, a failed check, and a passed check apart.
+Its central idea is that an implementation claims it is complete, and Accept asks where the evidence is. Accept aims to keep a missing check, a failed check, and a passed check apart.
 
 **What it does**
 
@@ -98,13 +98,13 @@ Its central idea is that an implementation claims it is complete, and Accept ask
 - Your test management and defect tracking.
 - Your release governance and risk acceptance. Accept aims to inform these decisions and never make them for you.
 
-Accept will not be an implementation engine.
+Accept is not an implementation engine.
 
 ## RAVINTIO Qualify
 
 **Status:** In design
 
-RAVINTIO Qualify aims to evaluate agent skills. It will check a skill when you first adopt it and again after the skill changes.
+RAVINTIO Qualify aims to evaluate agent skills. Its design calls for a check when you first adopt a skill and again after the skill changes.
 
 Qualify aims to answer this question: does a skill meet its criteria, and does it still after changes?
 
@@ -123,11 +123,11 @@ Qualify aims to answer this question: does a skill meet its criteria, and does i
 
 **Status:** In design
 
-RAVINTIO Insight aims to give evidence-led assessment of software systems and engineering practices. It will look at architecture, security, reliability, testing, delivery, documentation, and AI workflows. The intent is that it works the same way however your team built the software. It also aims to stay read-only by default.
+RAVINTIO Insight aims to give evidence-led assessment of software systems and engineering practices. Its design covers architecture, security, reliability, testing, delivery, documentation, and AI workflows. The intent is that it works the same way however your team built the software. It also aims to stay read-only by default.
 
 Insight aims to answer this question: what does the available evidence indicate about risks and potential improvements?
 
-Insight aims to separate observation from inference. It will state its uncertainty and name the evidence it couldn't see.
+Insight aims to separate observation from inference. It aims to state its uncertainty and name the evidence it couldn't see.
 
 **What it does**
 
@@ -146,7 +146,7 @@ Insight aims to separate observation from inference. It will state its uncertain
 
 **Status:** In design
 
-RAVINTIO Unbound aims to support research. It will help you study how models and agent skills behave when you supply only functional requirements. It leaves out prescribed practices such as upfront planning, architecture, and testing strategy. The aim is to watch how decisions and outputs change over long autonomous runs.
+RAVINTIO Unbound aims to support research. It aims to help you study how models and agent skills behave when you supply only functional requirements. It leaves out prescribed practices such as upfront planning, architecture, and testing strategy. The aim is to watch how decisions and outputs change over long autonomous runs.
 
 Unbound aims to answer this question: how does an agent behave when you give it only functional requirements?
 

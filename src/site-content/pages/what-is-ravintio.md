@@ -26,19 +26,19 @@ Framework offers a structured workflow for projects that need stricter governanc
 
 ### RAVINTIO Accept
 
-Accept aims to give independent acceptance of any change, whoever built it. It will trace each requirement to the evidence that proves it. It will then accept the change, reject it, or ask a person to decide.
+Accept aims to give independent acceptance of any change, whoever built it. Its design traces each requirement to the evidence that proves it. The design ends in one of three results: accept, reject, or ask a person to decide.
 
 ### RAVINTIO Qualify
 
-Qualify aims to evaluate agent skills against defined criteria. It will check a skill when you adopt it and again after the skill changes. You then know whether a skill still does what you expect.
+Qualify aims to evaluate agent skills against defined criteria. Its design calls for a check when you adopt a skill and again after the skill changes. You then know whether a skill still does what you expect.
 
 ### RAVINTIO Insight
 
-Insight aims to assess a software system and its engineering practices from evidence. It will report findings with severity, confidence, and links to that evidence. It will stay read-only by default and make no change without your permission.
+Insight aims to assess a software system and its engineering practices from evidence. It aims to report findings with severity, confidence, and links to that evidence. Its design keeps it read-only by default. It aims to change nothing without your permission.
 
 ### RAVINTIO Unbound
 
-Unbound aims to show how agents behave when they get only functional requirements. Its experiments will run in isolation, under independent observation and operator control. Unbound will never serve as a route to production.
+Unbound aims to show how agents behave when they get only functional requirements. Its design runs each experiment in isolation, under independent observation and operator control. Unbound is never a route to production.
 
 ## The three areas
 

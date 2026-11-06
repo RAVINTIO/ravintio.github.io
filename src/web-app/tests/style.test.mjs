@@ -16,9 +16,6 @@ const BLOCKLIST = [
   /—/, /;/, /!/,
 ];
 
-// Human-confirmed copy where the word names the design goal rather than judging a task (0000009 US-001).
-const AGREED_PHRASES = [/as simple as the problem allows/gi];
-
 const MAX_WORDS = 24;
 
 // Prose lines only: drop code, tables, headings, HTML, and link targets.
@@ -34,6 +31,16 @@ function proseUnits(markdown) {
     .filter(Boolean);
 }
 
+// Table cells only: split body rows on "|" and skip header separator rows.
+function tableCells(markdown) {
+  return stripCode(markdown)
+    .split('\n')
+    .filter(line => /^\s*\|/.test(line) && !/^\s*\|[\s|:-]+\|?\s*$/.test(line))
+    .flatMap(line => line.split('|'))
+    .map(cell => cell.replace(/\*\*|__|[*_]/g, '').trim())
+    .filter(Boolean);
+}
+
 describe('req-002-zero-adoption-guide: AC-3 prose meets the style rules', () => {
   test('no sentence on any page reaches 25 words', () => {
     const long = pageSlugs().flatMap(slug => proseUnits(readPage(slug))
@@ -46,8 +53,7 @@ describe('req-002-zero-adoption-guide: AC-3 prose meets the style rules', () => 
     const hits = [];
     for (const slug of pageSlugs()) {
       for (const unit of proseUnits(readPage(slug))) {
-        const s = AGREED_PHRASES.reduce((acc, re) => acc.replace(re, ' '), unit);
-        for (const re of BLOCKLIST) if (re.test(s)) hits.push(`${slug}: ${re} in "${s}"`);
+        for (const re of BLOCKLIST) if (re.test(unit)) hits.push(`${slug}: ${re} in "${unit}"`);
       }
     }
     assert.deepEqual(hits, []);
@@ -68,9 +74,11 @@ const IRREGULAR_PARTICIPLES = [
   'chosen', 'drawn', 'driven', 'broken', 'spoken', 'hidden', 'begun', 'thrown', 'grown',
 ];
 
-// A be-verb, an optional adverb, then a participle.
+// A be-verb, an optional middle word, then a participle.
+const BE_VERBS = ['is', 'are', 'was', 'were', 'be', 'been', 'being', "isn't", "aren't", "wasn't", "weren't"];
+const MIDDLE_WORDS = ['not', 'never', 'also', 'always', 'only', 'still', 'now', '\\w+ly'];
 const PASSIVE = new RegExp(
-  `\\b(is|are|was|were)\\s+(\\w+ly\\s+)?(\\w+ed|${IRREGULAR_PARTICIPLES.join('|')})\\b`, 'gi');
+  `\\b(${BE_VERBS.join('|')})\\s+((?:${MIDDLE_WORDS.join('|')})\\s+)?(\\w+ed|${IRREGULAR_PARTICIPLES.join('|')})\\b`, 'gi');
 
 // Adjective uses that describe a state rather than an action done to the subject.
 const ALLOWED_PHRASES = [
@@ -96,10 +104,11 @@ describe('req-003-active-voice: AC-2 voice check on every page', () => {
   test('the check flags a sample passive sentence', () => {
     assert.deepEqual(passiveHits('The file is checked by the hook.'), ['is checked']);
     assert.deepEqual(passiveHits('The site was quickly built.'), ['was quickly built']);
+    assert.deepEqual(passiveHits('It is not meant to ship.'), ['is not meant']);
   });
 
-  test('no page uses passive voice in prose outside the allowlist', () => {
-    const hits = pageSlugs().flatMap(slug => proseUnits(readPage(slug))
+  test('no page uses passive voice in prose or table cells outside the allowlist', () => {
+    const hits = pageSlugs().flatMap(slug => [...proseUnits(readPage(slug)), ...tableCells(readPage(slug))]
       .flatMap(s => passiveHits(s).map(p => `${slug}: "${p}" in "${s}"`)));
     assert.deepEqual(hits, []);
   });
