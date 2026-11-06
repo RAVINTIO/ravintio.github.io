@@ -1,12 +1,12 @@
 ---
-title: "Feature Brief - pending"
+title: "Feature Brief - explainer-six-tools"
 summary: "The business case, scope, and product requirements for the feature."
-status: "draft"
+status: "approved"
 version: "0.1.0"
 ---
-# Feature Brief - pending
+# Feature Brief - explainer-six-tools
 
-**Feature ID:** pending
+**Feature ID:** 0000024-explainer-six-tools
 
 ## Business Goal
 
@@ -43,10 +43,6 @@ Evidence: a scan of `src/site-content/pages/` for "is" or "are" plus a participl
 
 Suggested action: Rewrite each sentence with a named actor, for example "Accept checks a change from..." and "the hook checks commit messages". Consider a passive-voice check in `style.test.mjs`.
 
-## Features
+## Features and acceptance criteria
 
-Coaching fills this section.
-
-## Acceptance Criteria
-
-Coaching fills this section.
+See `plan/current/design.md`, Product Layer: US-001 to US-003 with eight criteria.

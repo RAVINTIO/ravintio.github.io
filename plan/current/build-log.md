@@ -26,7 +26,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-05T23:09:31Z` |
-| End | `pending` |
+| End | `2026-11-06T16:34:16Z` |
 | Wall clock | `pending` |
 | Model tier | primary |
 | Skills loaded | ravintio-orchestrator, ravintio-migrator |
@@ -55,6 +55,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Scope Lock complete. All four scenario paths captured. The human accepted each item with "Accept all" after a per-item request.
 - Run mode: autonomous (2026-11-06T16:32:47Z)
 - Run speed: standard (2026-11-06T16:32:47Z)
+- Design confirmed: 0000024-explainer-six-tools, version 0.6.0 (2026-11-06T16:34:16Z)
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---
