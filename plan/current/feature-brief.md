@@ -25,6 +25,12 @@ Pages in scope to assess:
 
 Suggested action: measure how much of each page covers Zero and Framework against the other four tools. Rewrite the explainer as a high-level view of all six tools and their shared purpose.
 
+### 0000017 - Add meta descriptions to doc pages
+
+Area: navigation and metadata. Page: all ten doc pages. None of them has a `<meta name="description">`. Only the homepage has one. Search results and link previews then show arbitrary page text. Evidence: the review read `document.querySelector('meta[name=description]')` on each page in `plan/_archive/0000016-site-regression-and-quality-2026-11-01/site-quality-report.md` (finding N-001).
+
+Suggested action: Give each page a description. One option is a `description` field per page in `docs.manifest.json`, which the `build-docs.js` template writes into `<head>`. Add a regression test that every page has a unique description.
+
 ## Features
 
 Coaching fills this section.

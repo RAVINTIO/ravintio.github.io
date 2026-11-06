@@ -38,6 +38,9 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Migration 0005 skipped: its `Applies when:` condition is false. The repo has no `plan/roadmap/*/roadmap.md` and no `roadmap/**` pattern in `ravintio.yml`. The file stays pending.
 - Pack update check: resume detection compared pack `0.37.0` with the product version `0.5.0`. This is the false positive ruled in runs 0000009 and 0000016. No `ravintio-zero/` file changed since `54db2ef`.
 - Backlog 0000023: pulled in to the brief.
+- Backlog 0000014: left. Framework is under rework.
+- Backlog 0000015: left. This is a content release.
+- Backlog 0000017: pulled in to the brief.
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---
