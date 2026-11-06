@@ -41,6 +41,9 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Backlog 0000014: left. Framework is under rework.
 - Backlog 0000015: left. This is a content release.
 - Backlog 0000017: pulled in to the brief.
+- Backlog 0000018: left. Build and navigation work.
+- Backlog 0000019, 0000020, 0000022: left. The human accepted a batch recommendation, a departure from one-at-a-time pickup at the human's request.
+- Backlog 0000021: pulled in to the brief.
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---

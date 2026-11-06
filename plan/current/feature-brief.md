@@ -31,6 +31,18 @@ Area: navigation and metadata. Page: all ten doc pages. None of them has a `<met
 
 Suggested action: Give each page a description. One option is a `description` field per page in `docs.manifest.json`, which the `build-docs.js` template writes into `<head>`. Add a regression test that every page has a unique description.
 
+### 0000021 - Rewrite passive sentences on three pages
+
+Area: content. Pages: `six-tools.md`, `project-operations.md`, and `skills.md`. These sentences break the repo's active-voice rule:
+- `six-tools.md` lines 21, 24, 83, and 85: "is designed to".
+- `project-operations.md` line 3: "how commit messages are checked".
+- `project-operations.md` line 11: "if code is staged without documentation".
+- `project-operations.md` line 133: "The pack is shared with the team".
+- `skills.md` line 26: "after the design is confirmed".
+Evidence: a scan of `src/site-content/pages/` for "is" or "are" plus a participle (finding C-001). The "are merged" and "you are satisfied" hits in `first-run.md` are adjectives, not passive voice.
+
+Suggested action: Rewrite each sentence with a named actor, for example "Accept checks a change from..." and "the hook checks commit messages". Consider a passive-voice check in `style.test.mjs`.
+
 ## Features
 
 Coaching fills this section.
