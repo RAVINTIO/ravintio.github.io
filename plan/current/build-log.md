@@ -47,6 +47,12 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - P0 exchange (explainer shape): Q: Restructure the explainer around the shared purpose, with one equal-length entry per tool, keep six-tools.md apart from passive fixes, and change the homepage subtitle? / A: Yes.
 - P0 exchange (acceptance criteria): Q: Three stories with eight criteria, including a passive-voice check with an allowlist in style.test.mjs? / A: Yes, all eight.
 - P0 exchange (version): Q: Minor bump from 0.5.0 to 0.6.0? / A: Yes. Confirmed version 0.6.0.
+- Scope Lock (happy path): a reader sees the purpose in the homepage subtitle, reads one entry per tool in the explainer, and each doc page shows its own search summary [source: draft-accepted]
+- Scope Lock (first-run path): a reader new to RAVINTIO understands the explainer without Zero knowledge, and a missing manifest description fails the tests [source: draft-accepted]
+- Scope Lock (error path): a page without a valid description or with a passive sentence fails the tests in CI [source: draft-accepted]
+- Scope Lock (cross-session continuity): not applicable to readers of a static site, and the run keeps its state in plan/current/ and commits [source: draft-accepted]
+- Scope Lock (clarification): "is designed to" hedges become active wording such as "aims to", fixed on every page rather than allowlisted [source: draft-accepted]
+- Scope Lock complete. All four scenario paths captured. The human accepted each item with "Accept all" after a per-item request.
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---
