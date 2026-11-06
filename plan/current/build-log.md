@@ -60,6 +60,22 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 ---
 
+### P1: Plan
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-06T16:34:56Z` |
+| End | `pending` |
+| Wall clock | `pending` |
+| Model tier | primary |
+| Skills loaded | ravintio-plan |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | Small artifact set, written inline rather than dispatched. |
+
+---
+
 ## Summary (filled at ship, P4)
 
 | Metric | Value |
