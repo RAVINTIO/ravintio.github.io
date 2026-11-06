@@ -45,6 +45,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Backlog 0000019, 0000020, 0000022: left. The human accepted a batch recommendation, a departure from one-at-a-time pickup at the human's request.
 - Backlog 0000021: pulled in to the brief.
 - P0 exchange (explainer shape): Q: Restructure the explainer around the shared purpose, with one equal-length entry per tool, keep six-tools.md apart from passive fixes, and change the homepage subtitle? / A: Yes.
+- P0 exchange (acceptance criteria): Q: Three stories with eight criteria, including a passive-voice check with an allowlist in style.test.mjs? / A: Yes, all eight.
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---
