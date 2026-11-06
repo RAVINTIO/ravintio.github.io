@@ -53,3 +53,54 @@ describe('req-002-zero-adoption-guide: AC-3 prose meets the style rules', () => 
     assert.deepEqual(hits, []);
   });
 });
+
+// Passive phrases from the nine sentences that backlog 0000021 lists.
+const LISTED_PASSIVES = {
+  'six-tools': [/\bis designed to\b/i, /\bis meant to\b/i],
+  'project-operations': [/commit messages are checked/i, /code is staged without documentation/i, /The pack is shared with the team/i],
+  skills: [/after the design is confirmed/i],
+};
+
+// Irregular past participles. Regular ones end in "ed".
+const IRREGULAR_PARTICIPLES = [
+  'built', 'written', 'run', 'made', 'done', 'given', 'shown', 'taken', 'kept', 'set',
+  'held', 'found', 'known', 'seen', 'sent', 'left', 'meant', 'put', 'read', 'bound',
+  'chosen', 'drawn', 'driven', 'broken', 'spoken', 'hidden', 'begun', 'thrown', 'grown',
+];
+
+// A be-verb, an optional adverb, then a participle.
+const PASSIVE = new RegExp(
+  `\\b(is|are|was|were)\\s+(\\w+ly\\s+)?(\\w+ed|${IRREGULAR_PARTICIPLES.join('|')})\\b`, 'gi');
+
+// Adjective uses that describe a state rather than an action done to the subject.
+const ALLOWED_PHRASES = [
+  /pull requests are merged/i, // first-run: asks about the state of earlier PRs
+  /you are satisfied/i, // first-run: "satisfied" describes the reader's state
+];
+
+function passiveHits(sentence) {
+  const s = ALLOWED_PHRASES.reduce((acc, re) => acc.replace(re, ' '), sentence);
+  return [...s.matchAll(PASSIVE)].map(m => m[0]);
+}
+
+describe('req-003-active-voice: AC-1 listed sentences fixed', () => {
+  for (const [slug, phrases] of Object.entries(LISTED_PASSIVES)) {
+    test(`${slug} no longer holds the listed passive phrases`, () => {
+      const page = readPage(slug);
+      assert.deepEqual(phrases.filter(re => re.test(page)).map(String), []);
+    });
+  }
+});
+
+describe('req-003-active-voice: AC-2 voice check on every page', () => {
+  test('the check flags a sample passive sentence', () => {
+    assert.deepEqual(passiveHits('The file is checked by the hook.'), ['is checked']);
+    assert.deepEqual(passiveHits('The site was quickly built.'), ['was quickly built']);
+  });
+
+  test('no page uses passive voice in prose outside the allowlist', () => {
+    const hits = pageSlugs().flatMap(slug => proseUnits(readPage(slug))
+      .flatMap(s => passiveHits(s).map(p => `${slug}: "${p}" in "${s}"`)));
+    assert.deepEqual(hits, []);
+  });
+});
