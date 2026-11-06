@@ -79,11 +79,11 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-06T16:36:45Z` |
-| End | `pending` |
-| Wall clock | `pending` |
+| End | `2026-11-06T16:46:19Z` |
+| Wall clock | `9` |
 | Model tier | primary (orchestrator), primary `opus` (TDD tracks) |
 | Skills loaded | ravintio-implement |
-| Agents spawned | `pending` |
+| Agents spawned | `5` |
 | MCP calls | `0` |
 | Parallel task batches | `0` |
 | Notes | Baseline: `npm run build` and `npm test` pass, 53 of 53. |
@@ -101,6 +101,10 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Done: U3 REQ-003 TDD track (2026-11-06T16:43:23Z). RED at `9b73fe2`, GREEN at `9bb7e93`. Node 85 of 85, Playwright 33 passed and 1 skipped. 28 sentences rewritten on four pages. Allowlist: two adjective phrases in `first-run.md`.
 - In progress: improvement review across the whole diff (2026-11-06T16:43:23Z)
 - In progress: U4 docs close-out (2026-11-06T16:43:23Z)
+- Done: U4 docs close-out (2026-11-06T16:46:19Z). Commit `3a878ab`.
+- Improve: cycle 1, fresh-context review of the whole diff. Four findings, all applied in `5a61144`: "will" hedges for in-design tools, negated forms in the voice check, table cells in the voice check, and a dead exception. Node 85 of 85, Playwright 33 passed and 1 skipped.
+- Done: improvement review across the whole diff (2026-11-06T16:46:19Z)
+- Departure: cycle 2 did not run. Cycle 1 covered the whole diff, and the refactor changed only wording and test coverage.
 ---
 
 ## Summary (filled at ship, P4)
