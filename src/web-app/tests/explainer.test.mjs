@@ -16,11 +16,8 @@ function openingParagraph(slug) {
 
 // The H3 entries of the "The six tools" section in the Markdown source: [{ title, words }].
 function toolEntries() {
-  const md = readPage('what-is-ravintio');
-  const start = md.indexOf('## The six tools');
-  assert.ok(start >= 0, 'the six tools section exists');
-  const rest = md.slice(start + 3);
-  const section = rest.slice(0, rest.search(/^## /m) === -1 ? undefined : rest.search(/^## /m));
+  const section = readPage('what-is-ravintio').split(/^## /m).find(s => s.startsWith('The six tools\n'));
+  assert.ok(section, 'the six tools section exists');
   return section.split(/^### /m).slice(1).map(part => {
     const [title, ...body] = part.split('\n');
     return { title: title.trim(), words: body.join(' ').split(/\s+/).filter(Boolean).length };

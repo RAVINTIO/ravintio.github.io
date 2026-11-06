@@ -5,7 +5,8 @@ The tests live in `src/web-app/tests/` and run with `npm test` after `npm run bu
 | Test | Checks on these pages |
 |------|----------------------|
 | `status-labels.test.mjs` | Each tool's status label |
-| `why-use-ravintio.test.mjs` | "Why use RAVINTIO" and the trimmed principles |
+| `why-use-ravintio.test.mjs` | "Why RAVINTIO?" and the trimmed principles |
+| `explainer.test.mjs` | The purpose-led opening, a tool-free "Why RAVINTIO?", and balanced entries for the six tools |
 | `zero-overview.test.mjs` | `zero-overview` section order and "When Zero fits" |
 | `simplicity.test.mjs` | The simplicity guidance on `zero-overview` and `pipeline` |
 | `copy-fixes.test.mjs` | First-run step 2 and the copy review fixes |
