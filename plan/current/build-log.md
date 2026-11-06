@@ -93,6 +93,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Batches: four, all sequential. Every unit rebuilds `dist/` and shares port 4173, as the concurrency plan states.
 - In progress: U1 REQ-001 TDD track (2026-11-06T16:36:45Z)
 
+- Done: U1 REQ-001 TDD track (2026-11-06T16:39:25Z). RED at `7197991`, GREEN at `b6b9712`. Node 58 of 58, Playwright 33 passed and 1 skipped. Tool entries run 33 to 38 words.
+- In progress: U2 REQ-002 TDD track (2026-11-06T16:39:25Z)
 ---
 
 ## Summary (filled at ship, P4)
