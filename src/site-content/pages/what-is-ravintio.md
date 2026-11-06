@@ -34,7 +34,7 @@ Qualify aims to evaluate agent skills against defined criteria. Its design calls
 
 ### RAVINTIO Insight
 
-Insight aims to assess a software system and its engineering practices from evidence. It aims to report findings with severity, confidence, and links to that evidence. Its design keeps it read-only by default. It aims to change nothing without your permission.
+Insight aims to assess a software system and its engineering practices from evidence. Its design gives each finding a severity, a confidence, and links to that evidence. The design also keeps Insight read-only unless you give permission.
 
 ### RAVINTIO Unbound
 

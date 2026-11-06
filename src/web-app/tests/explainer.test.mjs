@@ -60,4 +60,11 @@ describe('req-001-explainer-six-tools: AC-3 purpose-led subtitle', () => {
     assert.match(subtitle, /agentic/);
     assert.doesNotMatch(subtitle, NAMES_A_TOOL);
   });
+
+  test('the homepage meta description names the shared purpose and no tool', () => {
+    const home = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
+    const meta = home.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+    assert.match(meta, /visibility and governance over agentic software development/);
+    assert.doesNotMatch(meta, NAMES_A_TOOL);
+  });
 });

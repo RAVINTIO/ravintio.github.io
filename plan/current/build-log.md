@@ -121,6 +121,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 - CI: library audit pass (no dependency change), `tsc --noEmit` pass, build pass, `npm test` 85 of 85, `npx playwright test` 33 passed and 1 skipped, `npm audit` 0 vulnerabilities. No lint step is declared. Semantic check: all seven criteria map to a named test. Self-correct cycles: 0.
 - In progress: site quality review (2026-11-06T16:47:28Z)
+- Rework: REQ-001: the homepage meta description still pointed readers to Zero and contradicted the new subtitle. A new test went RED, then the description now names the shared purpose. Quality review fix-now finding C-001, size S. (2026-11-06T16:48:36Z)
+- Rework: REQ-001: the Insight entry repeated "aims to" three times. Rewritten. Quality review fix-now finding C-002, size S. (2026-11-06T16:48:36Z)
 ---
 
 ## Summary (filled at ship, P4)
