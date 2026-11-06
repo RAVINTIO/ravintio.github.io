@@ -65,14 +65,14 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-06T16:34:56Z` |
-| End | `pending` |
-| Wall clock | `pending` |
+| End | `2026-11-06T16:36:17Z` |
+| Wall clock | `1` |
 | Model tier | primary |
 | Skills loaded | ravintio-plan |
 | Agents spawned | `0` |
 | MCP calls | `0` |
 | Parallel task batches | `0` |
-| Notes | Small artifact set, written inline rather than dispatched. |
+| Notes | Small artifact set, written inline rather than dispatched. Consistency check clean on the first run. The design's eight criteria map to seven checkbox lines, recorded in the execution plan. |
 
 ---
 
