@@ -1,8 +1,8 @@
 ---
-title: "Build Log - pending"
+title: "Build Log - 0000024-explainer-six-tools"
 summary: "Working record of the pipeline run, maintained by the orchestrator."
 ---
-# Build Log - pending
+# Build Log - 0000024-explainer-six-tools
 
 > Created at discovery (P0). Appended by the orchestrator at each phase boundary. Survives session changes.
 
@@ -10,12 +10,12 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 | Field | Value |
 |-------|-------|
-| Feature ID | `pending` |
+| Feature ID | `0000024-explainer-six-tools` |
 | Pipeline start | `2026-11-05T23:09:31Z` |
 | Tool | `claude-code` |
 | Primary model | `claude-opus-5-5` |
 | Cheaper model | `claude-haiku-5-5` |
-| Run speed | `pending` |
+| Run speed | `standard` |
 
 ---
 
@@ -53,6 +53,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Scope Lock (cross-session continuity): not applicable to readers of a static site, and the run keeps its state in plan/current/ and commits [source: draft-accepted]
 - Scope Lock (clarification): "is designed to" hedges become active wording such as "aims to", fixed on every page rather than allowlisted [source: draft-accepted]
 - Scope Lock complete. All four scenario paths captured. The human accepted each item with "Accept all" after a per-item request.
+- Run mode: autonomous (2026-11-06T16:32:47Z)
+- Run speed: standard (2026-11-06T16:32:47Z)
 - Adoption mode: standard-iterative, assumed. Signal: `plan/_archive/` holds prior runs and `src/` holds source.
 
 ---
