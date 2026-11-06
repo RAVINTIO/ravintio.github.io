@@ -98,6 +98,9 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Done: U2 REQ-002 TDD track (2026-11-06T16:41:18Z). RED at `ba2c2f0`, GREEN at `61ab5f9`. Node 80 of 80, Playwright 33 passed and 1 skipped.
 - Decision: the required `description` field is a breaking change to the manifest format, whose policy is `requires-human-approval`. The human approved it through the confirmed design, which puts descriptions in the manifest. The PR names it for review.
 - In progress: U3 REQ-003 TDD track (2026-11-06T16:41:18Z)
+- Done: U3 REQ-003 TDD track (2026-11-06T16:43:23Z). RED at `9b73fe2`, GREEN at `9bb7e93`. Node 85 of 85, Playwright 33 passed and 1 skipped. 28 sentences rewritten on four pages. Allowlist: two adjective phrases in `first-run.md`.
+- In progress: improvement review across the whole diff (2026-11-06T16:43:23Z)
+- In progress: U4 docs close-out (2026-11-06T16:43:23Z)
 ---
 
 ## Summary (filled at ship, P4)
