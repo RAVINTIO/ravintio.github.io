@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "web-app"
 name: "RAVINTIO Docs Web App"
-feature: "0000016-site-regression-and-quality"
-version: "0.5.0"
+feature: "0000024-explainer-six-tools"
+version: "0.6.0"
 status: "active"
 type: "microfrontend"
 domain: "documentation-site"
@@ -120,7 +120,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-05-16"
-  updatedAt: "2026-11-01"
+  updatedAt: "2026-11-06"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-implement"
