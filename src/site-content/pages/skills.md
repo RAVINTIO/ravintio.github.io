@@ -23,7 +23,7 @@ This skill runs discovery and routes the work through the pipeline. It coaches y
 
 ### `ravintio-plan`
 
-This skill writes the plan-phase documents. They cover requirements, architecture decision records, scope, risks, and a glossary. In a gated run, you review them all at one human gate. An autonomous run continues without stopping. The orchestrator calls it after the design is confirmed.
+This skill writes the plan-phase documents. They cover requirements, architecture decision records, scope, risks, and a glossary. In a gated run, you review them all at one human gate. An autonomous run continues without stopping. The orchestrator calls it after you confirm the design.
 
 ### `ravintio-implement`
 
