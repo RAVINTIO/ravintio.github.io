@@ -128,6 +128,20 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Security review: overall low. Two informational findings, both mitigated, in `security-report.md`.
 - Verification: 7 of 7 criteria verified in the browser or by command. None not-verifiable.
 - Acceptance evidence written. Autonomous run, so no gate stop.
+### P4: Ship
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-06T16:49:53Z` |
+| End | `pending` |
+| Wall clock | `pending` |
+| Model tier | primary |
+| Skills loaded | ravintio-ship, ravintio-retrospective |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | none |
+
 ---
 
 ## Summary (filled at ship, P4)
