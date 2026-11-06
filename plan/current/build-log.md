@@ -110,12 +110,12 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-06T16:46:30Z` |
-| End | `pending` |
-| Wall clock | `pending` |
+| End | `2026-11-06T16:49:36Z` |
+| Wall clock | `3` |
 | Model tier | primary |
 | Skills loaded | ravintio-validate-and-accept, site-quality-review |
 | Agents spawned | `0` |
-| MCP calls | `0` |
+| MCP calls | `20` |
 | Parallel task batches | `0` |
 | Notes | none |
 
@@ -123,6 +123,11 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - In progress: site quality review (2026-11-06T16:47:28Z)
 - Rework: REQ-001: the homepage meta description still pointed readers to Zero and contradicted the new subtitle. A new test went RED, then the description now names the shared purpose. Quality review fix-now finding C-001, size S. (2026-11-06T16:48:36Z)
 - Rework: REQ-001: the Insight entry repeated "aims to" three times. Rewritten. Quality review fix-now finding C-002, size S. (2026-11-06T16:48:36Z)
+- Site quality review: 12 pages, 2 fix-now findings (fixed, 2 points), 2 new backlog findings filed as 0000025 and 0000026, and fresh evidence on 0000018 to 0000020. Report in `site-quality-report.md`.
+- Done: site quality review (2026-11-06T16:49:36Z)
+- Security review: overall low. Two informational findings, both mitigated, in `security-report.md`.
+- Verification: 7 of 7 criteria verified in the browser or by command. None not-verifiable.
+- Acceptance evidence written. Autonomous run, so no gate stop.
 ---
 
 ## Summary (filled at ship, P4)
