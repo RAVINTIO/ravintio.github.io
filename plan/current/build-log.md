@@ -119,6 +119,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Parallel task batches | `0` |
 | Notes | none |
 
+- CI: library audit pass (no dependency change), `tsc --noEmit` pass, build pass, `npm test` 85 of 85, `npx playwright test` 33 passed and 1 skipped, `npm audit` 0 vulnerabilities. No lint step is declared. Semantic check: all seven criteria map to a named test. Self-correct cycles: 0.
+- In progress: site quality review (2026-11-06T16:47:28Z)
 ---
 
 ## Summary (filled at ship, P4)
