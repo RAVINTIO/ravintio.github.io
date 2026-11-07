@@ -14,6 +14,8 @@ for (const path of pagePaths()) {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.addInitScript((t) => localStorage.setItem('ravintio-theme', t), theme);
       await page.goto(path, { waitUntil: 'load' });
+      // Without this check, a rename of the storage key would scan the light theme twice and still pass.
+      await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
       // Mermaid marks each diagram once it renders, so the scan sees the final SVG.
       await page.waitForFunction(() => !document.querySelector('pre.mermaid:not([data-processed])'));
       const { violations } = await new AxeBuilder({ page }).withTags(TAGS).analyze();

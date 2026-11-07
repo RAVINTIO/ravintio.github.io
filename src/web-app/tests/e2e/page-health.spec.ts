@@ -96,7 +96,8 @@ for (const path of pages.filter((p) => p.startsWith('/docs/'))) {
   test(`req-004 AC-1: ${path} body text is at least 330 px wide at 390 px`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path, { waitUntil: 'load' });
-    const width = await page.locator('main p').first().evaluate((p) => p.getBoundingClientRect().width);
+    // The h1 spans the text column on every page, including the sitemap, which has no paragraph.
+    const width = await page.locator('main h1').evaluate((h) => h.getBoundingClientRect().width);
     expect(width).toBeGreaterThanOrEqual(330);
   });
 }
