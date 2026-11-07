@@ -149,8 +149,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-07T18:46:36Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-07T18:46:46Z` |
+| Wall clock | `0` |
 | Model tier | primary, cheaper (haiku) for the build assessment |
 | Skills loaded | ravintio-ship, ravintio-retrospective |
 | Agents spawned | `0` |
@@ -203,12 +203,12 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 | Metric | Value |
 |--------|-------|
-| Total phases completed | `{{count}}` |
-| Total wall clock | `{{minutes from pipeline start to the P4 End}}` |
-| Total agents spawned | `{{count}}` |
-| Total MCP calls | `{{count}}` |
-| Phases using parallelism | `{{count}}` |
-| Primary tier agent calls | `{{count}}` |
-| Cheaper tier agent calls | `{{count}}` |
-| Self-corrections | `{{count}}` |
-| Phases skipped | `{{list or "none"}}` |
+| Total phases completed | `5` |
+| Total wall clock | `134` |
+| Total agents spawned | `7` |
+| Total MCP calls | `0` in this session. The quality review subagent used Playwright MCP and did not count its calls. |
+| Phases using parallelism | `2` (P2, P3) |
+| Primary tier agent calls | `7` (sonnet) |
+| Cheaper tier agent calls | `0` |
+| Self-corrections | `3`: the missed sitemap width failure in P2, the test-title fix in P3, and the skip-link focus fix in P3 |
+| Phases skipped | none |
