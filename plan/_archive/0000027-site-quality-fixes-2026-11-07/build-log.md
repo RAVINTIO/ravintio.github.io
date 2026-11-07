@@ -163,6 +163,9 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Departure: `gate-write` blocked the `product.yml` bump after the archive. The human approved a shell edit (`1b77fa0`). Filed as backlog 0000040 for the pack.
 - Departure: `gate-write` blocked the retrospective's repo instruction. Filed as backlog 0000039.
 - Version: `0.7.0` in `docs/about.md`, `product.yml`, and both `component.yml` files.
+- Post-ship: CI `site-tests` failed `req-001 AC-1 to AC-3: / ... in light` with `color-contrast (serious): .btn-primary`. The homepage CTA fades in over 1.2 s, the site ignores reduced motion, and the slower runner scanned mid-fade. A 6x CPU throttle reproduced it locally. The spec now waits for finite animations before each scan.
+- Departure: `gate-write` blocks `src/` writes after the archive. The human approved a shell edit of `axe.spec.ts`.
+- Rework: REQ-001: the axe scan ran during the homepage fade-in on CI (2026-11-07).
 
 ---
 

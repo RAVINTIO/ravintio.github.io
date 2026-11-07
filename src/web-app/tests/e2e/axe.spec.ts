@@ -18,6 +18,16 @@ for (const path of pagePaths()) {
       await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
       // Mermaid marks each diagram once it renders, so the scan sees the final SVG.
       await page.waitForFunction(() => !document.querySelector('pre.mermaid:not([data-processed])'));
+      // The site ignores reduced motion, so wait for each finite fade to end.
+      // A scan mid-fade measures a part-transparent element and fails contrast.
+      await page.evaluate(() =>
+        Promise.all(
+          document
+            .getAnimations()
+            .filter((a) => a.effect?.getComputedTiming().iterations !== Infinity)
+            .map((a) => a.finished),
+        ),
+      );
       const { violations } = await new AxeBuilder({ page }).withTags(TAGS).analyze();
 
       // REQ-001 AC-3: moderate and minor violations go to the report for the P3 review.
