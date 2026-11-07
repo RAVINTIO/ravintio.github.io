@@ -5,6 +5,48 @@ status: "active"
 version: "0.1.0"
 ---
 
+# Changelog (0000027-site-quality-fixes, 07 Nov 2026)
+
+**Feature:** Close seven site quality findings
+**Version:** 0.7.0
+**PR:** pending
+
+## What changed
+
+- The Playwright suite now runs an axe-core WCAG 2.2 AA scan of every page in light and dark. A serious or critical violation fails the pull request.
+- The first scan found two serious issues, and both are fixed. The pagination title now meets 4.5:1 contrast in light theme. Wide code blocks now take keyboard focus.
+- A custom 404 page with the site header and links home now serves any missing path, at any depth.
+- The homepage wraps its content in `<main id="content">`. Each page has exactly one `<main>`.
+- The skip link now moves keyboard focus to the content, not only the scroll position.
+- Doc page text on phones widens from 317 px to about 333 px at a 390 px viewport.
+- Every action in `site-tests.yml` and `deploy.yml` now runs at a pinned commit SHA.
+- The header and footer code links point to the RAVINTIO organisation, labelled "RAVINTIO on GitHub".
+- One project operations table cell now names who acts.
+
+## Why
+
+The run 0000016 and 0000024 quality reviews left seven findings open (backlog 0000015, 0000018, 0000019, 0000020, 0000022, 0000025, and 0000026). A manual review missed accessibility rules that an engine checks on every element.
+
+## Deviations
+
+- Vite 7 preview has no 404 page support, so `vite.config.ts` adds a preview plugin that serves `dist/404.html`.
+- The phone width test measures `main h1`, because the sitemap has no paragraph.
+- The quality review fixed a skip-link focus issue that predates this run and fails WCAG level A.
+- Backlog 0000037, a 404 skip link issue with JavaScript off, stays in the backlog. The review's rule would sort it as fix-now.
+- P1 wrote its plan inline. P2 ran batch 1 as three parallel TDD tracks and batches 2 to 5 inline.
+
+## Validation results
+
+- `npm test`: 93 of 93 pass. `npx playwright test`: 92 pass, 1 existing skip.
+- Axe: 26 of 26 page and theme pairs pass, with no moderate or minor finding.
+- Typecheck, build, and `npm audit` pass with 0 vulnerabilities.
+- Security: overall low, with no critical, high, or medium finding.
+- All 14 criteria verified by execution.
+
+## Skipped phases
+
+None.
+
 # Iteration Log - 0000027-site-quality-fixes
 
 > **Audience:** The ship phase's build assessment (P4) and post-run technical review. This is NOT the PR changelog: the PR changelog (written at the start of ship) is the human-readable audit trail for PR reviewers.

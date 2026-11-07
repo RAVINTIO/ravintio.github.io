@@ -143,6 +143,23 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Departure: backlog 0000037 (N-001) is a run-caused finding, which the quality review rule sorts as fix-now. It stays in the backlog. It shows only with JavaScript off, and no `href` keeps the reader on the same URL both with and without JavaScript.
 - Acceptance evidence written. Autonomous run, so no gate stop.
 
+
+### P4: Ship
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-07T18:46:36Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary, cheaper (haiku) for the build assessment |
+| Skills loaded | ravintio-ship, ravintio-retrospective |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | see notes below |
+
+- Changelog written at `plan/changelog/0000027-site-quality-fixes-2026-11-07.md`.
+
 ---
 
 <!-- Copy and fill in this block at each phase boundary. Headings use the form
