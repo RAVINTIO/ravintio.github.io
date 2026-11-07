@@ -24,7 +24,7 @@
 | US-004 AC-1 | Browser measure at 390 by 844 | verified | `main h1` spans 332.6 px on the sitemap and all ten manifest pages. `main p` measures 332.6 px on the ten manifest pages. The homepage and 404 page measure 326 px, and the criterion does not cover them. |
 | US-004 AC-2 | Browser read of `scrollWidth` at 390 | verified | `scrollWidth` equals `clientWidth` at 390 px on the 13 pages. No page scrolls sideways. |
 | US-005 AC-1 | File read, `gh api` check | verified | The 5 `uses:` lines in `deploy.yml` and 3 in `site-tests.yml` each hold a 40-character SHA with a tag comment. For `checkout` v5, `setup-node` v5, `configure-pages` v5, `upload-pages-artifact` v4, `deploy-pages` v4, and `upload-artifact` v4, the SHA matches what `gh api repos/actions/{name}/commits/{tag}` returns. |
-| US-005 AC-2 | Not run in this report | not-verifiable | Proof needs a deliberate break of the workflow files and a run of `npm test`. The task barred edits outside `style.css`, so the CI gate covers this check. |
+| US-005 AC-2 | Command, with a temporary unpinned line | verified | The orchestrator replaced the `configure-pages` SHA in `deploy.yml` with the tag `v5`. `site-tests-workflow.test.mjs` exited 1 and named `deploy.yml:45`. The restore left `git diff` empty. |
 | US-006 AC-1 | Browser read of header and footer links | verified | On the homepage, 404 page, and all ten manifest pages, the header code link and the footer **GitHub** link both use `https://github.com/RAVINTIO`. |
 | US-006 AC-2 | Browser read of the header link | verified | The header link's `aria-label` and `title` both read "RAVINTIO on GitHub" on the homepage, 404 page, and doc pages sampled (`pipeline`, `skills`). |
 | US-007 AC-1 | Read of built `dist/docs/project-operations.html` | verified | The `ravintio.yml` row cell reads "The CI gate works only after you commit it." The built page holds no "only works once committed". |
@@ -36,4 +36,4 @@
 
 ## Not verifiable
 
-- US-005 AC-2 is `not-verifiable` here because proof needs a temporary edit to the workflow files, outside the allowed changes.
+- None. The orchestrator verified US-005 AC-2 after the first pass.
