@@ -189,4 +189,4 @@ The Scope Lock Challenge in the build log holds the four paths.
 
 ## Acceptance Criteria
 
-See `plan/current/design.md`.
+See `plan/_archive/0000027-site-quality-fixes-2026-11-07/design.md`.

@@ -5,7 +5,7 @@
 - Adoption mode: standard-iterative. Signal: `plan/_archive/` holds seven prior runs and `src/` holds two components. Assumed as the only signal.
 - Feature ID: 0000027-site-quality-fixes
 - Version: `0.7.0`, a minor bump from `0.6.0`.
-- Discovery: see `plan/current/discovery.md`.
+- Discovery: see `plan/_archive/0000027-site-quality-fixes-2026-11-07/discovery.md`.
 
 ## Product Layer
 - User stories:
@@ -105,7 +105,7 @@
 You may fetch, pull, and push feature branches, and raise pull requests into `main` with `gh pr create`. Never merge a pull request into `main`, and never push to `main` directly. The human reviews and merges every pull request. Work on a `feat/` branch directly in the working directory. Don't use git worktrees. If a push or `gh` command fails, report the exact error and stop. Never retry with force.
 
 ### custom-003-site-quality-review.md
-In P3 of every run, after the Playwright suite passes, load and run the `site-quality-review` capability skill. The skill writes `plan/current/site-quality-report.md`, fixes fix-now findings in the run, and files the rest to `plan/backlog/`.
+In P3 of every run, after the Playwright suite passes, load and run the `site-quality-review` capability skill. The skill writes `plan/_archive/0000027-site-quality-fixes-2026-11-07/site-quality-report.md`, fixes fix-now findings in the run, and files the rest to `plan/backlog/`.
 
 ### custom-004-content-rewrites.md
 If a run changes how a page frames RAVINTIO, list in P0 every place that repeats the old framing. Check meta descriptions, headers, subtitles, and link labels, and put each one in or out of scope at the design gate. After an improvement refactor rewrites prose, reread each changed paragraph as a whole before the commit.
