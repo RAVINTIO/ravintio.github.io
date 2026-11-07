@@ -629,6 +629,9 @@ code {
 }
 
 @media (max-width: 600px) {
+  /* Phones: a wider layout and slimmer card padding keep body text near 340 px (REQ-004). */
+  .doc-layout { width: calc(100% - 1rem); }
+  .doc-layout .doc-container { padding: 1.5rem 1rem; }
   .doc-pagination {
     flex-direction: column;
   }

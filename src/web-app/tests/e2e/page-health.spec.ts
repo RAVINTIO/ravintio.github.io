@@ -90,3 +90,13 @@ for (const path of pages) {
     await expect(page.locator('main')).toHaveCount(1);
   });
 }
+
+// REQ-004 AC-1: doc page body text uses most of a phone screen.
+for (const path of pages.filter((p) => p.startsWith('/docs/'))) {
+  test(`req-004 AC-1: ${path} body text is at least 330 px wide at 390 px`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(path, { waitUntil: 'load' });
+    const width = await page.locator('main p').first().evaluate((p) => p.getBoundingClientRect().width);
+    expect(width).toBeGreaterThanOrEqual(330);
+  });
+}
