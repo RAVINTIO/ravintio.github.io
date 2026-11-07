@@ -5,6 +5,8 @@ export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: true,
   retries: 0,
+  // Merges the axe triage files into test-results/axe-report.json (REQ-001 AC-3).
+  globalTeardown: './tests/e2e/axe-report.ts',
   reporter: [['list'], ['html', { open: 'never' }]],
   use: { baseURL: 'http://localhost:4173' },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],

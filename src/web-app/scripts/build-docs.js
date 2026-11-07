@@ -161,7 +161,8 @@ marked.use({
     code({ text, lang }) {
       if (lang === 'mermaid') return `<pre class="mermaid">${escapeHtml(text)}</pre>\n`;
       const cls = lang ? ` class="language-${escapeHtml(lang)}"` : '';
-      return `<pre><code${cls}>${escapeHtml(text)}</code></pre>\n`;
+      // tabindex lets keyboard users scroll a wide block (axe scrollable-region-focusable, REQ-001).
+      return `<pre tabindex="0"><code${cls}>${escapeHtml(text)}</code></pre>\n`;
     },
   },
 });
