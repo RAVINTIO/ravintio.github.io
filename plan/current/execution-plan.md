@@ -64,18 +64,20 @@ flowchart LR
 
 ## Concurrency plan
 
+Units map to requirements: U1 REQ-007, U2 REQ-005, U3 REQ-003, U4 REQ-006, U5 REQ-002, U6 REQ-004, U7 REQ-001, and U8 the docs.
+
 Units that build `src/web-app/dist/` or use preview port 4173 run alone in their batch. U1 and U2 run Node tests only, so they share batch 1 with U3.
 
 | Unit | Depends on | Writes | Batch | Sequential reason |
 |------|-----------|--------|-------|-------------------|
-| U1 (REQ-007) | none | `src/site-content/pages/project-operations.md`, `src/web-app/tests/ops-table-cell.test.mjs` | 1 | none |
-| U2 (REQ-005) | none | `.github/workflows/site-tests.yml`, `.github/workflows/deploy.yml`, `src/web-app/tests/site-tests-workflow.test.mjs` | 1 | none |
-| U3 (REQ-003) | none | `src/web-app/index.html`, `src/web-app/tests/e2e/page-health.spec.ts` | 1 | none |
-| U4 (REQ-006) | U3 | `src/web-app/index.html`, `src/web-app/scripts/build-docs.js`, `src/web-app/tests/org-link.test.mjs` | 2 | It edits `index.html` after U3 and rebuilds `dist/` |
-| U5 (REQ-002) | U4 | `src/web-app/404.html`, `src/web-app/vite.config.ts`, `src/web-app/tests/e2e/pages.ts`, `src/web-app/tests/e2e/not-found.spec.ts`, `src/web-app/tests/org-link.test.mjs` | 3 | Its header copies the U4 link, and it rebuilds `dist/` |
-| U6 (REQ-004) | U3 | `src/web-app/src/style.css`, `src/web-app/tests/e2e/page-health.spec.ts` | 4 | It edits `page-health.spec.ts` after U3 and uses port 4173 |
-| U7 (REQ-001) | U5, U6 | `src/web-app/package.json`, `src/web-app/package-lock.json`, `src/web-app/tests/e2e/axe.spec.ts`, `src/web-app/src/style.css`, markup fixes the scan needs | 5 | It scans the pages the other units change, and only it adds a dependency |
-| U8 (docs) | U1, U2, U3, U4, U5, U6, U7 | `src/web-app/component.yml`, `src/site-content/component.yml`, `src/web-app/docs/`, `src/site-content/docs/`, `docs/` | 6 | It records the finished state of every other unit |
+| U1 | none | `src/site-content/pages/project-operations.md`, `src/web-app/tests/ops-table-cell.test.mjs` | 1 | none |
+| U2 | none | `.github/workflows/site-tests.yml`, `.github/workflows/deploy.yml`, `src/web-app/tests/site-tests-workflow.test.mjs` | 1 | none |
+| U3 | none | `src/web-app/index.html`, `src/web-app/tests/e2e/page-health.spec.ts` | 1 | none |
+| U4 | U3 | `src/web-app/index.html`, `src/web-app/scripts/build-docs.js`, `src/web-app/tests/org-link.test.mjs` | 2 | It edits `index.html` after U3 and rebuilds `dist/` |
+| U5 | U4 | `src/web-app/404.html`, `src/web-app/vite.config.ts`, `src/web-app/tests/e2e/pages.ts`, `src/web-app/tests/e2e/not-found.spec.ts`, `src/web-app/tests/org-link.test.mjs` | 3 | Its header copies the U4 link, and it rebuilds `dist/` |
+| U6 | U3 | `src/web-app/src/style.css`, `src/web-app/tests/e2e/page-health.spec.ts` | 4 | It edits `page-health.spec.ts` after U3 and uses port 4173 |
+| U7 | U5, U6 | `src/web-app/package.json`, `src/web-app/package-lock.json`, `src/web-app/tests/e2e/axe.spec.ts`, `src/web-app/src/style.css`, markup fixes the scan needs | 5 | It scans the pages the other units change, and only it adds a dependency |
+| U8 | U1, U2, U3, U4, U5, U6, U7 | `src/web-app/component.yml`, `src/site-content/component.yml`, `src/web-app/docs/`, `src/site-content/docs/`, `docs/` | 6 | It records the finished state of every other unit |
 
 ## Assumptions
 
