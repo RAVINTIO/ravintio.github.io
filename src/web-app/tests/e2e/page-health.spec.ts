@@ -74,3 +74,19 @@ test('req-001 AC-2: internal links and anchors resolve', async ({ page, request,
 
   expect(failures, failures.join('\n')).toEqual([]);
 });
+
+test('req-003 AC-1: the homepage has one main#content that the skip link targets', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'load' });
+  await expect(page.locator('main#content')).toHaveCount(1);
+  const skipLink = page.locator('a[href="#content"]');
+  await expect(skipLink).toHaveCount(1);
+  await expect(page.locator('#content')).toHaveCount(1);
+  expect(await page.locator('#content').evaluate((el) => el.tagName)).toBe('MAIN');
+});
+
+for (const path of pages) {
+  test(`req-003 AC-2: ${path} has exactly one main`, async ({ page }) => {
+    await page.goto(path, { waitUntil: 'load' });
+    await expect(page.locator('main')).toHaveCount(1);
+  });
+}
