@@ -54,6 +54,23 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Run speed: fast (2026-11-07T18:20:19Z)
 - Version confirmed: `0.7.0`, a minor bump from `0.6.0`.
 
+
+### P1: Plan
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-07T18:21:58Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary |
+| Skills loaded | ravintio-plan |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | see notes below |
+
+- Departure: the fast batch dispatches no subagents. Each unit is one short file built from criteria in the design. The dispatch standard keeps a unit with fewer than two independent pieces inline.
+
 ---
 
 <!-- Copy and fill in this block at each phase boundary. Headings use the form
