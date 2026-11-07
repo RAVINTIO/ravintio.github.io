@@ -159,6 +159,10 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Notes | see notes below |
 
 - Changelog written at `plan/changelog/0000027-site-quality-fixes-2026-11-07.md`.
+- Archived to `plan/_archive/0000027-site-quality-fixes-2026-11-07/`. Build report and retrospective written inline.
+- Departure: `gate-write` blocked the `product.yml` bump after the archive. The human approved a shell edit (`1b77fa0`). Filed as backlog 0000040 for the pack.
+- Departure: `gate-write` blocked the retrospective's repo instruction. Filed as backlog 0000039.
+- Version: `0.7.0` in `docs/about.md`, `product.yml`, and both `component.yml` files.
 
 ---
 
