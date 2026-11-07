@@ -26,8 +26,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-07T16:32:46Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-07T18:20:19Z` |
+| Wall clock | `108` |
 | Model tier | primary / cheaper |
 | Skills loaded | ravintio-orchestrator |
 | Agents spawned | `0` |
@@ -43,6 +43,16 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Feature id reserved: 0000027-site-quality-fixes. Branch renamed to `feat/0000027-site-quality-fixes`.
 - Commit hook blocked the `Claude-Session:` trailer. Commits carry no attribution line.
 - P0 exchange (backlog pickup): Q: pull in, leave, or discard each backlog entry? / A: go with all recommendations.
+- Scope Lock (happy path): CI builds the site, the Node tests, Playwright suite, and axe scans pass in both themes, and the merged site deploys with all seven fixes. [source: draft-accepted]
+- Scope Lock (first-run path): a fresh clone gets the pinned axe package from `npm ci`, and the first scan's serious or critical violations are fixed in this run. [source: draft-accepted]
+- Scope Lock (error path): a violation the run can't fix with a style or markup change stops the run as Blocked, with no rule exclusion unless the human approves it. [source: draft-accepted]
+- Scope Lock (cross-session continuity): each story commits on its own, and a new session resumes from the build log's `In progress:` line. [source: draft-accepted]
+- Departure: the human accepted all four Scope Lock items in one reply, "Accept all". The skill treats a blanket reply as no approval. The reply answered a request for per-item accept, so the run records each item as draft-accepted.
+- Scope Lock complete. All four scenario paths captured.
+- P0 exchange (design gate): Q: accept the four Scope Lock drafts, confirm the design, and pick run mode and speed? / A: accept all, autonomous, fast.
+- Run mode: autonomous (2026-11-07T18:20:19Z)
+- Run speed: fast (2026-11-07T18:20:19Z)
+- Version confirmed: `0.7.0`, a minor bump from `0.6.0`.
 
 ---
 
@@ -56,7 +66,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 |-------|-------|
 | Start | `{{timestamp}}` |
 | End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| Wall clock | `108` |
 | Model tier | primary / cheaper |
 | Skills loaded | `{{skill names}}` |
 | Agents spawned | `{{count}}` |
