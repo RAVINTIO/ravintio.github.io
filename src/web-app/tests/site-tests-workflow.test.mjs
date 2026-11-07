@@ -47,3 +47,39 @@ describe('req-003-ci-site-tests', () => {
     assert.match(upload, /path:\s*src\/web-app\/playwright-report/);
   });
 });
+
+// REQ-005: the site workflows pin every action by full commit SHA (ADR-004).
+// ravintio.yml stays as setup.sh writes it, so the checks skip that file.
+const PINNED = ['site-tests.yml', 'deploy.yml'].map((name) => ({
+  name,
+  file: path.join(REPO, '.github/workflows', name),
+}));
+const PIN = /^[\w.-]+\/[\w.-]+(\/[\w./-]+)?@[0-9a-f]{40} # v\d+$/;
+
+const usesLines = (file) =>
+  fs
+    .readFileSync(file, 'utf8')
+    .split('\n')
+    .map((line, i) => ({ n: i + 1, text: line.trim() }))
+    .filter(({ text }) => /^(-\s+)?uses:/.test(text));
+
+describe('req-005-pin-actions-by-sha', () => {
+  for (const { name, file } of PINNED) {
+    test(`req-005 AC-1: ${name} pins each action by SHA with a tag comment`, () => {
+      const lines = usesLines(file);
+      assert.ok(lines.length > 0, `${name} has no uses: lines`);
+      for (const { n, text } of lines) {
+        const ref = text.replace(/^(-\s+)?uses:\s*/, '');
+        assert.match(ref, PIN, `${name}:${n} is not pinned by SHA with a # v<n> comment: ${text}`);
+      }
+    });
+  }
+
+  test('req-005 AC-2: the failure message names the offending line', () => {
+    const bad = 'actions/checkout@v5';
+    assert.throws(
+      () => assert.match(bad, PIN, `site-tests.yml:20 is not pinned: uses: ${bad}`),
+      /site-tests\.yml:20 .*actions\/checkout@v5/,
+    );
+  });
+});
