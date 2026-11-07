@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "web-app"
 name: "RAVINTIO Docs Web App"
-feature: "0000024-explainer-six-tools"
-version: "0.6.0"
+feature: "0000027-site-quality-fixes"
+version: "0.7.0"
 status: "active"
 type: "microfrontend"
 domain: "documentation-site"
@@ -12,15 +12,18 @@ systemContext: "Deployed as a GitHub Pages static site by deploy.yml. Reads site
 purpose:
   responsibleFor:
     - "Render the RAVINTIO homepage"
+    - "Render the 404 page that GitHub Pages serves for any missing path"
     - "Build doc pages from src/site-content/pages at build time"
     - "Own docs.manifest.json, the source of nav sections, page order, titles, and meta descriptions"
     - "Render the section nav, top nav, and previous and next links on every page"
     - "Serve the logo, wordmark, favicons, theme toggle, and mobile menu"
-    - "Run the content suite in tests/ and the Playwright regression suite in tests/e2e/"
+    - "Run the content suite in tests/ and the Playwright regression suite in tests/e2e/, with an axe-core scan of every page"
+    - "Pin the actions in site-tests.yml and deploy.yml by commit SHA"
     - "Set the theme before first paint with an inline script in each page template"
   notResponsibleFor:
     - "Page text (site-content)"
     - "The ravintio-zero pack"
+    - "The ravintio.yml workflow, which ravintio-zero/setup.sh writes"
     - "Site search"
 
 responsibilities:
@@ -73,6 +76,7 @@ data:
 scope:
   inScope:
     - "Homepage layout and styling"
+    - "404 page"
     - "Doc page build pipeline (build-docs.js)"
     - "Sectioned nav manifest"
     - "Logo, wordmark, and favicons"
@@ -81,6 +85,8 @@ scope:
     - "Mermaid diagram rendering on demand"
     - "Site tests"
     - "Playwright regression suite on Chromium"
+    - "axe-core accessibility scan in both themes"
+    - "Site workflows site-tests.yml and deploy.yml"
     - "Theme set before first paint"
   outOfScope:
     - "Page text (site-content)"
@@ -95,6 +101,9 @@ risk:
     - "scroll-margin-top: 72px fixed to the nav height"
     - "R-006: the first-frame test depends on paint order"
     - "R-007: the inline theme script needs a hash under a future Content Security Policy"
+    - "R-008: the 404 page assumes the domain root"
+    - "R-009: pinned actions fall behind security releases"
+    - "R-010: a change adds a serious axe violation"
 
 quality:
   testCoverage:
@@ -111,7 +120,9 @@ quality:
     - "Q-005: asset paths are relative, so the site works at the org root or under a path"
     - "Q-006: the Playwright suite tests an existing build, so npm run build runs first"
     - "Q-007: the theme logic lives in the inline script and in main.ts"
-    - "Q-008: appType mpa, so the dev and preview servers return 404 for a missing page"
+    - "Q-008: appType mpa, so the dev and preview servers return 404 for a missing page, and preview serves dist/404.html"
+    - "Q-009: the 404 page assumes the domain root"
+    - "Q-010: code blocks take keyboard focus"
 
 pipeline:
   templateVersion: "1.0.0"
@@ -120,7 +131,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-05-16"
-  updatedAt: "2026-11-06"
+  updatedAt: "2026-11-07"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-implement"

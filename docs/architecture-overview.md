@@ -3,7 +3,7 @@
 > Living document. Reflects current system state. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000024-explainer-six-tools
+Last updated: 0000027-site-quality-fixes
 
 ---
 
@@ -61,6 +61,7 @@ flowchart LR
 | marked 17 | npm | `web-app` |
 | mermaid 12 | npm | `web-app`, loaded only on pages with diagrams |
 | Playwright 1.64 | npm, dev | `web-app` regression suite, on Chromium |
+| axe-core Playwright 4.14 | npm, dev | `web-app` accessibility scan in the regression suite |
 | Playwright MCP 0.0.83 | agent tool | The P3 quality review, declared in `.mcp.json` |
 
 ---
@@ -78,6 +79,9 @@ See `docs/decisions-index.md` for the full list. These decisions shape the curre
 - `site-tests.yml` runs both suites on each pull request (0000016 ADR-002).
 - A repo capability skill reviews site quality in P3 of every run (0000016 ADR-003).
 - An inline script sets the theme before first paint (0000016 ADR-004).
+- An axe-core scan of every page in both themes fails CI on a serious or critical violation (0000027 ADR-001 and ADR-002).
+- A 404 page with a root base URL serves any missing path (0000027 ADR-003).
+- The site workflows pin each action by commit SHA (0000027 ADR-004).
 
 ---
 

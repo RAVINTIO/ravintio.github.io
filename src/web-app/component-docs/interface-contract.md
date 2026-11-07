@@ -11,7 +11,7 @@
 
 | Name | Type | Description |
 |------|------|-------------|
-| `dist/` | filesystem | The built site that GitHub Pages serves |
+| `dist/` | filesystem | The built site that GitHub Pages serves, including `404.html` |
 | `docs/*.html` | filesystem, generated | One HTML page per manifest entry, plus `sitemap.html`. Not committed. |
 | `public/sitemap-data.json` | filesystem, generated | Every page with its file, title, and section. Not committed. |
 
