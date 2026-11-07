@@ -18,13 +18,14 @@ As a reader on a phone, I read a text column that uses most of the screen, so th
 ## Functional Requirements
 - Below 600 px, `src/web-app/src/style.css` reduces the side padding of the page list card and the content card.
 - Desktop and tablet layouts stay as they are.
+- The test measures `main h1`, which spans the text column on every page. The sitemap has no paragraph.
 - The existing 390 px sideways-scroll check in `page-health.spec.ts` keeps passing.
 
 ## Acceptance Criteria
 - [ ] AC-1: Wide text column
   - Given a 390 by 844 viewport
   - When the browser loads each doc page
-  - Then the first `main p` is at least 330 px wide
+  - Then the text column, measured on `main h1`, is at least 330 px wide
 - [ ] AC-2: No sideways scroll
   - Given a 390 by 844 viewport
   - When the browser loads each page

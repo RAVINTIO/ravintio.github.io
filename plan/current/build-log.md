@@ -77,13 +77,13 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-07T18:23:42Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-07T18:36:16Z` |
+| Wall clock | `12` |
 | Model tier | primary (sonnet) for TDD tracks |
 | Skills loaded | ravintio-implement, ravintio-test-writer, ravintio-implementer, ravintio-refactor |
-| Agents spawned | `3` |
+| Agents spawned | `4` |
 | MCP calls | `0` |
-| Parallel task batches | `1` |
+| Parallel task batches | `2` |
 | Notes | see notes below |
 
 - Departure: each unit runs as one TDD track (test-writer, implementer, and refactor in sequence) in one subagent, as in runs 0000016 and 0000024. The track runs on `sonnet`, not the skills' `haiku`, because one agent writes tests and code together. The improvement loop runs as one fresh-context review across the whole diff.
@@ -106,9 +106,15 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - In progress: U7 REQ-001 (2026-11-07T18:31:53Z)
 - U7 first scan: 11 of 24 page and theme pairs failed. `color-contrast` (serious) hit the pagination title in light theme on every doc page, from `opacity: 0.7`. `scrollable-region-focusable` (serious) hit a wide code block on `first-run.html`. Fixes: the `--text-muted` token, and `tabindex="0"` on every code `<pre>` in `build-docs.js`. No rule exclusion.
 - Deviation: U7 adds the sitemap to `pagePaths()`, as REQ-001 AC-1 names it, and a `globalTeardown` in `playwright.config.ts` that merges the per-test axe files.
-- Done: U7 REQ-001 (2026-11-07T18:31:53Z), commit `23efac6`. Axe 26 of 26 pass, report empty. Node 93 pass, Playwright 88 pass and 1 skipped.
+- Done: U7 REQ-001 (2026-11-07T18:31:53Z), commit `23efac6`. Axe 26 of 26 pass, report empty. Node 93 pass. Playwright 88 pass and 1 skipped, plus one failure that the run missed: `tail -2` hid the failed line.
 - In progress: improvement review across the P2 diff (2026-11-07T18:31:53Z)
 - In progress: U8 docs (2026-11-07T18:31:53Z)
+- Self-correction: the U7 Playwright run failed `req-004 AC-1` on `/docs/sitemap.html`, which has no `<p>`. U7 added the sitemap to `pagePaths()` after U6 ran. The improvement review caught it.
+- Improve: cycle 1, commit `c53fe90`. The width test measures `main h1`, and the axe spec asserts `data-theme` before each scan. REQ-004 AC-1 now names `main h1`.
+- Improve: cycle 2, commit `97522c8`. The REQ-005 AC-2 test could not fail, and now parses fixture workflow text. The 404 plugin treats a malformed URL as missing and checks the `dist` path with a separator.
+- Done: improvement review (2026-11-07T18:36:16Z). Agents spawned: 1.
+- Done: U8 docs (2026-11-07T18:36:16Z), commit `4870a83`.
+- Final suites: Node 93 of 93, Playwright 89 pass and 1 existing skip, 0 fail. `tsc` clean.
 
 ---
 
