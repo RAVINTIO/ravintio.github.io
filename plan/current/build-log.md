@@ -97,6 +97,11 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Batch 1: 3 agents in one parallel message.
 - Batches 2 to 5 hold one unit each, so they run inline.
 - In progress: U4 REQ-006 (2026-11-07T18:25:10Z)
+- Done: U4 REQ-006 (2026-11-07T18:28:11Z), commit `b58ae7d`. RED then GREEN on the first attempt. No refactor needed.
+- In progress: U5 REQ-002 (2026-11-07T18:28:11Z)
+- Deviation: U5 adds a `configurePreviewServer` plugin to `vite.config.ts`. Vite 7 preview has no 404 page support. REQ-002 now records the plugin and the relative links.
+- Done: U5 REQ-002 (2026-11-07T18:28:11Z), commit `9212367`. Node 93 pass, Playwright 49 pass and 1 skipped.
+- In progress: U6 REQ-004 (2026-11-07T18:28:11Z)
 
 ---
 
