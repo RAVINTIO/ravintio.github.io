@@ -10,10 +10,12 @@ Two suites run from `src/web-app`, after `npm run build`. The content suite runs
 | `brand-guard.test.mjs` | REQ-004 | No earlier-brand text in tracked files or `dist/` |
 | `capitals.test.mjs` | REQ-004 | RAVINTIO in block capitals in pages and built HTML |
 | `links.test.mjs` | REQ-002 | Every internal link and anchor in `dist/` resolves |
-| `style.test.mjs` | REQ-002 | Sentence length and banned words on every page |
+| `style.test.mjs` | REQ-002, REQ-003 | Sentence length and banned words in prose on every page. Passive voice in prose and table cells, including negated and adverb forms. An allowlist holds adjective uses. |
 | `status-labels.test.mjs` | REQ-001 | Tool status labels and no dated promises |
 | `reference-match.test.mjs` | REQ-003 | Reference pages match the pack |
-| `why-use-ravintio.test.mjs` | 0000009 REQ-001 | "Why use RAVINTIO" list, removed name section, and trimmed principles |
+| `why-use-ravintio.test.mjs` | 0000009 REQ-001, 0000024 REQ-001 | "Why RAVINTIO?" list, removed name section, and trimmed principles |
+| `explainer.test.mjs` | 0000024 REQ-001 | Purpose-led opening, a tool-free "Why RAVINTIO?", balanced entries for the six tools, and the hero subtitle and homepage meta description |
+| `meta-descriptions.test.mjs` | 0000024 REQ-002 | One meta description per built page that matches the manifest, unique descriptions of 50 to 160 characters, and the build check for a missing one |
 | `zero-overview.test.mjs` | 0000009 REQ-003 | `zero-overview` section order and "When Zero fits" |
 | `simplicity.test.mjs` | 0000009 REQ-002 | Simplicity section and the P2 simplicity sentence |
 | `copy-fixes.test.mjs` | 0000009 REQ-004 | First-run step 2 runs on a fresh setup, plus four copy fixes |

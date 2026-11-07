@@ -3,7 +3,7 @@
 > Living document. Reflects current system state. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000016-site-regression-and-quality
+Last updated: 0000024-explainer-six-tools
 
 ---
 
@@ -27,7 +27,7 @@ The RAVINTIO docs system is a static site on GitHub Pages at `https://ravintio.g
 ```mermaid
 flowchart LR
     pages["src/site-content/pages/\n(Markdown)"]
-    manifest["docs.manifest.json\n(sections and order)"]
+    manifest["docs.manifest.json\n(sections, order, descriptions)"]
     build["web-app build-docs.js"]
     vite["Vite bundler"]
     dist["dist/\n(static HTML)"]
@@ -71,7 +71,7 @@ See `docs/decisions-index.md` for the full list. These decisions shape the curre
 
 - Static site generation with Vite, with no backend (website ADR-001).
 - `site-content` owns the pages, and `web-app` only reads them (0000005 ADR-002).
-- A sectioned manifest sets the nav sections and page order (0000005 ADR-003).
+- A sectioned manifest sets the nav sections and page order (0000005 ADR-003). It also holds each page's meta description (0000024 ADR-002).
 - A native `<details>` disclosure holds the page list. It closes on narrow screens and shows as a sidebar on wide ones (0000009 ADR-002).
 - Tests guard the brand and keep the reference pages in step with the pack (0000005 ADR-004 and ADR-005).
 - A Playwright suite on Chromium tests the built site beside the Node content suite (0000016 ADR-001).

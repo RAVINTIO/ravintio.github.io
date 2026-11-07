@@ -4,7 +4,7 @@ RAVINTIO Zero is a pipeline that makes your coding agent plan before it writes c
 
 ## Why use Zero?
 
-Zero gives you the benefits in [why use RAVINTIO](what-is-ravintio.md#why-use-ravintio) with low ceremony. These reasons are specific to Zero.
+Zero serves [the shared purpose of RAVINTIO](what-is-ravintio.md#why-ravintio) with low ceremony. These reasons are specific to Zero.
 
 - **You review the plan before code exists.** The agent writes a design and a plan, and you confirm both. You catch a wrong assumption while it costs a comment, not a rewrite.
 - **Gaps become questions, not guesses.** If your brief leaves something open, the agent stops and asks you.

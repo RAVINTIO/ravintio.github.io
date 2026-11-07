@@ -5,7 +5,7 @@
 | Name | Type | Description |
 |------|------|-------------|
 | `src/site-content/pages/*.md` | filesystem, build time | One Markdown page per manifest entry. Read only. |
-| `docs.manifest.json` | filesystem, build time | `{ "sections": [ { "title", "pages": [ { "file", "title" } ] } ] }` |
+| `docs.manifest.json` | filesystem, build time | `{ "sections": [ { "title", "pages": [ { "file", "title", "description" } ] } ] }`. The build writes each `description` into its page `<head>` and fails if one is missing. |
 
 ## Outputs
 

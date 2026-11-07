@@ -51,7 +51,7 @@ describe('req-004-copy-fixes: AC-2 review findings 5 to 8 applied', () => {
   test('the hero subtitle matches the agreed text', () => {
     const home = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
     const subtitle = home.match(/<p class="subtitle[^"]*">\s*([\s\S]*?)\s*<\/p>/);
-    assert.equal(subtitle?.[1], 'Coding agents that build to your design and standards, and prove the result.');
+    assert.equal(subtitle?.[1], 'Six tools for visibility and governance over agentic software development.');
   });
 });
 

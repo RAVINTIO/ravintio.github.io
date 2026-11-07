@@ -10,9 +10,9 @@ describe('req-003-zero-overview-reframe: AC-1 section order', () => {
     assert.equal(titles.at(-1), 'Terms');
   });
 
-  test('Why use Zero links back to Why use RAVINTIO', () => {
+  test('Why use Zero links back to Why RAVINTIO', () => {
     const [first] = builtSections('zero-overview');
-    assert.match(first.html, /href="what-is-ravintio\.html#why-use-ravintio"/);
+    assert.match(first.html, /href="what-is-ravintio\.html#why-ravintio"/);
   });
 });
 

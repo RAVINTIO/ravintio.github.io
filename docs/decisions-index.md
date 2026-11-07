@@ -3,7 +3,7 @@
 > Living document. Index of all ADRs across all features. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000016-site-regression-and-quality
+Last updated: 0000024-explainer-six-tools
 
 ---
 
@@ -32,6 +32,9 @@ Last updated: 0000016-site-regression-and-quality
 | ADR-002 | Run site tests in a separate pull request workflow | 0000016-site-regression-and-quality | active | `site-tests.yml` runs both suites on pull requests with read-only permissions |
 | ADR-003 | Run the quality review as a capability skill from a repo instruction | 0000016-site-regression-and-quality | active | `site-quality-review` runs in P3 through `custom-003` and a pinned Playwright MCP |
 | ADR-004 | Set the theme with an inline script before first paint | 0000016-site-regression-and-quality | active | An inline script and a `color-scheme` meta tag remove the light first frame |
+| ADR-001 | Keep the declared stack | 0000024-explainer-six-tools | active | The voice check is a regex test, with no new dependency |
+| ADR-002 | Page descriptions live in the docs manifest | 0000024-explainer-six-tools | active | `web-app` owns a `description` per page, and the build fails without one |
+| ADR-003 | Check passive voice with a regex and an allowlist | 0000024-explainer-six-tools | active | `style.test.mjs` flags a be-verb before a participle, with an allowlist for adjectives |
 
 ---
 

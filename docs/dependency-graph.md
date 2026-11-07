@@ -1,6 +1,6 @@
 # Dependency Graph
 
-Last updated: 0000016-site-regression-and-quality
+Last updated: 0000024-explainer-six-tools
 
 ---
 
@@ -10,7 +10,7 @@ Last updated: 0000016-site-regression-and-quality
 graph TD
     subgraph Source
         pages["src/site-content/pages/\n(Markdown)"]
-        manifest["docs.manifest.json\n(sections and order)"]
+        manifest["docs.manifest.json\n(sections, order, descriptions)"]
     end
 
     subgraph Build

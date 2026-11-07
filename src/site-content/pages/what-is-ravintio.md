@@ -1,25 +1,48 @@
 # What is RAVINTIO?
 
-RAVINTIO lets a coding agent do real engineering work on its own while you keep control of what ships. It's a set of open-source tools. RAVINTIO Zero and RAVINTIO Framework are available now.
+RAVINTIO is a set of six open-source tools for visibility and governance over agentic software development. RAVINTIO Zero and RAVINTIO Framework are available now. The other four tools are in design.
 
-## Why use RAVINTIO?
+## Why RAVINTIO?
 
-Coding agents write code fast. RAVINTIO makes that code something you can trust, review, and maintain.
+Agents now design, write, test, and change software. That work moves fast, and much of it happens out of sight. You need to see what an agent did and why. You also need to keep authority over what ships. RAVINTIO serves both needs.
 
-- **Changes are designed before they're built.** The agent works from a design and requirements you confirm. It builds against them and no further.
-- **Work follows your standards.** Code, tests, commits, and docs follow the same standards on every change. Hooks block commits and actions that break your rules.
-- **Documentation comes with the code.** Every component gets the same set of docs: purpose, interface, dependencies, risks, and test coverage. Project-wide docs stay current with each change.
-- **Architectural decisions are on record.** Each significant choice gets a decision record. The record states the context, the options, and the consequences, good and bad.
-- **Constraints hold.** The agent uses only the dependencies you approved, and it stays inside the boundaries you set. Outside them, it stops and asks you.
-- **Solutions stay as simple as the problem allows.** The agent builds what the requirements ask for and no more. It writes the minimum code to pass each test, then looks for a simpler version. Unneeded layers, unused code, and speculative features never reach your codebase. They would become someone's maintenance burden later.
-- **Done means proven.** The agent runs the tests, the checks, and the software itself before it hands back. The pull request carries the evidence.
-- **Failures get fixed, not reported.** The agent diagnoses build, test, and security failures and repairs them before it escalates.
-- **Work survives a new session.** Plans, decisions, and progress live in plain files in your repo. Work resumes where it stopped.
-- **No lock-in.** RAVINTIO works with your own CI, version control, and pull request flow. It adds no service to run.
+- **You see what the agent did.** Plans, decisions, and evidence live in plain files you can read.
+- **You see why.** Each significant choice carries a record of its context and the options it weighed.
+- **You decide what ships.** People set intent, scope, risk, and release. Agents work inside those limits.
+- **Evidence backs every claim.** A change counts as done when checks prove it, not when an agent says so.
+- **You keep your own tools.** RAVINTIO works with your CI, version control, and review flow.
+
+## The six tools
+
+Each tool serves visibility, governance, or both.
+
+### RAVINTIO Zero
+
+Zero offers a lightweight, governed workflow for individuals and small teams. The agent builds only what a confirmed design and plan describe. Each run ends with an evidence summary and hands control back to you.
+
+### RAVINTIO Framework
+
+Framework offers a structured workflow for projects that need stricter governance. Traceable requirements and decision records show how each change came about. Component ownership and explicit approvals keep people in charge of risk.
+
+### RAVINTIO Accept
+
+Accept aims to give independent acceptance of any change, whoever built it. Its design traces each requirement to the evidence that proves it. The design ends in one of three results: accept, reject, or ask a person to decide.
+
+### RAVINTIO Qualify
+
+Qualify aims to evaluate agent skills against defined criteria. Its design calls for a check when you adopt a skill and again after the skill changes. You then know whether a skill still does what you expect.
+
+### RAVINTIO Insight
+
+Insight aims to assess a software system and its engineering practices from evidence. Its design gives each finding a severity, a confidence, and links to that evidence. The design also keeps Insight read-only unless you give permission.
+
+### RAVINTIO Unbound
+
+Unbound aims to show how agents behave when they get only functional requirements. Its design runs each experiment in isolation, under independent observation and operator control. Unbound is never a route to production.
 
 ## The three areas
 
-The six tools sit in three areas. The areas describe purpose. They do not describe an order of use.
+The six tools sit in three areas. The areas describe purpose, not an order of use.
 
 | Area | Tools | Purpose |
 |------|-------|---------|
@@ -39,9 +62,7 @@ Every tool follows the same ideas.
 
 ## The tools work independently
 
-Each tool is meant to work on its own. None of them requires another to be installed.
-
-You can combine them if it helps. RAVINTIO Accept is designed to check a change from any source, including a change built with Zero. RAVINTIO Insight is designed to assess a system however its developers built it. These links are optional.
+No tool requires another. You can combine them if it helps. Accept aims to check a change from any source, including Zero. Insight aims to assess a system however its developers built it.
 
 ## Where to go next
 

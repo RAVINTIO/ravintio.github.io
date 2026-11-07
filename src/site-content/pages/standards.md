@@ -35,7 +35,7 @@ This file defines how Zero detects a pack update and how you confirm and trust i
 
 ### `roadmap-standards.md`
 
-This file explains the five initiative stages. The initiative skill charts, activates, and delivers. The orchestrator runs each step. The ship skill advances it. The initiative, orchestrator, and ship skills point to it. Read it first when an initiative is involved.
+This file explains the five initiative stages. The initiative skill charts, activates, and delivers. The orchestrator runs each step. The ship skill advances it. The initiative, orchestrator, and ship skills point to it. Read it first when you work on an initiative.
 
 ### `workflow-governance-standards.md`
 

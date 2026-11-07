@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "site-content"
 name: "RAVINTIO Docs Site Content"
-feature: "0000009-bug-fixes"
-version: "0.4.1"
+feature: "0000024-explainer-six-tools"
+version: "0.6.0"
 status: "active"
 type: "component-pack"
 domain: "documentation"
@@ -11,18 +11,19 @@ systemContext: "Read at build time by web-app's scripts/build-docs.js, which ren
 
 purpose:
   responsibleFor:
-    - "Explain what RAVINTIO is and the eight principles behind the name"
+    - "Explain what RAVINTIO is, its shared purpose, and how each of the six tools serves it"
     - "Describe the six RAVINTIO tools, their boundaries, and their status labels"
     - "Teach readers to install RAVINTIO Zero and run a first feature"
     - "Document the Zero pipeline and project operations"
     - "List every skill, standard, and template in the installed ravintio-zero pack"
   notResponsibleFor:
     - "Building, styling, or navigating the site (web-app)"
-    - "Full RAVINTIO Framework docs (backlog 0000006)"
+    - "Full RAVINTIO Framework docs (backlog 0000014)"
     - "The ravintio-zero pack itself"
 
 responsibilities:
   - "Own src/site-content/pages/*.md"
+  - "Write page prose in active voice, which style.test.mjs checks"
 
 exceptions:
   - "Must not name the earlier product brand"
@@ -91,7 +92,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-10-29"
-  updatedAt: "2026-10-31"
+  updatedAt: "2026-11-06"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-plan"

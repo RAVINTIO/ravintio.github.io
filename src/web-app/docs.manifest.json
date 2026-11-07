@@ -3,26 +3,26 @@
     {
       "title": "RAVINTIO",
       "pages": [
-        { "file": "what-is-ravintio.html", "title": "What is RAVINTIO?" },
-        { "file": "six-tools.html", "title": "The six tools" }
+        { "file": "what-is-ravintio.html", "title": "What is RAVINTIO?", "description": "Learn how the six open-source RAVINTIO tools give you visibility and governance over agentic software development." },
+        { "file": "six-tools.html", "title": "The six tools", "description": "Compare the six RAVINTIO tools by purpose, status, and the question each answers, and see how they fit together." }
       ]
     },
     {
       "title": "Zero",
       "pages": [
-        { "file": "zero-overview.html", "title": "Zero overview" },
-        { "file": "install-zero.html", "title": "Install Zero" },
-        { "file": "first-run.html", "title": "Your first run" },
-        { "file": "pipeline.html", "title": "The pipeline" },
-        { "file": "project-operations.html", "title": "Project operations" }
+        { "file": "zero-overview.html", "title": "Zero overview", "description": "See how RAVINTIO Zero makes your coding agent plan before it writes code, and decide whether Zero fits your project." },
+        { "file": "install-zero.html", "title": "Install Zero", "description": "Install RAVINTIO Zero into a new or existing repository for Claude Code or Codex, and check the prerequisites first." },
+        { "file": "first-run.html", "title": "Your first run", "description": "Follow one example feature through RAVINTIO Zero, step by step, from the feature brief to a pull request." },
+        { "file": "pipeline.html", "title": "The pipeline", "description": "Learn what each of the five Zero phases produces, how gates and run modes work, and how you control a run." },
+        { "file": "project-operations.html", "title": "Project operations", "description": "Run a Zero project day to day, with its git guardrails, enforcement hooks, commit checks, and the files to commit." }
       ]
     },
     {
       "title": "Reference",
       "pages": [
-        { "file": "skills.html", "title": "Skills" },
-        { "file": "standards.html", "title": "Standards" },
-        { "file": "templates.html", "title": "Templates" }
+        { "file": "skills.html", "title": "Skills", "description": "Look up each skill in the RAVINTIO Zero pack, grouped by role, with what it does and when the pipeline uses it." },
+        { "file": "standards.html", "title": "Standards", "description": "Look up each standards file in the RAVINTIO Zero pack, grouped by area, with the rules it sets for your agent." },
+        { "file": "templates.html", "title": "Templates", "description": "Look up each template in the RAVINTIO Zero pack, grouped by phase, with who writes the matching document and when." }
       ]
     }
   ]

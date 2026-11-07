@@ -1,7 +1,7 @@
 ---
-version: "0.5.0"
-feature: "0000016-site-regression-and-quality"
-updated: "01 Nov 2026"
+version: "0.6.0"
+feature: "0000024-explainer-six-tools"
+updated: "06 Nov 2026"
 ---
 # About
 
@@ -10,6 +10,6 @@ updated: "01 Nov 2026"
 
 | Field | Value |
 |-------|-------|
-| Version | `0.5.0` |
-| Last feature | `0000016-site-regression-and-quality` |
-| Updated | `01 Nov 2026` |
+| Version | `0.6.0` |
+| Last feature | `0000024-explainer-six-tools` |
+| Updated | `06 Nov 2026` |

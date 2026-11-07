@@ -23,3 +23,7 @@ Wrap the homepage content below the header in `<main id="content">`, and move th
 ## Why Deferred
 
 The P3 site quality review sorted it as a backlog finding. The skip link meets WCAG level A, so it isn't fix-now. It is also a likely axe-core finding for backlog 0000015.
+
+## Evidence 2026-11-06
+
+The run 0000024 site quality review found this issue still present on the local preview.

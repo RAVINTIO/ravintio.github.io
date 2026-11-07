@@ -1,6 +1,6 @@
 # Project operations
 
-This page covers the day-to-day running of a Zero project. It explains what the hooks enforce, how commit messages are checked, how to customise Zero, and what to commit. To install Zero first, see [Install Zero](install-zero.md).
+This page covers the day-to-day running of a Zero project. It explains what the hooks enforce, how the hooks check commit messages, how to customise Zero, and what to commit. To install Zero first, see [Install Zero](install-zero.md).
 
 ## Git guardrails
 
@@ -8,7 +8,7 @@ Setup activates git hooks and a CI workflow. They protect `main` without blockin
 
 | Tier | When | Effect |
 |------|------|--------|
-| Pre-commit | Every local commit | Warns if code is staged without documentation. The commit succeeds. |
+| Pre-commit | Every local commit | Warns if you stage code without documentation. The commit succeeds. |
 | Pre-push | Every push | Fails if `src/` changed with no update to `plan/`, `docs/`, or a `component.yml`. |
 | CI | Every pull request | Runs the same check in GitHub Actions. It also fails a description that holds an AI attribution line. |
 | Release tag | Every push to `main` | The `release-tag` job tags the merge commit with `v{version}`. |
@@ -130,7 +130,7 @@ The orchestrator also detects a pack update on its own. It asks you to confirm t
 
 | Path | Commit | Why |
 |------|--------|-----|
-| `ravintio-zero/` | Yes | The pack is shared with the team. |
+| `ravintio-zero/` | Yes | The team shares the pack. |
 | `.github/workflows/ravintio.yml` | Yes | The CI gate only works once committed. |
 | `plan/` | Yes | It holds briefs, plans, and decision records. Commit throughout the run. |
 | `plan/state/` | Yes | It records the setup flags per tool. |

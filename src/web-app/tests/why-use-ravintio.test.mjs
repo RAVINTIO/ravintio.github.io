@@ -3,22 +3,17 @@ import assert from 'node:assert/strict';
 import { readBuilt, readPage, builtSections, boldLeads } from './helpers.mjs';
 
 const AGREED_LEADS = [
-  'Changes are designed before they&#39;re built.',
-  'Work follows your standards.',
-  'Documentation comes with the code.',
-  'Architectural decisions are on record.',
-  'Constraints hold.',
-  'Solutions stay as simple as the problem allows.',
-  'Done means proven.',
-  'Failures get fixed, not reported.',
-  'Work survives a new session.',
-  'No lock-in.',
+  'You see what the agent did.',
+  'You see why.',
+  'You decide what ships.',
+  'Evidence backs every claim.',
+  'You keep your own tools.',
 ];
 
-describe('req-001-why-use-ravintio: AC-1 Why use RAVINTIO holds the agreed list', () => {
-  test('the first H2 is Why use RAVINTIO with the ten agreed leads in order', () => {
+describe('req-001-why-use-ravintio: AC-1 Why RAVINTIO? holds the shared purpose', () => {
+  test('the first H2 is Why RAVINTIO? with the agreed leads in order', () => {
     const [first] = builtSections('what-is-ravintio');
-    assert.equal(first.title, 'Why use RAVINTIO?');
+    assert.equal(first.title, 'Why RAVINTIO?');
     assert.deepEqual(boldLeads(first.html), AGREED_LEADS);
   });
 

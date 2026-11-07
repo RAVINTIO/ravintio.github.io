@@ -23,3 +23,7 @@ Reduce the content card's side padding below 600 px, or drop the card border and
 ## Why Deferred
 
 The P3 site quality review sorted it as a backlog finding. Nothing overlaps or clips, and the page doesn't scroll sideways, so it isn't fix-now.
+
+## Evidence 2026-11-06
+
+The run 0000024 site quality review found this issue still present on the local preview.

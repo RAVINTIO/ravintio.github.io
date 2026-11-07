@@ -1,8 +1,8 @@
 # RAVINTIO Component Manifest
 id: "web-app"
 name: "RAVINTIO Docs Web App"
-feature: "0000016-site-regression-and-quality"
-version: "0.5.0"
+feature: "0000024-explainer-six-tools"
+version: "0.6.0"
 status: "active"
 type: "microfrontend"
 domain: "documentation-site"
@@ -13,7 +13,7 @@ purpose:
   responsibleFor:
     - "Render the RAVINTIO homepage"
     - "Build doc pages from src/site-content/pages at build time"
-    - "Own docs.manifest.json, the source of nav sections, page order, and titles"
+    - "Own docs.manifest.json, the source of nav sections, page order, titles, and meta descriptions"
     - "Render the section nav, top nav, and previous and next links on every page"
     - "Serve the logo, wordmark, favicons, theme toggle, and mobile menu"
     - "Run the content suite in tests/ and the Playwright regression suite in tests/e2e/"
@@ -53,7 +53,7 @@ contract:
       description: "Markdown pages read at build time by scripts/build-docs.js"
     - name: "src/web-app/docs.manifest.json"
       type: "filesystem"
-      description: "Sectioned manifest of nav sections, page order, and titles"
+      description: "Sectioned manifest of nav sections, page order, titles, and meta descriptions"
   outputs:
     - name: "dist/"
       type: "filesystem"
@@ -120,7 +120,7 @@ pipeline:
 
 metadata:
   createdAt: "2026-05-16"
-  updatedAt: "2026-11-01"
+  updatedAt: "2026-11-06"
   createdBy: "agent"
   lastModifiedBy: "agent"
   skill: "ravintio-implement"
