@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <!-- GitHub Pages serves this page at any depth, so paths resolve from the root (ADR-003). -->
+    <base href="/">
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Sets the theme before first paint (ADR-004). main.ts still owns the toggle. -->
+    <script>
+      (function () {
+        var theme;
+        try {
+          var saved = localStorage.getItem('ravintio-theme');
+          if (saved === 'light' || saved === 'dark') theme = saved;
+        } catch (e) {}
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The page you asked for does not exist. Go back to the RAVINTIO docs homepage or browse every page in the sitemap." />
+    <title>Page not found | RAVINTIO Docs</title>
+    <!-- Modern Typography: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <script type="module" src="/src/main.ts"></script>
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <a class="skip-link" href="#content">Skip to content</a>
+
+      <!-- Navigation -->
+      <nav class="glass-nav fade-in-down" aria-label="Site">
+        <div class="nav-content">
+          <a href="./index.html" class="logo"><img src="img/ravintio-logo.png" alt="" width="32" height="32"><span class="wordmark">RAVINTIO</span></a>
+          <div class="nav-links">
+            <a href="./docs/what-is-ravintio.html" class="nav-link">RAVINTIO</a>
+            <a href="./docs/zero-overview.html" class="nav-link">Zero</a>
+            <a href="./docs/skills.html" class="nav-link">Reference</a>
+          </div>
+          <div class="nav-actions">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+              <!-- Sun Icon -->
+              <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              <!-- Moon Icon -->
+              <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <!-- Code Icon Link -->
+            <a href="https://github.com/RAVINTIO" class="code-icon-link" aria-label="RAVINTIO on GitHub" title="RAVINTIO on GitHub" target="_blank" rel="noopener noreferrer">
+              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="code-icon" aria-hidden="true"><polyline points="20 18 24 12 20 6"></polyline><polyline points="4 6 0 12 4 18"></polyline><line x1="14" y1="2" x2="10" y2="22"></line></svg>
+            </a>
+            <button class="hamburger-btn" aria-label="Toggle menu" title="Menu" aria-expanded="false">
+              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" class="menu-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <main id="content" class="hero">
+        <div class="hero-content">
+          <h1>Page not found</h1>
+          <p class="subtitle">The page you asked for does not exist. It may have moved, or the link may hold a typo.</p>
+          <div class="cta-group">
+            <a href="./index.html" class="btn btn-primary">Go to the homepage</a>
+            <a href="./docs/sitemap.html" class="btn btn-secondary">Browse the sitemap</a>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="brand"><img src="img/ravintio-logo.png" alt="" width="28" height="28"><span class="wordmark">RAVINTIO</span></div>
+            <div class="footer-links">
+              <a href="./docs/sitemap.html">Sitemap</a>
+              <a href="https://github.com/RAVINTIO" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>

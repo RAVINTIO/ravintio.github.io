@@ -21,12 +21,14 @@ As a reader who follows a broken link, I see a site page with links back to the 
 - The page sets `<base href="/">`, so its assets and links resolve at any path depth (ADR-003).
 - The page has a unique `<meta name="description">` and a `<title>`.
 - The page uses the theme script, so it follows the reader's theme.
+- A `configurePreviewServer` plugin in `vite.config.ts` serves `dist/404.html` with status 404 for a missing path. Vite 7 preview has no 404 page support, so the plugin lets Playwright test the GitHub Pages behaviour.
 
 ## Acceptance Criteria
 - [ ] AC-1: Built with header and links
   - Given a production build
   - When a test reads `dist/404.html`
-  - Then it holds the site header, one `<h1>`, a link to `/`, and a link to `/docs/sitemap.html`
+  - Then it holds the site header and one `<h1>`
+  - And its `<main>` links to `./index.html` and `./docs/sitemap.html`, which resolve from the root through `<base href="/">`
 - [ ] AC-2: Works at a nested path
   - Given the preview server serves `dist/404.html` at `/docs/missing/page.html`
   - When the browser loads that path
