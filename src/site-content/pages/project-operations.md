@@ -131,7 +131,7 @@ The orchestrator also detects a pack update on its own. It asks you to confirm t
 | Path | Commit | Why |
 |------|--------|-----|
 | `ravintio-zero/` | Yes | The team shares the pack. |
-| `.github/workflows/ravintio.yml` | Yes | The CI gate only works once committed. |
+| `.github/workflows/ravintio.yml` | Yes | The CI gate works only after you commit it. |
 | `plan/` | Yes | It holds briefs, plans, and decision records. Commit throughout the run. |
 | `plan/state/` | Yes | It records the setup flags per tool. |
 | `src/` | Yes | Component code and manifests. |
