@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, sep } from 'path';
 import { existsSync, readFileSync } from 'fs';
 import type { Plugin } from 'vite';
 
@@ -21,10 +21,15 @@ function githubPagesNotFound(): Plugin {
       const dist = resolve(__dirname, 'dist');
       return () => {
         server.middlewares.use((req, res, next) => {
-          const url = decodeURIComponent((req.url ?? '/').split('?')[0]);
+          let url: string;
+          try {
+            url = decodeURIComponent((req.url ?? '/').split('?')[0]);
+          } catch {
+            url = '/__malformed__'; // A malformed escape is a missing page, as on GitHub Pages.
+          }
           const target = resolve(dist, '.' + url);
           const found = url.endsWith('/') ? existsSync(resolve(target, 'index.html')) : existsSync(target);
-          if (found || !target.startsWith(dist)) return next();
+          if (found || !target.startsWith(dist + sep)) return next();
           res.statusCode = 404;
           res.setHeader('Content-Type', 'text/html; charset=utf-8');
           res.end(readFileSync(resolve(dist, '404.html')));
