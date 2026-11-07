@@ -21,7 +21,7 @@ for (const path of pages) {
     expect(errors).toEqual([]);
   });
 
-  test(`req-001 AC-3: ${path} has no sideways scroll at 390 px`, async ({ page }) => {
+  test(`req-001 AC-3, 0000027 req-004 AC-2: ${path} has no sideways scroll at 390 px`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path, { waitUntil: 'load' });
     const { scrollWidth, innerWidth } = await page.evaluate(() => ({

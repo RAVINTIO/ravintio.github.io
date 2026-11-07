@@ -10,7 +10,7 @@ const FAILING = new Set(['serious', 'critical']);
 
 for (const path of pagePaths()) {
   for (const theme of ['light', 'dark'] as const) {
-    test(`req-001 AC-1: ${path} has no serious or critical axe violations in ${theme}`, async ({ page }) => {
+    test(`req-001 AC-1 to AC-3: ${path} has no serious or critical axe violations in ${theme}`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.addInitScript((t) => localStorage.setItem('ravintio-theme', t), theme);
       await page.goto(path, { waitUntil: 'load' });
