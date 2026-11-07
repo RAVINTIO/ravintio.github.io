@@ -11,7 +11,7 @@ const PAGES_DIR = path.resolve(__dirname, '../../site-content/pages');
 const OUT_DIR = path.resolve(__dirname, '../docs');
 const MANIFEST_FILE = path.resolve(__dirname, '../docs.manifest.json');
 const SITEMAP_DATA_FILE = path.resolve(__dirname, '../public/sitemap-data.json');
-const REPO_URL = 'https://github.com/RAVINTIO/ravintio-zero';
+const ORG_URL = 'https://github.com/RAVINTIO';
 const SITEMAP_DESCRIPTION = 'Browse every page of the RAVINTIO documentation, grouped by section.';
 
 const fail = message => {
@@ -115,7 +115,7 @@ function pageHtml({ title, description, content, currentFile, pagination }) {
           </div>
           <div class="nav-actions">
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">${ICON_SUN}${ICON_MOON}</button>
-            <a href="${REPO_URL}" class="code-icon-link" aria-label="RAVINTIO Zero on GitHub" title="RAVINTIO Zero on GitHub" target="_blank" rel="noopener noreferrer">${ICON_CODE}</a>
+            <a href="${ORG_URL}" class="code-icon-link" aria-label="RAVINTIO on GitHub" title="RAVINTIO on GitHub" target="_blank" rel="noopener noreferrer">${ICON_CODE}</a>
             <button class="hamburger-btn" aria-label="Toggle menu" title="Menu" aria-expanded="false">${ICON_MENU}</button>
           </div>
         </div>
@@ -133,7 +133,7 @@ function pageHtml({ title, description, content, currentFile, pagination }) {
             <div class="brand"><img src="../img/ravintio-logo.png" alt="" width="28" height="28"><span class="wordmark">RAVINTIO</span></div>
             <div class="footer-links">
               <a href="sitemap.html">Sitemap</a>
-              <a href="${REPO_URL}" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="${ORG_URL}" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
         </div>
@@ -161,7 +161,8 @@ marked.use({
     code({ text, lang }) {
       if (lang === 'mermaid') return `<pre class="mermaid">${escapeHtml(text)}</pre>\n`;
       const cls = lang ? ` class="language-${escapeHtml(lang)}"` : '';
-      return `<pre><code${cls}>${escapeHtml(text)}</code></pre>\n`;
+      // tabindex lets keyboard users scroll a wide block (axe scrollable-region-focusable, REQ-001).
+      return `<pre tabindex="0"><code${cls}>${escapeHtml(text)}</code></pre>\n`;
     },
   },
 });

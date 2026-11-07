@@ -55,3 +55,15 @@ test('req-002 AC-3: every Mermaid diagram renders as an SVG', async ({ page }) =
     }
   }
 });
+
+// Quality review fix-now Q-001: the JS handler stops the default jump, so it must also move focus (WCAG 2.4.1).
+for (const path of ['/', '/404.html', '/docs/pipeline.html']) {
+  test(`skip link on ${path} moves keyboard focus into the main content`, async ({ page }) => {
+    await page.goto(path, { waitUntil: 'load' });
+    await page.keyboard.press('Tab');
+    await expect(page.locator('.skip-link')).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(new RegExp(`${path.replace('.', '\\.')}$`));
+    await expect(page.locator('#content')).toBeFocused();
+  });
+}

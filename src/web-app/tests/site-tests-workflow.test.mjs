@@ -47,3 +47,43 @@ describe('req-003-ci-site-tests', () => {
     assert.match(upload, /path:\s*src\/web-app\/playwright-report/);
   });
 });
+
+// REQ-005: the site workflows pin every action by full commit SHA (ADR-004).
+// ravintio.yml stays as setup.sh writes it, so the checks skip that file.
+const PINNED = ['site-tests.yml', 'deploy.yml'].map((name) => ({
+  name,
+  file: path.join(REPO, '.github/workflows', name),
+}));
+const PIN = /^[\w.-]+\/[\w.-]+(\/[\w./-]+)?@[0-9a-f]{40} # v\d+$/;
+
+// Returns one message per uses: line in the workflow text that lacks a full SHA pin.
+const unpinned = (name, text) =>
+  text
+    .split('\n')
+    .map((line, i) => ({ n: i + 1, line: line.trim() }))
+    .filter(({ line }) => /^(-\s+)?uses:/.test(line))
+    .filter(({ line }) => !PIN.test(line.replace(/^(-\s+)?uses:\s*/, '')))
+    .map(({ n, line }) => `${name}:${n} is not pinned by SHA with a # v<n> comment: ${line}`);
+
+describe('req-005-pin-actions-by-sha', () => {
+  for (const { name, file } of PINNED) {
+    test(`req-005 AC-1: ${name} pins each action by SHA with a tag comment`, () => {
+      const text = fs.readFileSync(file, 'utf8');
+      assert.match(text, /uses:/, `${name} has no uses: lines`);
+      assert.deepEqual(unpinned(name, text), []);
+    });
+  }
+
+  test('req-005 AC-2: a tag or short SHA fails and names the line', () => {
+    const text = [
+      'steps:',
+      '  - uses: actions/checkout@v5',
+      '  - uses: actions/setup-node@a0853c2 # v5',
+      '  - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4',
+    ].join('\n');
+    assert.deepEqual(unpinned('site-tests.yml', text), [
+      'site-tests.yml:2 is not pinned by SHA with a # v<n> comment: - uses: actions/checkout@v5',
+      'site-tests.yml:3 is not pinned by SHA with a # v<n> comment: - uses: actions/setup-node@a0853c2 # v5',
+    ]);
+  });
+});

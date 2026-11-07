@@ -9,14 +9,17 @@ The docs need a public site with no server runtime. `web-app` turns the Markdown
 ## What it does
 
 - Renders the homepage at `index.html`.
+- Renders the 404 page at `404.html`, which GitHub Pages serves for any missing path.
 - Converts `src/site-content/pages/*.md` to HTML at build time with `scripts/build-docs.js`.
 - Reads `docs.manifest.json` for the three nav sections, the page order, the page titles, and the page meta descriptions.
 - Adds the section nav, top nav, and previous and next links to every page.
+- Links the header and footer code links to the RAVINTIO organisation on GitHub.
 - Shows the RAVINTIO logo and wordmark, the theme toggle, and the mobile menu.
 - Sets the theme before first paint with an inline script in each page template.
 - Loads `mermaid` only on pages that hold a diagram.
 - Writes `public/sitemap-data.json` and `docs/sitemap.html`.
-- Runs the content suite and the Playwright regression suite.
+- Runs the content suite and the Playwright regression suite, which includes an axe-core accessibility scan.
+- Pins the actions in `site-tests.yml` and `deploy.yml` by commit SHA.
 
 ## What it does not do
 

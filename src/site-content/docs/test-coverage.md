@@ -15,5 +15,7 @@ The tests live in `src/web-app/tests/` and run with `npm test` after `npm run bu
 | `capitals.test.mjs` | RAVINTIO in block capitals |
 | `links.test.mjs` | Every internal link and anchor resolves |
 | `brand-guard.test.mjs` | No earlier-brand text |
+| `ops-table-cell.test.mjs` | The `ravintio.yml` row on `project-operations` names the actor |
+| `e2e/axe.spec.ts` | Every page passes an axe-core WCAG 2.2 AA scan in both themes |
 
 A human checks the pages against the private-content checklist at P3.

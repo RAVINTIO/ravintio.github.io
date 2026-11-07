@@ -3,7 +3,7 @@
 > Living document. Index of all ADRs across all features. Updated after every pipeline run.
 > Do not archive this file. Update it in place.
 
-Last updated: 0000024-explainer-six-tools
+Last updated: 0000027-site-quality-fixes
 
 ---
 
@@ -35,6 +35,10 @@ Last updated: 0000024-explainer-six-tools
 | ADR-001 | Keep the declared stack | 0000024-explainer-six-tools | active | The voice check is a regex test, with no new dependency |
 | ADR-002 | Page descriptions live in the docs manifest | 0000024-explainer-six-tools | active | `web-app` owns a `description` per page, and the build fails without one |
 | ADR-003 | Check passive voice with a regex and an allowlist | 0000024-explainer-six-tools | active | `style.test.mjs` flags a be-verb before a participle, with an allowlist for adjectives |
+| ADR-001 | Add axe-core to the declared stack | 0000027-site-quality-fixes | active | `@axe-core/playwright` 4.14.0 scans every page from the Playwright suite |
+| ADR-002 | Fail the suite on serious and critical axe violations | 0000027-site-quality-fixes | active | Serious and critical fail CI. Moderate and minor go to `test-results/axe-report.json` for P3. |
+| ADR-003 | Serve the 404 page with a root base URL | 0000027-site-quality-fixes | active | `404.html` sets `<base href="/">` so it works at any path depth |
+| ADR-004 | Pin actions by SHA in the site workflows only | 0000027-site-quality-fixes | active | `site-tests.yml` and `deploy.yml` pin by SHA. `ravintio.yml` keeps the tags that setup writes. |
 
 ---
 

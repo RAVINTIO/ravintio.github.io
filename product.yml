@@ -1,7 +1,7 @@
 id: "ravintio-docs"
 name: "RAVINTIO Docs"
-version: "0.6.0"
-feature: "0000024-explainer-six-tools"
+version: "0.7.0"
+feature: "0000027-site-quality-fixes"
 versionPolicy: "max-component-version"
 releaseSize: "large"
 

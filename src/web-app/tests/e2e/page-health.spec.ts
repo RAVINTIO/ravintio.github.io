@@ -21,7 +21,7 @@ for (const path of pages) {
     expect(errors).toEqual([]);
   });
 
-  test(`req-001 AC-3: ${path} has no sideways scroll at 390 px`, async ({ page }) => {
+  test(`req-001 AC-3, 0000027 req-004 AC-2: ${path} has no sideways scroll at 390 px`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path, { waitUntil: 'load' });
     const { scrollWidth, innerWidth } = await page.evaluate(() => ({
@@ -74,3 +74,30 @@ test('req-001 AC-2: internal links and anchors resolve', async ({ page, request,
 
   expect(failures, failures.join('\n')).toEqual([]);
 });
+
+test('req-003 AC-1: the homepage has one main#content that the skip link targets', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'load' });
+  await expect(page.locator('main#content')).toHaveCount(1);
+  const skipLink = page.locator('a[href="#content"]');
+  await expect(skipLink).toHaveCount(1);
+  await expect(page.locator('#content')).toHaveCount(1);
+  expect(await page.locator('#content').evaluate((el) => el.tagName)).toBe('MAIN');
+});
+
+for (const path of pages) {
+  test(`req-003 AC-2: ${path} has exactly one main`, async ({ page }) => {
+    await page.goto(path, { waitUntil: 'load' });
+    await expect(page.locator('main')).toHaveCount(1);
+  });
+}
+
+// REQ-004 AC-1: doc page body text uses most of a phone screen.
+for (const path of pages.filter((p) => p.startsWith('/docs/'))) {
+  test(`req-004 AC-1: ${path} body text is at least 330 px wide at 390 px`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(path, { waitUntil: 'load' });
+    // The h1 spans the text column on every page, including the sitemap, which has no paragraph.
+    const width = await page.locator('main h1').evaluate((h) => h.getBoundingClientRect().width);
+    expect(width).toBeGreaterThanOrEqual(330);
+  });
+}

@@ -21,7 +21,7 @@ If a manifest entry has no page file or no description, the build fails. If a pa
 
 ## Q-005: Favicon and asset paths are relative
 
-GitHub Pages serves the site at the org root, `https://ravintio.github.io`. Every icon and asset path is relative, so the site also works under a path, such as a fork served at `/{repo}/`.
+GitHub Pages serves the site at the org root, `https://ravintio.github.io`. Every icon and asset path is relative, so the site also works under a path, such as a fork served at `/{repo}/`. The 404 page is the exception. See Q-009.
 
 ## Q-006: The Playwright suite tests an existing build
 
@@ -33,4 +33,12 @@ An inline script at the top of `<head>` sets `data-theme` before first paint. `m
 
 ## Q-008: The dev and preview servers have no SPA fallback
 
-`vite.config.ts` sets `appType: 'mpa'`. A missing page returns 404 locally, as it does on GitHub Pages, so the link check catches it.
+`vite.config.ts` sets `appType: 'mpa'`. A missing page returns 404 locally, as it does on GitHub Pages, so the link check catches it. The preview server also serves `dist/404.html` with that status, through the `github-pages-not-found` plugin in `vite.config.ts`. Vite 7 preview has no 404 page support of its own.
+
+## Q-009: The 404 page assumes the domain root
+
+GitHub Pages serves `404.html` for a missing path at any depth. The page sets `<base href="/">`, so its relative assets and links resolve from the domain root (0000027 ADR-003). A fork served under `/{repo}/` needs a matching base.
+
+## Q-010: Code blocks take keyboard focus
+
+`build-docs.js` writes `tabindex="0"` on every code `<pre>`. A wide block scrolls sideways, and the focus lets keyboard users scroll it (axe rule `scrollable-region-focusable`). Mermaid blocks don't take focus.

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import { readFileSync } from 'fs';
+import { resolve, sep } from 'path';
+import { existsSync, readFileSync } from 'fs';
+import type { Plugin } from 'vite';
 
 // Build inputs come from the sectioned manifest (ADR-003), so new pages need no edit here.
 const manifest = JSON.parse(readFileSync(resolve(__dirname, 'docs.manifest.json'), 'utf-8'));
@@ -11,7 +12,36 @@ for (const section of manifest.sections) {
   }
 }
 
+// Vite preview has no 404.html support, so this serves dist/404.html with status 404
+// for any missing path, as GitHub Pages does (REQ-002, ADR-003).
+function githubPagesNotFound(): Plugin {
+  return {
+    name: 'github-pages-not-found',
+    configurePreviewServer(server) {
+      const dist = resolve(__dirname, 'dist');
+      return () => {
+        server.middlewares.use((req, res, next) => {
+          let url: string;
+          try {
+            url = decodeURIComponent((req.url ?? '/').split('?')[0]);
+          } catch {
+            url = '/__malformed__'; // A malformed escape is a missing page, as on GitHub Pages.
+          }
+          const target = resolve(dist, '.' + url);
+          const found = url.endsWith('/') ? existsSync(resolve(target, 'index.html')) : existsSync(target);
+          const page = resolve(dist, '404.html');
+          if (found || !target.startsWith(dist + sep) || !existsSync(page)) return next();
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'text/html; charset=utf-8');
+          res.end(readFileSync(page));
+        });
+      };
+    },
+  };
+}
+
 export default defineConfig({
+  plugins: [githubPagesNotFound()],
   base: './', // For GitHub Pages standard relative layout
   // No SPA fallback, so the dev and preview servers return 404 for a missing page, as GitHub Pages does.
   appType: 'mpa',
@@ -19,6 +49,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        // GitHub Pages serves 404.html for any missing path (REQ-002).
+        notFound: resolve(__dirname, '404.html'),
         ...pageInputs,
         sitemap: resolve(__dirname, 'docs/sitemap.html'),
       }

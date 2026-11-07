@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetElement) {
         e.preventDefault();
         targetElement.scrollIntoView({ behavior: 'smooth' });
+        // preventDefault stops the browser moving focus, so move it here (WCAG 2.4.1)
+        if (!targetElement.hasAttribute('tabindex')) targetElement.setAttribute('tabindex', '-1');
+        (targetElement as HTMLElement).focus({ preventScroll: true });
       }
     });
   });
