@@ -71,6 +71,27 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 - Departure: the fast batch dispatches no subagents. Each unit is one short file built from criteria in the design. The dispatch standard keeps a unit with fewer than two independent pieces inline.
 
+
+### P2: Implement
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-07T18:23:42Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary (sonnet) for TDD tracks |
+| Skills loaded | ravintio-implement, ravintio-test-writer, ravintio-implementer, ravintio-refactor |
+| Agents spawned | `0` |
+| MCP calls | `0` |
+| Parallel task batches | `0` |
+| Notes | see notes below |
+
+- Departure: each unit runs as one TDD track (test-writer, implementer, and refactor in sequence) in one subagent, as in runs 0000016 and 0000024. The track runs on `sonnet`, not the skills' `haiku`, because one agent writes tests and code together. The improvement loop runs as one fresh-context review across the whole diff.
+- Backlog ids reserved for subagent filing: 0000028 to 0000035.
+- In progress: U1 REQ-007 (2026-11-07T18:23:42Z)
+- In progress: U2 REQ-005 (2026-11-07T18:23:42Z)
+- In progress: U3 REQ-003 (2026-11-07T18:23:42Z)
+
 ---
 
 <!-- Copy and fill in this block at each phase boundary. Headings use the form
