@@ -37,6 +37,9 @@ Run speed: fast. Run mode: autonomous.
 ## Postmortems
 
 Postmortems: none.
+
+Retrospective: `plan/retrospectives/0000027-site-quality-fixes-2026-11-07.md`
+
 ## Workflow governance
 
 | Metric | Value | Threshold | Result |
