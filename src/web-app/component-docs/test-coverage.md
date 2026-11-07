@@ -34,7 +34,7 @@ Two suites run from `src/web-app`, after `npm run build`. The content suite runs
 | `e2e/page-health.spec.ts` | 0000016 REQ-001, 0000027 REQ-003, REQ-004 | Each page returns 200 with no console errors, links and anchors resolve, and no sideways scroll at 390 px. Each page has one `<main>`, and the homepage skip link targets it. Doc page text is at least 330 px wide at 390 px. |
 | `e2e/not-found.spec.ts` | 0000027 REQ-002 | The 404 page at a nested missing path returns 404 and loads its stylesheet and script |
 | `e2e/axe.spec.ts` | 0000027 REQ-001 | An axe-core WCAG 2.2 AA scan of every page in light and dark. Serious and critical violations fail. The global teardown in `e2e/axe-report.ts` writes the rest to `test-results/axe-report.json`. |
-| `e2e/interactive.spec.ts` | 0000016 REQ-002 | Theme toggle and persistence, the page list at 390 px and 1280 px, and Mermaid diagrams, with a named skip when no page holds one |
+| `e2e/interactive.spec.ts` | 0000016 REQ-002, 0000027 REQ-003 | Theme toggle and persistence, the page list at 390 px and 1280 px, and Mermaid diagrams, with a named skip when no page holds one. The skip link moves focus to `#content`. |
 | `e2e/first-frame.spec.ts` | 0000016 REQ-006 | The first frame matches a saved theme or the system preference |
 
 Requirement IDs without a prefix belong to feature 0000005.

@@ -122,11 +122,11 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Field | Value |
 |-------|-------|
 | Start | `2026-11-07T18:36:58Z` |
-| End | `{{timestamp, filled when the phase completes}}` |
-| Wall clock | `{{whole minutes from Start to End}}` |
+| End | `2026-11-07T18:46:08Z` |
+| Wall clock | `9` |
 | Model tier | primary (sonnet) for verification and security |
 | Skills loaded | ravintio-validate-and-accept, site-quality-review |
-| Agents spawned | `2` |
+| Agents spawned | `3` |
 | MCP calls | `0` |
 | Parallel task batches | `1` |
 | Notes | see notes below |
@@ -134,12 +134,14 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - In progress: execution verification (2026-11-07T18:36:58Z)
 - In progress: security review (2026-11-07T18:36:58Z)
 - CI: library audit pass (`@axe-core/playwright` is on no avoid list), `tsc --noEmit` pass, build pass, `npm test` 93 of 93, `npx playwright test` 89 passed and 1 existing skip, `npm audit` 0 vulnerabilities. No lint step is declared.
-- Semantic check: two criteria had no test named for them, REQ-001 AC-2 and AC-3 and REQ-004 AC-2. Commit `8926e2f` renames the two test titles with no assertion change. Self-correct cycles: 1.
+- Semantic check: three criteria had no test named for them: REQ-001 AC-2, REQ-001 AC-3, and REQ-004 AC-2. Commit `8926e2f` renames the two test titles with no assertion change. Self-correct cycles: 1.
 - Done: security review (2026-11-07T18:41:50Z), commit `7561179`. Overall low, no critical, high, or medium finding. Follow-ups in `5c28586`: R-005 marked mitigated from the P2 SHA check, S-002 fixed with a 404 file check, and backlog 0000036 reframed as a pack fix.
 - Done: execution verification (2026-11-07T18:41:50Z), commit `9b841b1`. 13 of 14 verified. The orchestrator then verified US-005 AC-2 by unpinning one action, in `4e997d8`. 14 of 14 verified.
 - In progress: site quality review (2026-11-07T18:41:50Z)
-- Rework: REQ-004: the skip link stopped the default jump but left keyboard focus on the link, so Tab went to the nav (WCAG 2.4.1). Quality review fix-now finding A-001, size S. (2026-11-07T18:47:00Z)
+- Rework: REQ-003: the skip link stopped the default jump but left keyboard focus on the link, so Tab went to the nav (WCAG 2.4.1). Quality review fix-now finding A-001, size S. (2026-11-07T18:47:00Z)
 - Done: site quality review (2026-11-07T18:50:00Z)
+- Departure: backlog 0000037 (N-001) is a run-caused finding, which the quality review rule sorts as fix-now. It stays in the backlog. It shows only with JavaScript off, and no `href` keeps the reader on the same URL both with and without JavaScript.
+- Acceptance evidence written. Autonomous run, so no gate stop.
 
 ---
 
