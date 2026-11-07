@@ -116,6 +116,24 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Done: U8 docs (2026-11-07T18:36:16Z), commit `4870a83`.
 - Final suites: Node 93 of 93, Playwright 89 pass and 1 existing skip, 0 fail. `tsc` clean.
 
+
+### P3: Validate and Accept
+
+| Field | Value |
+|-------|-------|
+| Start | `2026-11-07T18:36:58Z` |
+| End | `{{timestamp, filled when the phase completes}}` |
+| Wall clock | `{{whole minutes from Start to End}}` |
+| Model tier | primary (sonnet) for verification and security |
+| Skills loaded | ravintio-validate-and-accept, site-quality-review |
+| Agents spawned | `2` |
+| MCP calls | `0` |
+| Parallel task batches | `1` |
+| Notes | see notes below |
+
+- In progress: execution verification (2026-11-07T18:36:58Z)
+- In progress: security review (2026-11-07T18:36:58Z)
+
 ---
 
 <!-- Copy and fill in this block at each phase boundary. Headings use the form
