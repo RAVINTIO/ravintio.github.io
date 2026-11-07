@@ -660,6 +660,8 @@ code {
   color: var(--text-main);
 }
 .skip-link:focus { left: 1rem; top: 1rem; }
+/* The skip link moves focus here, and the container is not interactive */
+#content:focus { outline: none; }
 
 /* ---------- Doc layout with section nav (ADR-003) ---------- */
 .doc-layout {
