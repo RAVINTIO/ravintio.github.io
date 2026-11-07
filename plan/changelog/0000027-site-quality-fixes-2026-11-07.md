@@ -9,7 +9,7 @@ version: "0.1.0"
 
 **Feature:** Close seven site quality findings
 **Version:** 0.7.0
-**PR:** pending
+**PR:** [#27](https://github.com/RAVINTIO/ravintio.github.io/pull/27)
 
 ## What changed
 
