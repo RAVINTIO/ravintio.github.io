@@ -138,6 +138,8 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Done: security review (2026-11-07T18:41:50Z), commit `7561179`. Overall low, no critical, high, or medium finding. Follow-ups in `5c28586`: R-005 marked mitigated from the P2 SHA check, S-002 fixed with a 404 file check, and backlog 0000036 reframed as a pack fix.
 - Done: execution verification (2026-11-07T18:41:50Z), commit `9b841b1`. 13 of 14 verified. The orchestrator then verified US-005 AC-2 by unpinning one action, in `4e997d8`. 14 of 14 verified.
 - In progress: site quality review (2026-11-07T18:41:50Z)
+- Rework: REQ-004: the skip link stopped the default jump but left keyboard focus on the link, so Tab went to the nav (WCAG 2.4.1). Quality review fix-now finding A-001, size S. (2026-11-07T18:47:00Z)
+- Done: site quality review (2026-11-07T18:50:00Z)
 
 ---
 
