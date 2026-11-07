@@ -81,9 +81,9 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 | Wall clock | `{{whole minutes from Start to End}}` |
 | Model tier | primary (sonnet) for TDD tracks |
 | Skills loaded | ravintio-implement, ravintio-test-writer, ravintio-implementer, ravintio-refactor |
-| Agents spawned | `0` |
+| Agents spawned | `3` |
 | MCP calls | `0` |
-| Parallel task batches | `0` |
+| Parallel task batches | `1` |
 | Notes | see notes below |
 
 - Departure: each unit runs as one TDD track (test-writer, implementer, and refactor in sequence) in one subagent, as in runs 0000016 and 0000024. The track runs on `sonnet`, not the skills' `haiku`, because one agent writes tests and code together. The improvement loop runs as one fresh-context review across the whole diff.
@@ -91,6 +91,12 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - In progress: U1 REQ-007 (2026-11-07T18:23:42Z)
 - In progress: U2 REQ-005 (2026-11-07T18:23:42Z)
 - In progress: U3 REQ-003 (2026-11-07T18:23:42Z)
+- Done: U1 REQ-007 (2026-11-07T18:25:10Z), commit `4df7e9f`. RED then GREEN on the first attempt.
+- Done: U2 REQ-005 (2026-11-07T18:25:10Z), commit `b806687`. All six SHAs match `gh api` for their tags.
+- Done: U3 REQ-003 (2026-11-07T18:25:10Z), commit `c49b383`. Node 90 pass, Playwright 45 pass and 1 skipped.
+- Batch 1: 3 agents in one parallel message.
+- Batches 2 to 5 hold one unit each, so they run inline.
+- In progress: U4 REQ-006 (2026-11-07T18:25:10Z)
 
 ---
 
