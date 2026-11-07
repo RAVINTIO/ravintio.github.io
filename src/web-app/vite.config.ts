@@ -29,10 +29,11 @@ function githubPagesNotFound(): Plugin {
           }
           const target = resolve(dist, '.' + url);
           const found = url.endsWith('/') ? existsSync(resolve(target, 'index.html')) : existsSync(target);
-          if (found || !target.startsWith(dist + sep)) return next();
+          const page = resolve(dist, '404.html');
+          if (found || !target.startsWith(dist + sep) || !existsSync(page)) return next();
           res.statusCode = 404;
           res.setHeader('Content-Type', 'text/html; charset=utf-8');
-          res.end(readFileSync(resolve(dist, '404.html')));
+          res.end(readFileSync(page));
         });
       };
     },

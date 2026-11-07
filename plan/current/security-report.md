@@ -19,7 +19,7 @@ The review covers `git diff 1a054e5..HEAD -- src .github`. It finds no critical,
 | ID | Severity | Category | Component | Description | Recommendation | Status |
 |----|----------|----------|-----------|-------------|----------------|--------|
 | S-001 | low | config | web-app | `src/web-app/vite.config.ts:15-41` serves `dist/404.html` for missing paths. The plugin decodes the request path and resolves it against `dist`. The guard at line 32 (`!target.startsWith(dist + sep)`) passes any path outside `dist` to the normal static handler. The plugin never reads outside `dist`, because its only file read is `dist/404.html` (line 35). Only the local preview server and CI load the plugin. | None needed. Keep the guard if the plugin changes. | mitigated |
-| S-002 | low | config | web-app | `src/web-app/vite.config.ts:35` calls `readFileSync` on `dist/404.html` with no existence check. If the file is missing, the preview server returns a 500 for each missing path. This is a robustness fault in a local test server, not an exposure. | Add a clear error when the file is absent. | open |
+| S-002 | low | config | web-app | `src/web-app/vite.config.ts:35` calls `readFileSync` on `dist/404.html` with no existence check. If the file is missing, the preview server returns a 500 for each missing path. This is a robustness fault in a local test server, not an exposure. | Fixed in P3. The plugin now checks that `dist/404.html` exists and falls through to the default 404 otherwise. | mitigated |
 | S-003 | informational | config | web-app | `src/web-app/404.html:5` sets `<base href="/">`. Relative links such as `./index.html` (line 41) and `img/ravintio-logo.png` (line 41) then resolve from the domain root at any URL depth. The base tag also changes fragment links. The skip link `#content` (line 36) resolves to `/#content`, so it leaves the 404 page and lands on the homepage. The base value is a static string, so the tag adds no way to load a foreign origin. | Check the skip link on the deployed 404 page. Use `#content` with a full path or a script if it must stay on the page. See A-001 for the project-page case. | open |
 | S-004 | informational | data-exposure | web-app | `src/web-app/404.html` holds only static public content. It reads the `localStorage` key `ravintio-theme` (line 13) inside a try block and accepts only `light` or `dark`. No user input reaches the DOM, and the page sets no cookie. | None | mitigated |
 | S-005 | informational | data-exposure | web-app | `src/web-app/404.html:28-30` loads fonts from `fonts.googleapis.com` and `fonts.gstatic.com`. Each 404 visit sends the visitor IP address to Google. `index.html` already does the same, so the change adds no new third party. | Self-host the fonts if the privacy position requires it. | accepted |
@@ -37,7 +37,7 @@ No credential appears in the diff. A scan of the diff and of tracked files for k
 | Permissions | Unchanged. `deploy.yml:8-11` keeps `contents: read`, `pages: write`, and `id-token: write`, which Pages deployment needs. `site-tests.yml:8-9` keeps `contents: read`. |
 | Triggers | Unchanged. Deploy runs on push to `main` and manual dispatch. Tests run on pull requests. |
 | Install step | Both workflows use `npm ci`, so the lockfile controls versions. |
-| Pin accuracy | This review did not resolve the SHAs against the upstream tags. R-005 stays open for that reason. |
+| Pin accuracy | P2 resolved all six SHAs with `gh api repos/actions/{repo}/commits/{tag}`, and each matches its tag. R-005 is mitigated. |
 
 ## Dependency Audit
 
@@ -66,17 +66,17 @@ Both axe packages carry the MPL-2.0 licence, per the lockfile entries. MPL-2.0 i
 | R-002 axe flags the Mermaid SVG | open. It is a quality risk with no security impact. The diff adds no rule exclusion. |
 | R-003 narrower padding crowds code blocks | open. It is a layout risk with no security impact. |
 | R-004 shared `dist/` and port | mitigated. The concurrency plan runs each Playwright unit in its own batch. |
-| R-005 SHA pin resolves to the wrong commit | open. All eight `uses:` lines carry a 40-character SHA and a tag comment. This review did not resolve them upstream. Run `gh api repos/{owner}/{repo}/commits/{tag}` for each pin before merge. |
+| R-005 SHA pin resolves to the wrong commit | mitigated. All eight `uses:` lines carry a 40-character SHA and a tag comment. P2 resolved each SHA against its upstream tag, and all match. |
 | R-006 pinned actions fall behind | open. The tag comments support manual bumps, but the repository has no Dependabot config. |
 | R-007 404 page breaks off the domain root | open. `404.html:5` hard-codes `/`. ADR-003 records the assumption, and the nested-path test covers it. |
 
 ## Recommendations
 
-1. Resolve each pinned SHA against its upstream tag before merge, to close R-005.
-2. Pin `actions/checkout@v4` at `.github/workflows/ravintio.yml:18` (backlog 0000036).
+1. Done in P2: each pinned SHA matches its upstream tag, which closes R-005.
+2. Pin `actions/checkout@v4` at `.github/workflows/ravintio.yml:18` in the pack's workflow source (backlog 0000036).
 3. Add `.github/dependabot.yml` for the `github-actions` and `npm` ecosystems, so pins and dev dependencies stay current (R-006).
 4. Check that the skip link on the deployed 404 page reaches the 404 content (S-003).
-5. Add an existence check for `dist/404.html` in the preview plugin (S-002).
+5. Done in P3: the preview plugin checks that `dist/404.html` exists (S-002).
 
 ## Top actions before production
 
