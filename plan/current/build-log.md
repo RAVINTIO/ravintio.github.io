@@ -1,8 +1,8 @@
 ---
-title: "Build Log - pending"
+title: "Build Log - 0000027-site-quality-fixes"
 summary: "Working record of the pipeline run, maintained by the orchestrator."
 ---
-# Build Log - pending
+# Build Log - 0000027-site-quality-fixes
 
 > Created at discovery (P0). Appended by the orchestrator at each phase boundary. Survives session changes.
 
@@ -10,7 +10,7 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 
 | Field | Value |
 |-------|-------|
-| Feature ID | `pending` |
+| Feature ID | `0000027-site-quality-fixes` |
 | Pipeline start | `2026-11-07T16:32:46Z` |
 | Tool | `Claude Code` |
 | Primary model | `claude-opus-5-5` |
@@ -39,6 +39,10 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Migration 0005 (initiative rename): skipped. Its `Applies when:` condition is false. No `plan/roadmap/*/roadmap.md` exists and `ravintio.yml` holds no `roadmap/**` pattern. It stays pending.
 - Pack update check: resume detection compared pack `0.37.0` with the product version `0.6.0`. This is the false positive ruled in runs 0000009, 0000016, and 0000024. No `ravintio-zero/` file changed since `54db2ef`.
 - Pre-flight: `main` matched `origin/main` with no open PRs. Cut `feat/pending`.
+- Backlog pickup: the human accepted every recommendation. Pulled in 0000015, 0000018, 0000019, 0000020, 0000022, 0000025, and 0000026 (13 of 14 points). Left 0000014.
+- Feature id reserved: 0000027-site-quality-fixes. Branch renamed to `feat/0000027-site-quality-fixes`.
+- Commit hook blocked the `Claude-Session:` trailer. Commits carry no attribution line.
+- P0 exchange (backlog pickup): Q: pull in, leave, or discard each backlog entry? / A: go with all recommendations.
 
 ---
 
