@@ -102,6 +102,13 @@ summary: "Working record of the pipeline run, maintained by the orchestrator."
 - Deviation: U5 adds a `configurePreviewServer` plugin to `vite.config.ts`. Vite 7 preview has no 404 page support. REQ-002 now records the plugin and the relative links.
 - Done: U5 REQ-002 (2026-11-07T18:28:11Z), commit `9212367`. Node 93 pass, Playwright 49 pass and 1 skipped.
 - In progress: U6 REQ-004 (2026-11-07T18:28:11Z)
+- Done: U6 REQ-004 (2026-11-07T18:31:53Z), commit `8478f25`. RED at 317 px, GREEN after slimmer phone padding.
+- In progress: U7 REQ-001 (2026-11-07T18:31:53Z)
+- U7 first scan: 11 of 24 page and theme pairs failed. `color-contrast` (serious) hit the pagination title in light theme on every doc page, from `opacity: 0.7`. `scrollable-region-focusable` (serious) hit a wide code block on `first-run.html`. Fixes: the `--text-muted` token, and `tabindex="0"` on every code `<pre>` in `build-docs.js`. No rule exclusion.
+- Deviation: U7 adds the sitemap to `pagePaths()`, as REQ-001 AC-1 names it, and a `globalTeardown` in `playwright.config.ts` that merges the per-test axe files.
+- Done: U7 REQ-001 (2026-11-07T18:31:53Z), commit `23efac6`. Axe 26 of 26 pass, report empty. Node 93 pass, Playwright 88 pass and 1 skipped.
+- In progress: improvement review across the P2 diff (2026-11-07T18:31:53Z)
+- In progress: U8 docs (2026-11-07T18:31:53Z)
 
 ---
 
